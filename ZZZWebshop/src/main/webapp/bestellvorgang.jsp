@@ -47,7 +47,7 @@
 		</div>
 		<div class="col col-6">
 			<h4 class="mb-3">Warenkorb</h4>
-			<jsp:include page="templates/warenkorb.jsp" />
+			<jsp:include page="templates/warenkorbListe.jsp" />
 		</div>
 	</div>
 </div>

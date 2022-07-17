@@ -2,20 +2,20 @@ package data;
 
 import java.util.ArrayList;
 
-public class Warenkorb {
-	
-	private Artikel artikel;
+public class Warenkorb extends Artikel {
 
-	public Warenkorb(Artikel artikel) {
-		this.artikel = artikel;
+	private int menge;
+
+	public Warenkorb() {
+
 	}
 
-	public Artikel getArtikel() {
-		return artikel;
+	public int getMenge() {
+		return menge;
 	}
-	
-	
 
-	
+	public void setMenge(int menge) {
+		this.menge = menge;
+	}
 
 }

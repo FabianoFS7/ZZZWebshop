@@ -14,7 +14,7 @@
 				<h4 class="mb-3">Daten</h4>
 				<p class="fw-normal">
 					Name:
-					<c:out value="${sessionScope.benutzer.getFullName()}" />
+					<c:out value="${benutzer.getFullName()}" />
 				</p>
 				<p class="fw-normal">
 					Straße & Hausnummer:

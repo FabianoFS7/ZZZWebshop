@@ -27,12 +27,34 @@ public class WarenkorbServlet extends HttpServlet {
 		HttpSession session = request.getSession(); 
 
 		Artikel artikel = ArtikelDatabase.getArtikel(id);
-		Warenkorb warenkorb = new Warenkorb(artikel);
-		session.setAttribute("warenkorb", warenkorb);
-		System.out.println(artikel.getName());
-		int cartCounter = (int) session.getAttribute("cartCounter");		
-		session.setAttribute("cartCounter", cartCounter+1);
-		System.out.println(cartCounter);
+		//System.out.println(artikel.getName());
+		//int cartCounter = (int) session.getAttribute("cartCounter");		
+		//session.setAttribute("cartCounter", cartCounter+1);
+		//System.out.println(cartCounter);
+		
+		
+		ArrayList<Artikel> artikelListe = (ArrayList<Artikel>) session.getAttribute("artikelListe");
+		if(artikelListe == null) {
+			artikelListe = new ArrayList<Artikel>();
+		}
+		boolean enthalten = false;
+		for(Artikel item : artikelListe) {
+			if(item.getId() == artikel.getId()) {	
+				enthalten = true;
+			}
+		}
+		System.out.println(enthalten);
+		if(!enthalten) {			
+			artikelListe.add(artikel);
+		}
+		int artikelAnzahl = artikelListe.size();
+		double gesamtPreis = 0.00;
+		for(Artikel item : artikelListe) {
+			gesamtPreis += item.getPreis();
+		}
+		session.setAttribute("gesamtPreis", gesamtPreis);
+		session.setAttribute("artikelAnzahl", artikelAnzahl);
+		session.setAttribute("artikelListe", artikelListe);
 		response.sendRedirect("artikel.jsp?artikelId=" + id);
 	}
 
