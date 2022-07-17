@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.0</jsp-version>
+	<short-name>Eigene Tags</short-name>
+	
+	<tag>
+		<name>ArtikelListe</name>
+		<tag-class>tags.ArtikelTag</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+	
+		<tag>
+		<name>ArtikelEinzel</name>
+		<tag-class>tags.ArtikelEinzelTag</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+	
+			<tag>
+		<name>AddWare</name>
+		<tag-class>tags.AddWarenkorbTag</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+	
+
+</taglib>
