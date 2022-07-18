@@ -25,40 +25,24 @@ public class ArtikelTag extends SimpleTagSupport {
 		session.setAttribute("cartCounter", cartcounter);    
 		for(Artikel artikel : artikelListe) {
 			System.out.println(artikel.getId());
-			out.print("			<div class=\"col-sm-3 col-md-4\">\r\n"
-					+ "			<div class=\"card shadow mb-3\">\r\n" 
-					+ "				<img src=\"assets/images/hund1.png\"\r\n"
-					+ "					class=\"card-img-top card-img-produkt\" alt=\"Hund1\">\r\n"
-					+ "				<div class=\"card-body\">\r\n"
-					
-					+ "					<div class=\"row\">\r\n\"
-					+ "						<div class=\"col col-9\">\r\n\""
-					+ "							<h5 class=\"card-title\">"+ artikel.getName() + "</h5>\r\n"
-					+ "                     </div>\r\n\""
-					+ "						<div class=\"col col-1\">\r\n\"
-					+ "							<a href=\"artikel.jsp?artikelId="+ artikel.getId() +"\" class=\"btn btn-primary stretched-link\" type=\"button\">ansehen</a>\r\n\"
-					+ "						</div>\r\n\"
+			out.print("			<div class=\"col-sm-3 col-md-4\">"
+					+ "			<div class=\"card shadow mb-3\">" 
+					+ "				<img src=\"assets/images/hund1.png\""
+					+ "					class=\"card-img-top card-img-produkt\" alt=\"Hund1\">"
+					+ "				<div class=\"card-body\">"
+					+ "					<h5 class=\"card-title\">"+ artikel.getName() + "</h5>"
+					+ "					<a href=\"artikel.jsp?artikelId="+ artikel.getId() +"\" class=\"stretched-link\"></a>"
+					+ "					<div class=\"card-text text-truncate mb-2\">" + artikel.getBeschreibung() +"}</div>"		
+					+ "					<div class=\"card-text row\">"
+					+ "						<div class=\"col col-9\">"
+					+ "							<small class=\"text-muted\">Kategorie: " + artikel.getKategorie() + "</small>"
+					+ "						</div>"
+					+ "						<div class=\"col col-3\">"
+					+ "							<h5 class=\"card-title\">" + artikel.getPreis() + " &euro;</h5>"
+					+ "						</div>"
 					+ "					</div>"
-					
-					+ "					<p class=\"card-text text-truncate\">" + artikel.getBeschreibung() +"}</p>\r\n"
-					
-					+ "					<div class=\"row\">\r\n"
-					+ "						<div class=\"col col-9\">\r\n"
-					+ "							<p class=\"card-text\">\r\n"
-					+ "								<small class=\"text-muted\">Kategorie:\r\n"
-					+ "									" + artikel.getKategorie() + "</small>\r\n"
-					+ "							</p>\r\n"
-					+ "						</div>\r\n"
-					+ "						<div class=\"col col-3\">\r\n"
-					+ "							<h5 class=\"card-title\">" + artikel.getPreis() + "</h5>\r\n"
-					+ "						</div>\r\n"
-					+ "					</div>"
-					
-					+ "				<div class=\"col col-1 \">\r\n"
-					+ "					<a href=\"artikel.jsp?artikelId="+ artikel.getId() +"\" class=\"btn btn-primary stretched-link\" type=\"button\">ansehen</a>\r\n"
 					+ "				</div>"
-					+ "				</div>\r\n"
-					+ "			</div>\r\n"
+					+ "			</div>"
 					+ "			</div>");
 		}
 		
