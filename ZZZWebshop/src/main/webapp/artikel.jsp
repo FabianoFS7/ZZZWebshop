@@ -9,8 +9,6 @@
 
 <div class="container body-container" style="width: 90%;">
 	<div class="card shadow">
-		<img src="assets/images/hund1.png"
-			class="card-img-top card-img-produkt" alt="Hund1">
 		<my:ArtikelEinzel/>
 		<div class="row justify-content-center my-4">
 			<a href="artikeluebersicht.jsp" class="btn btn-dark col-auto"

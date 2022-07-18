@@ -27,8 +27,8 @@ public class ArtikelTag extends SimpleTagSupport {
 			System.out.println(artikel.getId());
 			out.print("		<div class=\"col-sm-3 col-md-4\">"
 					+ "			<div class=\"card shadow mb-3\">" 
-					+ "				<img src=\"assets/images/hund1.png\""
-					+ "					class=\"card-img-top card-img-produkt\" alt=\"Hund1\">"
+					+ "				<img src=\"assets/images/"+ artikel.getBild() + "\""
+					+ "					class=\"card-img-top card-img-produkt\" alt=\"Artikelbild\">"
 					+ "				<div class=\"card-body\">"
 					+ "					<h5 class=\"card-title\">"+ artikel.getName() + "</h5>"
 					+ "					<a href=\"artikel.jsp?artikelId="+ artikel.getId() +"\" class=\"stretched-link\"></a>"

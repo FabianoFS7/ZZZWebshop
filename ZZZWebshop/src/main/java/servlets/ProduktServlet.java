@@ -53,8 +53,6 @@ public class ProduktServlet extends HttpServlet {
 				Artikel artikel = new Artikel();
 				artikel.setId(rs.getInt("artikelId"));
 				artikel.setName(rs.getString("artikelName"));
-				System.err.println("[ERROR] Name: " + rs.getString("artikelName"));
-				artikel.setNummer(rs.getInt("artikelNummer"));
 				artikel.setPreis(rs.getDouble("artikelPreis"));
 				artikel.setBeschreibung(rs.getString("artikelBeschreibung"));
 				artikel.setKategorie(rs.getString("artikelKategorie"));

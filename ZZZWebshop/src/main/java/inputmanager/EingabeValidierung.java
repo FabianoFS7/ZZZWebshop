@@ -8,8 +8,11 @@ public class EingabeValidierung {
 	 */
 	public static boolean istLeer(String eingabe) {
 		boolean isEmpty = false;
-		if (eingabe.isEmpty()) {
-			isEmpty = true;
+		try {
+			if (eingabe.isEmpty()) {
+				isEmpty = true;
+			}
+		} catch (Exception e) {
 		}
 		return isEmpty;
 	}
