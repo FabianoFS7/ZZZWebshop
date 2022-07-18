@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.Artikel;
-import data.Benutzer;
 
 public class ArtikelDatabase {
 	

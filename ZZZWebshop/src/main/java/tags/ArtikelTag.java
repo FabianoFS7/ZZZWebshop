@@ -25,7 +25,7 @@ public class ArtikelTag extends SimpleTagSupport {
 		session.setAttribute("cartCounter", cartcounter);    
 		for(Artikel artikel : artikelListe) {
 			System.out.println(artikel.getId());
-			out.print("			<div class=\"col-sm-3 col-md-4\">"
+			out.print("		<div class=\"col-sm-3 col-md-4\">"
 					+ "			<div class=\"card shadow mb-3\">" 
 					+ "				<img src=\"assets/images/hund1.png\""
 					+ "					class=\"card-img-top card-img-produkt\" alt=\"Hund1\">"
@@ -43,7 +43,7 @@ public class ArtikelTag extends SimpleTagSupport {
 					+ "					</div>"
 					+ "				</div>"
 					+ "			</div>"
-					+ "			</div>");
+					+ "		</div>");
 		}
 		
 	}
