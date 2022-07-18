@@ -23,14 +23,20 @@ public class WarenkorbServlet extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		int id = Integer.parseInt(request.getParameter("id"));
 		HttpSession session = request.getSession(); 
-
+	
 		Artikel artikel = ArtikelDatabase.getArtikel(id);
-		//System.out.println(artikel.getName());
-		//int cartCounter = (int) session.getAttribute("cartCounter");		
-		//session.setAttribute("cartCounter", cartCounter+1);
-		//System.out.println(cartCounter);
+		
+		ArrayList<Warenkorb> warenkorb = (ArrayList<Warenkorb>) session.getAttribute("warenkorb");
+		if(warenkorb == null) {
+			warenkorb = new ArrayList<Warenkorb>();
+		}
+		
+		warenkorb.add(new Warenkorb());
+		
+		
 		
 		
 		ArrayList<Artikel> artikelListe = (ArrayList<Artikel>) session.getAttribute("artikelListe");
@@ -46,6 +52,8 @@ public class WarenkorbServlet extends HttpServlet {
 		System.out.println(enthalten);
 		if(!enthalten) {			
 			artikelListe.add(artikel);
+			int menge = 1;
+			session.setAttribute("menge", menge);
 		}
 		int artikelAnzahl = artikelListe.size();
 		double gesamtPreis = 0.00;

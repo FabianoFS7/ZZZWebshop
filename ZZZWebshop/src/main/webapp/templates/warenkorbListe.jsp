@@ -21,7 +21,7 @@
 				</button>
 				<button type="button" class="btn btn-dark">
 					<span class=" bi bi-x-lg" aria-hidden="true"></span>
-				1</button>
+				</button>
 				<button type="button" class="btn btn-dark">
 					<span class=" bi bi-plus-lg" aria-hidden="true"></span>
 				</button>

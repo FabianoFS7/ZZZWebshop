@@ -15,6 +15,7 @@ import data.Warenkorb;
 import database.ArtikelDatabase;
 
 public class AddWarenkorbTag extends SimpleTagSupport{
+	//Actual unused
 	
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();

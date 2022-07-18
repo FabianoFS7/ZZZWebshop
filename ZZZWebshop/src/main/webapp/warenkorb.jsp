@@ -22,12 +22,24 @@
 	<tr>
 		<td>${artikelListe.get(i).getName() }</td>
 		<td>${artikelListe.get(i).getPreis() }</td>
-		<td>1</td>
+		<td>
+		
+			<div class="btn-group btn-group-sm" role="group">
+				<a href="artikel-Menge?methode=mengeMinus&id=${artikelListe.get(i).getId() }" type="button">-</a>			
+                
+		
+				<input type="text" name="anzahl" value="${menge } " readonly>
+				
+				
+                <a href="artikel-Menge?methode=mengePlus&id=${artikelListe.get(i).getId() }" type="button">+</a>			
+                </div>
+		
+		</td>
 		<td><button type="button" class="btn btn-danger">Remove</button></td>	
 	</tr>
 </c:forEach>	
 </table>
-Gesamtpreis: ${gesamtPreis }
+Gesamtpreis:${artikelListe.get(i).getPreis() * menge}
 <a href="bestellvorgang.jsp" class="btn btn-primary" type="button">Zur Kasse</a>
 </body>
 </html>

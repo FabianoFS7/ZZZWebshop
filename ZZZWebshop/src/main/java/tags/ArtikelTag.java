@@ -14,7 +14,7 @@ import data.Artikel;
 import database.ArtikelDatabase;
 
 public class ArtikelTag extends SimpleTagSupport {
-
+	//Produkte anzeigen, wird aktuell genutzt
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
 		PageContext pageContext = (PageContext) getJspContext();
