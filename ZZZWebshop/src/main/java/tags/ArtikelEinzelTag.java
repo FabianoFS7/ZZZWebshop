@@ -25,8 +25,8 @@ public class ArtikelEinzelTag extends SimpleTagSupport {
 
 
 		Artikel artikel = ArtikelDatabase.getArtikel(artikelId);
-		out.print("<div class=\"row my-4\">\r\n"
-				+ "				<div class=\"col col-11\">\r\n"
+		out.print("<div class=\"row mx-4 mt-4\">\r\n"
+				+ "				<div class=\"col col-11 p-0\">\r\n"
 				+ "					<h5 class=\"card-title\">"+ artikel.getName() +"</h5>\r\n"
 				+ "				</div>\r\n"
 				+ "				<div class=\"col col-1\">\r\n"
@@ -34,8 +34,8 @@ public class ArtikelEinzelTag extends SimpleTagSupport {
 				+ "				</div>\r\n"
 				+ "			</div>\r\n"
 				+ "			<p class=\"card-text\">" + artikel.getBeschreibung() + "</p>\r\n"
-				+ "			<div class=\"row\">\r\n"
-				+ "				<div class=\"col col-10\">\r\n"
+				+ "			<div class=\"row mx-4\">\r\n"
+				+ "				<div class=\"col col-10 p-0\">\r\n"
 				+ "					<p class=\"card-text\">\r\n"
 				+ "						<small class=\"text-muted\">Kategorie:\r\n"
 				+ "							" + artikel.getKategorie() + "</small>\r\n"

@@ -5,7 +5,7 @@
   <jsp:param name="navbar" value="" />
 </jsp:include>
 
-<div class="d-flex align-items-center justify-content-center mh-100">
+<div class="d-flex justify-content-center my-4 mh-100">
 
 <form class="needs-validation" action="LoginServlet" method="POST">
   

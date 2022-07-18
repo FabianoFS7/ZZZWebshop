@@ -28,6 +28,6 @@
 </c:forEach>	
 </table>
 Gesamtpreis: ${gesamtPreis }
-<a href="bestellvorgang.jsp" class="btn btn-primary" type="button">Zur Kasse</a>
+<a href="bestellvorgang.jsp" class="btn btn-dark" type="button">Zur Kasse</a>
 </body>
 </html>

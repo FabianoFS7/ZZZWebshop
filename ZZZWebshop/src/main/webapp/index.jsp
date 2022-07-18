@@ -21,12 +21,10 @@
 			<div class="card shadow">
 				<img src="assets/images/hund1.png" class="card-img-top" alt="Hund1">
 				<div class="card-body">
-					<h5 class="card-title">Special title treatment</h5>
-					<p class="card-text">With supporting text below as a natural
-						lead-in to additional content.</p>
-					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
-					</p>
+					<h5 class="card-title">Ernährung & Pfege</h5>
+					<p class="card-text">Alles rund um ausgewogene Mahlzeiten und
+						Snacks für deinen liebsten Vierbeiner. Und wenn es mal matschig
+						ist, kann man ihn auch mal mit einer Verwöhndusche überraschen.!</p>
 				</div>
 			</div>
 		</div>
@@ -34,12 +32,10 @@
 			<div class="card shadow">
 				<img src="assets/images/hund2.png" class="card-img-top" alt="Hund2">
 				<div class="card-body">
-					<h5 class="card-title">Kuscheltier</h5>
-					<p class="card-text">With supporting text below as a natural
-						lead-in to additional content.</p>
-					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
-					</p>
+					<h5 class="card-title">Zubehör & Spielzeug</h5>
+					<p class="card-text">Was das kleine Herz höher schlägenlässt.
+						Von sportlichen Gadjets und Leinen bis hin zum Kuscheltier. Damit
+						kannst du es deinem Hund so richtig schön machen!</p>
 				</div>
 			</div>
 		</div>
@@ -48,12 +44,10 @@
 				<img src="assets/images/leine.png" class="card-img-top"
 					alt="Hundeleine">
 				<div class="card-body">
-					<h5 class="card-title">Hundeleine</h5>
-					<p class="card-text">With supporting text below as a natural
-						lead-in to additional content.</p>
-					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
-					</p>
+					<h5 class="card-title">Schlafen & Erholung</h5>
+					<p class="card-text">Auch Helden müssen mal schlafen. Am besten
+						auf einer flauschigen und bewuemen Matte. Gönne deinem Puppie
+						einen schönen Schlaf!</p>
 				</div>
 			</div>
 		</div>
@@ -77,7 +71,7 @@
 	<div class="accordion mb-4" id="accordionExample">
 		<div class="accordion-item">
 			<h2 class="accordion-header" id="headingOne">
-				<button class="accordion-button" type="button"
+				<button class="accordion-button text-bg-light" type="button"
 					data-bs-toggle="collapse" data-bs-target="#collapseOne"
 					aria-expanded="true" aria-controls="collapseOne">Wie kann
 					ich meine letzten Bestellungen ansehen?</button>
@@ -86,36 +80,45 @@
 				aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 				<div class="accordion-body">
 					<strong>Wir zeigen die stets deine letzten Bestellungen
-						an.</strong> Unter dem Menüpunkt <a href="konto.jsp" class="alert-link">Konto</a> werden dir alle Kontodaten
-					angezeigt, sowie deine letzten Bestellungen die du getätigt hast.
+						an.</strong> Unter dem Menüpunkt <a href="konto.jsp" class="link-dark">Konto</a>
+					werden dir alle Kontodaten angezeigt, sowie deine letzten
+					Bestellungen die du getätigt hast.
 				</div>
 			</div>
 		</div>
 		<div class="accordion-item">
 			<h2 class="accordion-header" id="headingTwo">
-				<button class="accordion-button collapsed" type="button"
-					data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-					aria-expanded="false" aria-controls="collapseTwo">
-					Wieso kann ich die Produkte nicht ansehen?</button>
+				<button class="accordion-button text-bg-light collapsed"
+					type="button" data-bs-toggle="collapse"
+					data-bs-target="#collapseTwo" aria-expanded="false"
+					aria-controls="collapseTwo">Wieso kann ich die Produkte
+					nicht ansehen?</button>
 			</h2>
 			<div id="collapseTwo" class="accordion-collapse collapse"
 				aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
 				<div class="accordion-body">
-					<strong>Vertrauen und Qualität sind uns wichtig!</strong> Wir möchten unseren Kunden die größt mögliche Qualität bieten und daher gewähren wir nur registrierten und angemeldeten Kunden Zugang zu unserer Produktauswahl.
+					<strong>Vertrauen und Qualität sind uns wichtig!</strong> Wir
+					möchten unseren Kunden die größt mögliche Qualität bieten und daher
+					gewähren wir nur registrierten und angemeldeten Kunden Zugang zu
+					unserer Produktauswahl.
 				</div>
 			</div>
 		</div>
 		<div class="accordion-item">
 			<h2 class="accordion-header" id="headingThree">
-				<button class="accordion-button collapsed" type="button"
-					data-bs-toggle="collapse" data-bs-target="#collapseThree"
-					aria-expanded="false" aria-controls="collapseThree">
-					Meine Frage finde ich nicht in den FAQs?</button>
+				<button class="accordion-button text-bg-light collapsed"
+					type="button" data-bs-toggle="collapse"
+					data-bs-target="#collapseThree" aria-expanded="false"
+					aria-controls="collapseThree">Meine Frage finde ich nicht
+					in den FAQs?</button>
 			</h2>
 			<div id="collapseThree" class="accordion-collapse collapse"
 				aria-labelledby="headingThree" data-bs-parent="#accordionExample">
 				<div class="accordion-body">
-					<strong>Wir helfen dir gerne weiter!</strong> Falls du dennoch fragen zum Shop oder einzelnen Produkten hast kannst du dich von Montag bis Freitag zwischen 9 und 15 Uhr unter folgender Nummer melden: 012345-67890
+					<strong>Wir helfen dir gerne weiter!</strong> Falls du dennoch
+					fragen zum Shop oder einzelnen Produkten hast kannst du dich von
+					Montag bis Freitag zwischen 9 und 15 Uhr unter folgender Nummer
+					melden: 012345-67890
 				</div>
 			</div>
 		</div>

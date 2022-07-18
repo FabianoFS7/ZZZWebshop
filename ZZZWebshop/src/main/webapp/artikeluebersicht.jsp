@@ -30,10 +30,8 @@
 	</div>
 	<div class="row" style="width: 100%;">
 		
-		<!--Einträge werden hier dynamisch generiert -->
 		<my:ArtikelListe/>
 
-		
 	</div>
 
 </div>

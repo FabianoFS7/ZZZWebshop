@@ -8,7 +8,7 @@
 
 
 <div class="container body-container" style="width: 90%;">
-	<div class="card mb-3">
+	<div class="card shadow">
 		<img src="assets/images/hund1.png"
 			class="card-img-top card-img-produkt" alt="Hund1">
 		<my:ArtikelEinzel/>
