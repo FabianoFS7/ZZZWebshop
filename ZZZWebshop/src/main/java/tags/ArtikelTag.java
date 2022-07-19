@@ -38,7 +38,7 @@ public class ArtikelTag extends SimpleTagSupport {
 					+ "							<small class=\"text-muted\">Kategorie: " + artikel.getKategorie() + "</small>"
 					+ "						</div>"
 					+ "						<div class=\"col col-3\">"
-					+ "							<h5 class=\"card-title\">" + artikel.getPreis() + " &euro;</h5>"
+					+ "							<h5 class=\"card-title\">" + String.format("%.02f", artikel.getPreis()) + " &euro;</h5>"
 					+ "						</div>"
 					+ "					</div>"
 					+ "				</div>"

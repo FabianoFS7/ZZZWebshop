@@ -11,8 +11,9 @@ public class Benutzer {
 	private String hausnummer;
 	private int postleitzahl;
 	private String ort;
+	private boolean admin;
 
-	public Benutzer(Integer id, String vorname, String nachname, String email, String passwort, String strasse, String hausnummer, int postleitzahl, String ort) {
+	public Benutzer(Integer id, String vorname, String nachname, String email, String passwort, String strasse, String hausnummer, int postleitzahl, String ort, boolean admin) {
 		this.id = id;
 		this.vorname = vorname;
 		this.nachname = nachname;
@@ -22,9 +23,10 @@ public class Benutzer {
 		this.hausnummer = hausnummer;
 		this.postleitzahl = postleitzahl;
 		this.ort = ort;
+		this.admin = admin;
 	}
 	
-	public Benutzer(String vorname, String nachname, String email, String passwort, String strasse, String hausnummer, int postleitzahl, String ort) {
+	public Benutzer(String vorname, String nachname, String email, String passwort, String strasse, String hausnummer, int postleitzahl, String ort, boolean admin) {
 		this.vorname = vorname;
 		this.nachname = nachname;
 		this.email = email;
@@ -33,6 +35,7 @@ public class Benutzer {
 		this.hausnummer = hausnummer;
 		this.postleitzahl = postleitzahl;
 		this.ort = ort;
+		this.admin = admin;
 	}
 	
 	public Benutzer () {		
@@ -75,6 +78,9 @@ public class Benutzer {
 	public String getFullOrt() {
 		return postleitzahl + " " + ort;
 	}
+	public boolean isAdmin() {
+		return admin;
+	}
 
 	public void setId(int id) {
 		this.id = id;
@@ -103,5 +109,7 @@ public class Benutzer {
 	public void setOrt(String ort) {
 		this.ort = ort;
 	}
-
+	public void setAdmin(Boolean admin) {
+		this.admin = admin;
+	}
 }

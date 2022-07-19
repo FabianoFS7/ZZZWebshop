@@ -10,7 +10,7 @@
 <div class="container body-container" style="width: 90%;">
 
 	<div>
-		<img src="assets/images/hunde.png" class="img-fluid" alt="Hunde"
+		<img src="assets/logos/hunde.png" class="img-fluid" alt="Hunde"
 			style="margin-bottom: -5em;">
 	</div>
 
@@ -19,7 +19,7 @@
 		<!--Einträge können auch dynamisch generiert werden z.B. die 3 am meisten gekauften Artikel oder so-->
 		<div class="col-sm-4">
 			<div class="card shadow">
-				<img src="assets/images/hund1.png" class="card-img-top" alt="Hund1">
+				<img src="assets/images/Trockenfleisch.jpg" class="card-img-top" alt="Trockenfleisch">
 				<div class="card-body">
 					<h5 class="card-title">Ernährung & Pfege</h5>
 					<p class="card-text">Alles rund um ausgewogene Mahlzeiten und
@@ -30,7 +30,7 @@
 		</div>
 		<div class="col-sm-4">
 			<div class="card shadow">
-				<img src="assets/images/hund2.png" class="card-img-top" alt="Hund2">
+				<img src="assets/images/Hundeleine_sport.jpg" class="card-img-top" alt="Hundeleine">
 				<div class="card-body">
 					<h5 class="card-title">Zubehör & Spielzeug</h5>
 					<p class="card-text">Was das kleine Herz höher schlägenlässt.
@@ -41,8 +41,8 @@
 		</div>
 		<div class="col-sm-4">
 			<div class="card shadow">
-				<img src="assets/images/leine.png" class="card-img-top"
-					alt="Hundeleine">
+				<img src="assets/images/Hundebett_Superweich.jpg" class="card-img-top"
+					alt="Hundebett">
 				<div class="card-body">
 					<h5 class="card-title">Schlafen & Erholung</h5>
 					<p class="card-text">Auch Helden müssen mal schlafen. Am besten

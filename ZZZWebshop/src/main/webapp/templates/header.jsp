@@ -11,7 +11,7 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 <link rel="stylesheet" href="css/stylesheet.css">
-<link rel="icon" href="assets/images/logo.jpg">
+<link rel="icon" href="assets/logos/logo.jpg">
 </head>
 <body>
 	<script
@@ -20,7 +20,7 @@
 	<nav class="navbar navbar-expand-lg bg-light ${param.navbar}">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="index.jsp"> <img
-				src="assets/images/logo.jpg" alt="Logo" width="30" height="24"
+				src="assets/logos/logo.jpg" alt="Logo" width="30" height="24"
 				class="d-inline-block align-text-top"> Puppy-Deluxe Webshop
 			</a>
 			<ul class="nav justify-content-center">
@@ -33,16 +33,17 @@
 			<c:choose>
 				<c:when test="${ benutzer == null }">
 					<a href="registrierung.jsp" class="btn btn-dark" type="button">Registrieren</a>
-					<a href="login.jsp" class="btn btn-dark" type="button">Login</a>
+					<a href="login.jsp" class="btn btn-dark" type="button">Anmelden</a>
 				</c:when>
 				<c:otherwise>
-				<input type="submit" class="btn btn-dark" value="Logout">
-	
+					<c:if test="${ benutzer.isAdmin() == true }">
+						<a href="artikelverwaltung.jsp" class="btn btn-dark" type="button">Artikelverwaltung</a>
+					</c:if>
+					<input type="submit" class="btn btn-dark" value="Logout">
+					<a href="konto.jsp" class="btn btn-dark" type="button">Konto</a>
+					<a href="warenkorb.jsp" class="btn btn-dark" type="button">Warenkorb<span class="badge badge-light">${artikelAnzahl }</span></a>
 				</c:otherwise>		
 			</c:choose>
-				<a href="konto.jsp" class="btn btn-dark" type="button">Konto</a>
-				<a href="warenkorb.jsp" class="btn btn-dark" type="button">Warenkorb<span class="badge badge-light">${artikelAnzahl }</span></a>
-				
 			</form>
 		</div>
 	</nav>

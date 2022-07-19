@@ -27,6 +27,8 @@ public class RegistrierungsServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		request.setCharacterEncoding("UTF-8");
 
 		String vorname = request.getParameter("vorname");
 		String nachname = request.getParameter("nachname");
@@ -72,9 +74,9 @@ public class RegistrierungsServlet extends HttpServlet {
 					if(RegEx.pruefeHausnummer(hausnummer)) {
 						if(EingabeValidierung.istZahl(postleitzahl) && postleitzahl.length() > 4 &&
 								postleitzahl.length() < 6) {
-							System.out.println("[DEBUG] Alle Felder richtig ausgefüllt");
+							System.out.println("[DEBUG] Alle Felder richtig ausgefï¿½llt");
 							HttpSession session = request.getSession();
-							Benutzer benutzer = new Benutzer(vorname, nachname, mail, passwort, strasse, hausnummer, Integer.parseInt(postleitzahl), ort);
+							Benutzer benutzer = new Benutzer(vorname, nachname, mail, passwort, strasse, hausnummer, Integer.parseInt(postleitzahl), ort, false);
 							
 							try {
 								if(RegistriereBenutzer.registriereBenutzer(benutzer)) {
@@ -93,14 +95,14 @@ public class RegistrierungsServlet extends HttpServlet {
 						eingabeError += "Hausnummer entspricht nicht dem richtigen Format";
 					}
 				} else {
-					eingabeError += "Passwörter stimmen nicht überein";
+					eingabeError += "Passwï¿½rter stimmen nicht ï¿½berein";
 				}
 			} else {
 				eingabeError += "Die Email entspricht nicht der Vorgabe!";
 			}
 
 		} else {
-			eingabeError += "Es wurden nicht alle Pflichtfelder ausgefüllt!";
+			eingabeError += "Es wurden nicht alle Pflichtfelder ausgefï¿½llt!";
 		}
 
 

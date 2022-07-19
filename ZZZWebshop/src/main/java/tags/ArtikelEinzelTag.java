@@ -44,7 +44,7 @@ public class ArtikelEinzelTag extends SimpleTagSupport {
 				+ "					</p>"
 				+ "				</div>"
 				+ "				<div class=\"col col-2\">"
-				+ "					<h5 class=\"card-title\">" + artikel.getPreis() + "</h5>"
+				+ "					<h5 class=\"card-title\">" + String.format("%.02f", artikel.getPreis()) + "</h5>"
 				+ "				</div>"
 				+ "			</div>");
 	}
