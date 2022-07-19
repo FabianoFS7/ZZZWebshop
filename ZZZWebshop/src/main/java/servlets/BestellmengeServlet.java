@@ -25,21 +25,20 @@ public class BestellmengeServlet extends HttpServlet {
 		int menge = Integer.parseInt(request.getParameter("menge"));
 		HttpSession session = request.getSession();
 		Benutzer benutzer = (Benutzer) session.getAttribute("benutzer");
-		if(methode.equals("minus")) {
-			if(menge == 1) {
+		if (methode.equals("minus")) {
+			if (menge == 1) {
 				WarenkorbDatabase.deletePosten(benutzer.getId(), artikelid);
+				request.setAttribute("info", "Artikel wurde vom Warenkorb gelöscht.");
+			} else {
+				request.setAttribute("erfolg", "Artikelmenge wurde im Warenkorb verringert.");
 			}
 			WarenkorbDatabase.updateMenge(menge-1, benutzer.getId(), artikelid);	
 		}
 		
-		if(methode.equals("plus")) {
+		if (methode.equals("plus")) {
 			WarenkorbDatabase.updateMenge(menge+1, benutzer.getId(), artikelid);	
+			request.setAttribute("erfolg", "Artikelmenge wurde im Warenkorb erhöht.");
 		}
-		response.sendRedirect("bestellvorgang.jsp");
-
-	
+		request.getRequestDispatcher("bestellvorgang.jsp").forward(request, response);
 	}
-
-
-
 }

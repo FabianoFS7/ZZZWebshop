@@ -28,26 +28,25 @@ public class WarenkorbServlet extends HttpServlet {
 		Benutzer benutzer = (Benutzer) session.getAttribute("benutzer");
 		ArrayList<Warenkorb> warenkorb = WarenkorbDatabase.getWarenkorb(benutzer.getId());
 		
-		System.out.println(benutzer.getId());
-		
 		boolean enthalten = false;
-		if(!warenkorb.isEmpty()) {
-			for(Warenkorb ware : warenkorb) {
-				if(ware.getId() == id) {
+		if (!warenkorb.isEmpty()) {
+			for (Warenkorb ware : warenkorb) {
+				if (ware.getId() == id) {
 					enthalten = true;
 				}
 			}
 		}
-		if(!enthalten) {
-			WarenkorbDatabase.fuegeWarenkorb(benutzer.getId(), id, 1);			
+		if (!enthalten) {
+			WarenkorbDatabase.fuegeWarenkorb(benutzer.getId(), id, 1);
+			request.setAttribute("erfolg", "Artikel wurde zum Warenkorb hinzugefügt.");
+		} else {
+			request.setAttribute("info", "Der Artikel befindet sich bereits im Warenkorb.");
 		}
-		
-		response.sendRedirect("artikel.jsp?artikelId=" + id);
-
+		request.getRequestDispatcher("artikel.jsp?artikelId=" + id).forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		doGet(request, response);
 	}
 
 }

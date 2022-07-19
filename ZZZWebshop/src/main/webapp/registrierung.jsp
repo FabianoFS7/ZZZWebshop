@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <jsp:include page="templates/header.jsp" >
   <jsp:param name="title" value="Registrierung" />
   <jsp:param name="navbar" value="" />
@@ -25,7 +25,7 @@
   </div>
   
   <div class="container mb-3">
-    <label for="mail" class="form-label">Mail</label>
+    <label for="mail" class="form-label">E-Mail</label>
     <div class="input-group">
       <span class="input-group-text"><i class="bi bi-at"></i></span>
       <input type="email" class="form-control" name="mail" aria-describedby="mail" required>
@@ -49,7 +49,7 @@
   </div>
   
   <div class="container mb-3">
-    <label for="strasse" class="form-label">Straße</label>
+    <label for="strasse" class="form-label">StraÃŸe</label>
     <div class="input-group">
       <span class="input-group-text"><i class="bi bi-house-door-fill"></i></span>
       <input type="text" class="form-control" name="strasse" aria-describedby="strasse" required>

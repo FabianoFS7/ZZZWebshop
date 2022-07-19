@@ -30,12 +30,16 @@ public class ArtikelmengeServlet extends HttpServlet {
 		if (methode.equals("minus")) {
 			if (menge == 1) {
 				WarenkorbDatabase.deletePosten(benutzer.getId(), artikelid);
+				request.setAttribute("info", "Artikel im Warenkorb gelöscht.");
+			} else {
+				request.setAttribute("info", "Artikelmenge im Warenkorb verringert.");
 			}
 			WarenkorbDatabase.updateMenge(menge-1, benutzer.getId(), artikelid);	
 		} else if (methode.equals("plus")) {
-			WarenkorbDatabase.updateMenge(menge+1, benutzer.getId(), artikelid);	
+			WarenkorbDatabase.updateMenge(menge+1, benutzer.getId(), artikelid);
+			request.setAttribute("info", "Artikelmenge im Warenkorb erhöht.");
 		}
-		response.sendRedirect("warenkorb.jsp");
+		request.getRequestDispatcher("warenkorb.jsp").forward(request, response);
 	}
 
 

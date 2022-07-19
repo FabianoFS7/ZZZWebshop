@@ -26,9 +26,7 @@
 			</tbody>
 		</table>
 
-	<a href="bestellvorgang.jsp">
-		<div class="btn btn-dark">Kasse</div>
-	</a>
+	<a href="bestellvorgang.jsp" class="btn btn-dark">Kasse</a>
 
 </div>
 

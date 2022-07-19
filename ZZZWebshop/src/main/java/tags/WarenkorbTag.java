@@ -31,17 +31,18 @@ public class WarenkorbTag extends SimpleTagSupport{
 		int anzahl = 1;
 		
 		for(Warenkorb ware : warenkorb) {
-			out.print("				<tr class=\"align-middle\">"
-					+ "					<th scope=\"row\">" + anzahl + "</th>"
-					+ "					<td>" + ware.getName() + "</td>"
-					+ "					<td>" + ware.getKategorie() + "</td>"
-					+ "					<td>"
-					+ "						<a href=artikel-Menge?methode=minus&id=" + ware.getId() + "&menge=" + ware.getMenge() + "><i class=\"bi bi-dash-square-fill\"></i></a>"
-					+ "						"+ ware.getMenge() +"\r\n"
-					+ "						<a href=artikel-Menge?methode=plus&id=" + ware.getId() + "&menge=" + ware.getMenge() + "><i class=\"bi bi-plus-square-fill\"></i></a>"
-					+ "					</td>"
-					+ "					<td>" + String.format("%.02f", ware.getPreis()) + " €</td>"
-					+ "				</tr>");
+			out.print("<tr class=\"align-middle\">"
+					+ "		<th scope=\"row\">" + anzahl + "</th>"
+					+ "		<td>" + ware.getName() + "</td>"
+					+ "		<td>" + ware.getKategorie() + "</td>"
+					+ "		<td>"
+					+ "			<a href=artikel-Menge?methode=minus&id=" + ware.getId() + "&menge=" + ware.getMenge() + "><i class=\"bi bi-dash-square-fill\"></i></a> "
+					+ 			ware.getMenge() 
+					+ "			<a href=artikel-Menge?methode=plus&id=" + ware.getId() + "&menge=" + ware.getMenge() + "><i class=\"bi bi-plus-square-fill\"></i></a>"
+					+ "		</td>"
+					+ "		<td>" + String.format("%.02f", ware.getPreis()) + " €</td>"
+					+ "	</tr>");
+			
 			gesamtpreis += ware.getPreis() * ware.getMenge();
 			anzahl++;
 		}

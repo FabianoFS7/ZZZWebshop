@@ -30,11 +30,10 @@ public class BestellungsServlet extends HttpServlet {
 		
 		@SuppressWarnings("unchecked")
 		ArrayList<Warenkorb> warenkorb = (ArrayList<Warenkorb>) session.getAttribute("warenkorb");
-
 		ArrayList<Bestellung> bestellung = new ArrayList<Bestellung>();
 				
-		//Bestellung in die Datenbank eintragen
-		for(Warenkorb ware : warenkorb) {
+		// Bestellung in die Datenbank eintragen
+		for (Warenkorb ware : warenkorb) {
 			Bestellung bs = new Bestellung();
 			bs.setName(ware.getName());
 			bs.setMenge(ware.getMenge());
@@ -47,8 +46,6 @@ public class BestellungsServlet extends HttpServlet {
 		session.setAttribute("bestellung", bestellung);
 		System.out.println(BestellungDatabase.hoechsteBestellid(120));
 		request.getRequestDispatcher("rechnung.jsp").forward(request, response);
-
-		
 	}
 
 }

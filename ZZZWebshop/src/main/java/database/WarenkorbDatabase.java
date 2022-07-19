@@ -49,7 +49,7 @@ public class WarenkorbDatabase {
 		try {
 			con = DatabaseConnection.getConnection();
 			PreparedStatement pstmt = con
-					.prepareStatement("SELECT * FROM warenkorb JOIN artikel on artikelid = artikel.id WHERE warenkorb.id = ?");
+					.prepareStatement("SELECT * FROM warenkorb JOIN artikel on artikelid = artikel.id WHERE warenkorb.id = ? ORDER BY artikel.name");
 			pstmt.setInt(1, benutzerId);
 			ResultSet rs = pstmt.executeQuery();
 			
@@ -85,7 +85,6 @@ public class WarenkorbDatabase {
 
 		try {
 			con = DatabaseConnection.getConnection();
-
 			PreparedStatement pstmt = con.prepareStatement("DELETE FROM warenkorb WHERE id = ? AND artikelid = ?");
 			pstmt.setInt(1, warenkorbid);
 			pstmt.setInt(2, artikelid);
@@ -114,7 +113,6 @@ public class WarenkorbDatabase {
 
 		try {
 			con = DatabaseConnection.getConnection();
-
 			PreparedStatement pstmt = con.prepareStatement("UPDATE warenkorb SET menge = ? WHERE id = ? AND artikelid = ?");
 			pstmt.setInt(1, menge);
 			pstmt.setInt(2, warenkorbid);
@@ -138,6 +136,4 @@ public class WarenkorbDatabase {
 		}
 		return erfolg;
 	}
-	
-
 }
