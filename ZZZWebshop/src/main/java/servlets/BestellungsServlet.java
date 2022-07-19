@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import data.Bestellung;
 import data.Warenkorb;
 import database.BestellungDatabase;
 import database.WarenkorbDatabase;
@@ -30,12 +31,21 @@ public class BestellungsServlet extends HttpServlet {
 		@SuppressWarnings("unchecked")
 		ArrayList<Warenkorb> warenkorb = (ArrayList<Warenkorb>) session.getAttribute("warenkorb");
 
+		ArrayList<Bestellung> bestellung = new ArrayList<Bestellung>();
+				
 		//Bestellung in die Datenbank eintragen
 		for(Warenkorb ware : warenkorb) {
+			Bestellung bs = new Bestellung();
+			bs.setName(ware.getName());
+			bs.setMenge(ware.getMenge());
+			bs.setPreis(ware.getPreis());
+			bs.setKategorie(ware.getKategorie());
+			bestellung.add(bs);
 			BestellungDatabase.fuegeBestellung(ware, zahlungsmethode);
 			WarenkorbDatabase.deletePosten(ware.getWarenkorbId(), ware.getId());
 		}
-		
+		session.setAttribute("bestellung", bestellung);
+		System.out.println(BestellungDatabase.hoechsteBestellid(120));
 		request.getRequestDispatcher("rechnung.jsp").forward(request, response);
 
 		

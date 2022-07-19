@@ -2,6 +2,7 @@ package database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import data.Warenkorb;
@@ -17,7 +18,7 @@ public class BestellungDatabase {
 			con = DatabaseConnection.getConnection();
 
 			PreparedStatement pstmt = con.prepareStatement("INSERT INTO bestellungen VALUES(?,?,?,?,?)");
-			pstmt.setInt(1, 1);//Zähler einrichten
+			pstmt.setInt(1, 3);//Zähler einrichten
 			pstmt.setInt(2, warenkorb.getWarenkorbId());
 			pstmt.setInt(3, warenkorb.getId());
 			pstmt.setInt(4, warenkorb.getMenge());
@@ -42,6 +43,24 @@ public class BestellungDatabase {
 			}
 		}
 		return erfolg;
+	}
+	
+	public static int hoechsteBestellid(int benutzerid) {
+		int id = 1;
+
+		try {
+			con = DatabaseConnection.getConnection();
+			PreparedStatement pstmt = con.prepareStatement("SELECT id FROM bestellungen WHERE benutzerid = ? ORDER BY kontoid DESC LIMIT(1)");
+			pstmt.setInt(1, benutzerid);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				id = rs.getInt(1);
+			}
+		} catch (SQLException sqle) {
+			System.err.println("[ERROR] hoechsteBestellid");
+		}
+
+		return id;
 	}
 
 }
