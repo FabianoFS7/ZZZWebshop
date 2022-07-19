@@ -18,13 +18,12 @@ public class BestellungDatabase {
 			con = DatabaseConnection.getConnection();
 
 			PreparedStatement pstmt = con.prepareStatement("INSERT INTO bestellungen VALUES(?,?,?,?,?)");
-			pstmt.setInt(1, 3);//Zähler einrichten
+			pstmt.setInt(1, 3);//Zï¿½hler einrichten
 			pstmt.setInt(2, warenkorb.getWarenkorbId());
 			pstmt.setInt(3, warenkorb.getId());
 			pstmt.setInt(4, warenkorb.getMenge());
 			pstmt.setString(5, zahlungsmethode);			
-
-			
+ 
 			int zeilen = pstmt.executeUpdate();
 			if (zeilen > 0) {
 				erfolg = true;

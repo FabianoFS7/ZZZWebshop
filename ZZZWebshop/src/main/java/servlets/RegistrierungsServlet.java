@@ -39,30 +39,8 @@ public class RegistrierungsServlet extends HttpServlet {
 		String hausnummer = request.getParameter("hausnummer");
 		String postleitzahl = request.getParameter("postleitzahl");
 		String ort = request.getParameter("ort");
-		String eingabeError = "";
+		String fehler = null;
 		String weiterleitung = "registrierung.jsp";
-
-		if (!EingabeValidierung.istLeer(vorname)) {
-			request.setAttribute("reqVorname", vorname);
-		}
-		if (!EingabeValidierung.istLeer(nachname)) {
-			request.setAttribute("reqNachname", nachname);
-		}
-		if (!EingabeValidierung.istLeer(mail)) {
-			request.setAttribute("reqEmail", mail);
-		}
-		if (!EingabeValidierung.istLeer(strasse)) {
-			request.setAttribute("reqStrasse", strasse);
-		}
-		if (!EingabeValidierung.istLeer(hausnummer)) {
-			request.setAttribute("reqBank", hausnummer);
-		}
-		if (!EingabeValidierung.istLeer(postleitzahl)) {
-			request.setAttribute("reqPLZ", postleitzahl);
-		}
-		if (!EingabeValidierung.istLeer(ort)) {
-			request.setAttribute("reqOrt", ort);
-		}
 
 		if (!EingabeValidierung.istLeer(vorname) && !EingabeValidierung.istLeer(nachname)
 				&& !EingabeValidierung.istLeer(mail) && !EingabeValidierung.istLeer(passwort)
@@ -74,7 +52,6 @@ public class RegistrierungsServlet extends HttpServlet {
 					if(RegEx.pruefeHausnummer(hausnummer)) {
 						if(EingabeValidierung.istZahl(postleitzahl) && postleitzahl.length() > 4 &&
 								postleitzahl.length() < 6) {
-							System.out.println("[DEBUG] Alle Felder richtig ausgef�llt");
 							HttpSession session = request.getSession();
 							Benutzer benutzer = new Benutzer(vorname, nachname, mail, passwort, strasse, hausnummer, Integer.parseInt(postleitzahl), ort, false);
 							
@@ -82,8 +59,9 @@ public class RegistrierungsServlet extends HttpServlet {
 								if(RegistriereBenutzer.registriereBenutzer(benutzer)) {
 									session.setAttribute("benutzer", benutzer);
 									weiterleitung = "index.jsp";
+									request.setAttribute("erfolg", "Du bist nun Registriert.");
 								} else {
-									eingabeError += "Benutzer existiert bereits";
+									fehler += "Benutzer existiert bereits! ";
 								}
 							} catch (NullPointerException npe) {
 								
@@ -92,23 +70,19 @@ public class RegistrierungsServlet extends HttpServlet {
 							}
 						}
 					} else {
-						eingabeError += "Hausnummer entspricht nicht dem richtigen Format";
+						fehler += "Hausnummer entspricht nicht dem richtigen Format! ";
 					}
 				} else {
-					eingabeError += "Passw�rter stimmen nicht �berein";
+					fehler += "Passwörter stimmen nicht überein! ";
 				}
 			} else {
-				eingabeError += "Die Email entspricht nicht der Vorgabe!";
+				fehler += "Die Email entspricht nicht der Vorgabe! ";
 			}
 
 		} else {
-			eingabeError += "Es wurden nicht alle Pflichtfelder ausgef�llt!";
+			fehler += "Es wurden nicht alle Pflichtfelder ausgefüllt!";
 		}
-
-
-		
-		
-		request.setAttribute("eingabeError", eingabeError);
+		request.setAttribute("fehler", fehler);
 		request.getRequestDispatcher(weiterleitung).forward(request, response);
 
 	}

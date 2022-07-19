@@ -6,16 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>${param.title} | Puppy-Deluxe</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 <link rel="stylesheet" href="css/stylesheet.css">
 <link rel="icon" href="assets/logos/logo.jpg">
 </head>
 <body>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="js/script.js"></script>
 
 	<nav class="navbar navbar-expand-lg bg-light ${param.navbar}">
 		<div class="container-fluid">
@@ -39,7 +38,7 @@
 					<c:if test="${ benutzer.isAdmin() == true }">
 						<a href="artikelverwaltung.jsp" class="btn btn-dark" type="button">Artikelverwaltung</a>
 					</c:if>
-					<input type="submit" class="btn btn-dark" value="Logout">
+					<a href="LogoutServlet" class="btn btn-dark">Abmelden</a>
 					<a href="konto.jsp" class="btn btn-dark" type="button">Konto</a>
 					<a href="warenkorb.jsp" class="btn btn-dark" type="button">Warenkorb<span class="badge badge-light">${artikelAnzahl }</span></a>
 				</c:otherwise>		

@@ -79,7 +79,6 @@
       <input type="text" class="form-control" name="ort" aria-describedby="ort" required>
     </div>
   </div>
-  <p class="text-danger">${eingabeError }</p>
   <div class="container d-flex justify-content-between">
     <a href="login.jsp" class="btn btn-dark" type="button">Anmelden</a>
     <button class="btn btn-primary" type="submit">Registrieren</button>

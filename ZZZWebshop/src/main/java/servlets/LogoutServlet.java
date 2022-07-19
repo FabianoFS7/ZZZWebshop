@@ -19,23 +19,23 @@ public class LogoutServlet extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
-
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(); 
 		try {
-			Benutzer benutzer = (Benutzer) session.getAttribute("kunde"); 
+			Benutzer benutzer = (Benutzer) session.getAttribute("benutzer"); 
+			request.setAttribute("info", "Bis zum nächsten mal " + benutzer.getVorname());
+			
 			session.removeAttribute("benutzer");
 			session.invalidate();
-			// if (session != null) -> false!
-			
 		} catch (NullPointerException npe) {
 			request.setAttribute("error", "Ups! Die Session ist verloren gegangen.");
 		}
 		
 		request.getRequestDispatcher("index.jsp").forward(request, response);
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }

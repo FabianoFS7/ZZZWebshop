@@ -91,16 +91,15 @@ public class ArtikelVerwaltungServlet extends HttpServlet {
 				}
 				break;
 			default:
-				System.out.println("[DEBUG] Type ist nicht gesetzt!");
+				request.setAttribute("fehler", "Type ist nicht gesetzt!");
 				break;
 			}
 		} catch (NullPointerException npe) {
-
+			request.setAttribute("fehler", "NullPointerException !");
 		} catch (Exception e) {
-
+			request.setAttribute("fehler", "Exception !");
 		}
-
-		response.sendRedirect("artikelverwaltung.jsp");
+		request.getRequestDispatcher("artikelverwaltung.jsp").forward(request, response);
 	}
 
 }

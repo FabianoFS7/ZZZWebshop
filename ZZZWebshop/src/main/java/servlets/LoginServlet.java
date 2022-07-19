@@ -35,14 +35,14 @@ public class LoginServlet extends HttpServlet {
 			Benutzer benutzer = LoginBenutzer.loginBenutzer(email, passwort); 
 				if (benutzer != null) {
 					// Kunde kunde = DatenbankStatements.befuelleKundenobjekt(email, passwort); 
-				
 					session.setAttribute("benutzer", benutzer);
 					weiterleitung = "index.jsp";
+					request.setAttribute("erfolg", "Du bist nun angemeldet."); 
 				} else {
-					request.setAttribute("error", "Die Kombination aus E-Mail/Passwort ist nicht vorhanden."); 
+					request.setAttribute("fehler", "Die Kombination aus E-Mail und Passwort ist nicht korrekt!"); 
 				}
 		} catch (NullPointerException npe) {
-			request.setAttribute("error", "Es ist ein Fehler aufgetreten. Haben Sie sich bereits registriert?"); 
+			request.setAttribute("fehler", "Es ist ein Fehler aufgetreten. Haben Sie sich bereits registriert?"); 
 		}
 		request.getRequestDispatcher(weiterleitung).forward(request, response);
 

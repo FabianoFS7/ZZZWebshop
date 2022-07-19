@@ -30,7 +30,7 @@ public class BestelllisteTag extends SimpleTagSupport {
 			out.print("	<div class=\"card my-4\" style=\"width: 34rem;\">"
 					+ "		<div class=\"row card-body\">"
 					+ "			<div class=\"col col-8\">"
-					+ "					<h5 class=\"card-title\">" + ware.getName() + "</h5>"
+					+ "				<h5 class=\"card-title\">" + ware.getName() + "</h5>"
 					+ "			</div>"
 					+ "			<div class=\"col col-2\">"
 					+ "				<h5 class=\"card-title\">" + ware.getMenge() + " x</h5>"
