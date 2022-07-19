@@ -3,7 +3,8 @@ package data;
 import java.util.ArrayList;
 
 public class Warenkorb extends Artikel {
-
+	
+	private int warenkorbId;
 	private int menge;
 
 	public Warenkorb() {
@@ -18,4 +19,13 @@ public class Warenkorb extends Artikel {
 		this.menge = menge;
 	}
 
+	public int getWarenkorbId() {
+		return warenkorbId;
+	}
+
+	public void setWarenkorbId(int warenkorbId) {
+		this.warenkorbId = warenkorbId;
+	}
+
+	
 }

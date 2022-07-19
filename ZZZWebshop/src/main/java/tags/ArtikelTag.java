@@ -21,8 +21,17 @@ public class ArtikelTag extends SimpleTagSupport {
 		HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
 		ArrayList<Artikel> artikelListe = ArtikelDatabase.getAlleArtikel();
 		HttpSession session = request.getSession();          
-		int cartcounter = 0;                                 
-		session.setAttribute("cartCounter", cartcounter);    
+		session.setAttribute("artikelListe", artikelListe);
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<Artikel> gefiltereArtikelliste = (ArrayList<Artikel>) session.getAttribute("gefiltereArtikelliste");
+			
+		if(gefiltereArtikelliste != null) {
+			artikelListe = gefiltereArtikelliste;
+		}
+		
+		
+		
 		for(Artikel artikel : artikelListe) {
 			System.out.println(artikel.getId());
 			out.print("		<div class=\"col-sm-3 col-md-4\">"

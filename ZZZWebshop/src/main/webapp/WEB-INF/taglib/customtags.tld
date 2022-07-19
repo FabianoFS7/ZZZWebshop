@@ -5,29 +5,35 @@
 	<tlib-version>1.0</tlib-version>
 	<jsp-version>2.0</jsp-version>
 	<short-name>Eigene Tags</short-name>
-	
+
 	<tag>
 		<name>ArtikelListe</name>
 		<tag-class>tags.ArtikelTag</tag-class>
 		<body-content>empty</body-content>
 	</tag>
-	
+
 	<tag>
 		<name>ArtikelVerwaltung</name>
 		<tag-class>tags.ArtikelVerwaltung</tag-class>
 		<body-content>empty</body-content>
 	</tag>
-	
+
 	<tag>
 		<name>ArtikelEinzel</name>
 		<tag-class>tags.ArtikelEinzelTag</tag-class>
 		<body-content>empty</body-content>
 	</tag>
-	
+
 	<tag>
-		<name>AddWare</name>
-		<tag-class>tags.AddWarenkorbTag</tag-class>
+		<name>WarenkorbListen</name>
+		<tag-class>tags.WarenkorbTag</tag-class>
 		<body-content>empty</body-content>
 	</tag>
-	
+
+	<tag>
+		<name>Bestellliste</name>
+		<tag-class>tags.BestelllisteTag</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+
 </taglib>

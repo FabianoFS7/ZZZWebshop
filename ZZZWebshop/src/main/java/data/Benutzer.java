@@ -13,7 +13,7 @@ public class Benutzer {
 	private String ort;
 	private boolean admin;
 
-	public Benutzer(Integer id, String vorname, String nachname, String email, String passwort, String strasse, String hausnummer, int postleitzahl, String ort, boolean admin) {
+	public Benutzer(int id, String vorname, String nachname, String email, String passwort, String strasse, String hausnummer, int postleitzahl, String ort, boolean admin) {
 		this.id = id;
 		this.vorname = vorname;
 		this.nachname = nachname;

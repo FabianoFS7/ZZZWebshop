@@ -1,45 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="/WEB-INF/taglib/customtags.tld" prefix="my"%>	
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
+<%@ taglib uri="/WEB-INF/taglib/customtags.tld" prefix="my"%>	
     
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<meta charset="ISO-8859-1">
-<title>Warenkorb</title>
-</head>
-<body>
-<table>
-	<tr>
-		<th>Artikel</th>
-		<th>Preis</th>
-		<th>Menge</th>
-	</tr>
+<jsp:include page="templates/header.jsp">
+	<jsp:param name="title" value="Warenkorb" />
+	<jsp:param name="navbar" value="fixed-top" />
+</jsp:include>
 
-			<c:forEach var="i" begin="0" end="${artikelListe.size() - 1 }"  >
-	<tr>
-		<td>${artikelListe.get(i).getName() }</td>
-		<td>${artikelListe.get(i).getPreis() }</td>
-		<td>
-		
-			<div class="btn-group btn-group-sm" role="group">
-				<a href="artikel-Menge?methode=mengeMinus&id=${artikelListe.get(i).getId() }" type="button">-</a>			
-                
-		
-				<input type="text" name="anzahl" value="${menge } " readonly>
+<div class="container body-container" style="width: 70%;">
+
+		<table class="table my-5">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Artikel</th>
+					<th scope="col">Kategorie</th>
+					<th scope="col">Anzahl</th>
+					<th scope="col">Preis</th>
+				</tr>
+			</thead>
+			<tbody class="table-group-divider">
+			
 				
-				
-                <a href="artikel-Menge?methode=mengePlus&id=${artikelListe.get(i).getId() }" type="button">+</a>			
-                </div>
-		
-		</td>
-		<td><button type="button" class="btn btn-danger">Remove</button></td>	
-	</tr>
-</c:forEach>	
-</table>
-Gesamtpreis:${artikelListe.get(i).getPreis() * menge}
-<a href="bestellvorgang.jsp" class="btn btn-primary" type="button">Zur Kasse</a>
-</body>
-</html>
+				<my:WarenkorbListen/>
+			
+
+				<tr class="align-middle table-light">
+					<td scope="row" colspan="4">Gesamtpreis</td>
+					<td class="fw-bold">${gesamtpreis }€</td>
+				</tr>
+			</tbody>
+		</table>
+
+	<a href="bestellvorgang.jsp">
+		<div class="btn btn-dark">Kasse</div>
+	</a>
+
+</div>
+
+<jsp:include page="templates/footer.jsp" />
