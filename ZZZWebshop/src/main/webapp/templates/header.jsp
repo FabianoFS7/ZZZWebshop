@@ -40,7 +40,9 @@
 					</c:if>
 					<a href="LogoutServlet" class="btn btn-dark">Abmelden</a>
 					<a href="konto.jsp" class="btn btn-dark" type="button">Konto</a>
-					<a href="warenkorb.jsp" class="btn btn-dark" type="button">Warenkorb<span class="badge badge-light">${artikelAnzahl }</span></a>
+					<a href="warenkorb.jsp" class="btn btn-dark" type="button">Warenkorb
+						<span class="badge badge-light">${ artikelAnzahl }</span>
+					</a>
 				</c:otherwise>		
 			</c:choose>
 			</form>

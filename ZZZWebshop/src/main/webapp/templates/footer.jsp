@@ -17,7 +17,7 @@
 		</div>
 	</c:when>
 	<c:when test="${ info != null }">
-		<div class="alert alert-primary alert-dismissible alert-nachricht fade fixed-bottom show" role="alert">
+		<div class="alert alert-secondary alert-dismissible alert-nachricht fade fixed-bottom show" role="alert">
 			<c:out value="${ info }"></c:out>
 			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>

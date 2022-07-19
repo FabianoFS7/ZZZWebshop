@@ -5,7 +5,6 @@
 	<jsp:param name="navbar" value="" />
 </jsp:include>
 
-<!--Einträge müssen hier dynamisch generiert werden -->
 <div class="container mx-auto my-4" style="width: 100%;">
 	<div class="row justify-content-between">
 		<div class="col col-6">
@@ -15,7 +14,7 @@
 					<hr>
 					<div class="row">
 						<div class="col">
-							<p>Rechnung als PDF herrunterladen</p>
+							<p>Rechnung als PDF herunterladen</p>
 						</div>
 						<div class="col">
 							<a href="https://www.lexoffice.de/wp-content/uploads/vorlage-rechnung-musterrechnung-kostenlos-lexoffice.png" class="btn btn-dark bi bi-filetype-pdf"
@@ -27,6 +26,7 @@
 		</div>
 		<div class="col col-6">
 			<h4 class="mb-3">Ihre Bestellung</h4>
+			
 			<jsp:include page="templates/erfolgreicheBestellung.jsp" />
 
 		</div>

@@ -5,7 +5,7 @@
 
 <!--Einträge müssen hier dynamisch generiert werden -->
 <my:ErfolgreicheBestellung/>
-Gesamtpreis: ${gesamtpreis }
+Gesamtpreis: ${ gesamtpreis }
 
 </body>
 </html>
