@@ -1,7 +1,5 @@
 package data;
 
-import java.util.ArrayList;
-
 public class Warenkorb extends Artikel {
 	
 	private int warenkorbId;

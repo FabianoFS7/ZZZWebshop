@@ -21,14 +21,8 @@
 			</thead>
 			<tbody class="table-group-divider">
 			
-				
 				<my:WarenkorbListen/>
 			
-
-				<tr class="align-middle table-light">
-					<td scope="row" colspan="4">Gesamtpreis</td>
-					<td class="fw-bold">${gesamtpreis }€</td>
-				</tr>
 			</tbody>
 		</table>
 

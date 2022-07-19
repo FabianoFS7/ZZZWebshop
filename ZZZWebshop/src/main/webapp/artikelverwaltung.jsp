@@ -9,13 +9,12 @@
 </jsp:include>
 
 
-<div class="container body-container" style="width: 80%;">
+<div class="container body-container" style="width: 100%;">
 
 	<div class="mt-5 h2">Artikelverwaltung - Administration</div>
 
 	<button class="btn btn-success my-2" id="artikel_hinzufügen"
 		type="button" data-bs-toggle="modal" data-bs-target="#modal">Hinzufügen</button>
-
 
 	<table class="table table-hover mb-5" id="artikel_tabelle">
 		<thead>
@@ -23,7 +22,7 @@
 				<th scope="col">ID</th>
 				<th scope="col">Name</th>
 				<th scope="col">Bild</th>
-				<th scope="col" class="ml-4">Beschreibung</th>
+				<th scope="col">Beschreibung</th>
 				<th scope="col">Kategorie</th>
 				<th scope="col">Preis</th>
 			</tr>

@@ -12,7 +12,7 @@
 		<div class="col col-4">
 			<form class="d-flex" role="search" method="POST" action="SuchServlet">
 				<input class="form-control me-2" name="suchfilter" type="search"
-					placeholder="Artikel suchen" aria-label="Search">
+					placeholder="Suchbegriff" aria-label="Search" value="<c:if test = "${suchfilter != null}"><c:out value = "${ suchfilter }"/></c:if>">
 				<button class="btn btn-outline-secondary" type="submit">Suchen</button>
 			</form>
 		</div>
@@ -27,14 +27,12 @@
 			</select>
 		</div>
 
-	<a href="SuchServlet">${suchfilter }</a>
 	</div>
 	<div class="row" style="width: 100%;">	
-		<!--Einträge werden hier dynamisch generiert -->
+
 		<my:ArtikelListe/>
 		
 	</div>
-
 </div>
 
 <jsp:include page="templates/footer.jsp" />

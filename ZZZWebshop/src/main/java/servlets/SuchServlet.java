@@ -19,31 +19,33 @@ import data.Artikel;
 @WebServlet("/SuchServlet")
 public class SuchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(); 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		session.removeAttribute("gefiltereArtikelliste");
 		request.getRequestDispatcher("artikeluebersicht.jsp").forward(request, response);
 
-	}	
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	}
 
-		String suchfilter = request.getParameter("suchfilter");		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String suchfilter = request.getParameter("suchfilter");
 		request.setAttribute("suchfilter", suchfilter);
-		
+
 		HttpSession session = request.getSession();
-		
+
 		@SuppressWarnings("unchecked")
 		ArrayList<Artikel> artikelListe = (ArrayList<Artikel>) session.getAttribute("artikelListe");
-		
+
 		ArrayList<Artikel> gefiltereArtikelliste = (ArrayList<Artikel>) artikelListe.stream()
-				.filter(artikel -> artikel.getBeschreibung().toLowerCase().contains(suchfilter.toLowerCase()) || artikel.getName().toLowerCase().contains(suchfilter.toLowerCase()))
+				.filter(artikel -> artikel.getBeschreibung().toLowerCase().contains(suchfilter.toLowerCase())
+						|| artikel.getName().toLowerCase().contains(suchfilter.toLowerCase()))
 				.collect(Collectors.toList());
-		
-		session.setAttribute("gefiltereArtikelliste", gefiltereArtikelliste);
-		
+
+		request.setAttribute("gefiltereArtikelliste", gefiltereArtikelliste);
+
 		request.getRequestDispatcher("artikeluebersicht.jsp").forward(request, response);
 	}
 

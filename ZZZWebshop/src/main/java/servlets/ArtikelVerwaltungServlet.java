@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import data.Artikel;
 import database.ArtikelDatabase;
@@ -49,6 +48,7 @@ public class ArtikelVerwaltungServlet extends HttpServlet {
 		String type = request.getParameter("type");
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
+		String bild = request.getParameter("bild");
 		String beschreibung = request.getParameter("beschreibung");
 		String kategorie = request.getParameter("kategorie");
 		String preis = request.getParameter("preis");
@@ -58,9 +58,11 @@ public class ArtikelVerwaltungServlet extends HttpServlet {
 			switch (type) {
 			case "add":
 				if (!EingabeValidierung.istLeer(type) && !EingabeValidierung.istLeer(name)
+						&& !EingabeValidierung.istLeer(bild)
 						&& !EingabeValidierung.istLeer(beschreibung) 
 						&& !EingabeValidierung.istLeer(kategorie)) {
 					artikel.setName(name);
+					artikel.setBild(bild);
 					artikel.setBeschreibung(beschreibung);
 					artikel.setKategorie(kategorie);
 					artikel.setPreis(Double.parseDouble(preis));
@@ -69,10 +71,13 @@ public class ArtikelVerwaltungServlet extends HttpServlet {
 				break;
 			case "edit":
 				if (EingabeValidierung.istZahl(id) && !EingabeValidierung.istLeer(type)
-						&& !EingabeValidierung.istLeer(name) && !EingabeValidierung.istLeer(beschreibung)
+						&& !EingabeValidierung.istLeer(bild)
+						&& !EingabeValidierung.istLeer(name) 
+						&& !EingabeValidierung.istLeer(beschreibung)
 						&& !EingabeValidierung.istLeer(kategorie)) {
 					artikel.setId(Integer.parseInt(id));
 					artikel.setName(name);
+					artikel.setBild(bild);
 					artikel.setBeschreibung(beschreibung);
 					artikel.setKategorie(kategorie);
 					artikel.setPreis(Double.parseDouble(preis));

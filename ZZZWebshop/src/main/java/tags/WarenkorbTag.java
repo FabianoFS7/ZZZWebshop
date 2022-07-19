@@ -20,27 +20,35 @@ public class WarenkorbTag extends SimpleTagSupport{
 		JspWriter out = getJspContext().getOut();
 		PageContext pageContext = (PageContext) getJspContext();
 		HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
-		HttpSession session = request.getSession(); 
+		HttpSession session = request.getSession();
+		
 		Benutzer benutzer = (Benutzer) session.getAttribute("benutzer");
+		
 		ArrayList<Warenkorb> warenkorb = WarenkorbDatabase.getWarenkorb(benutzer.getId());
 		session.setAttribute("warenkorb", warenkorb);
-		double gesamtpreis = 0.00;
 		
-		for(Warenkorb ware : warenkorb) {	
-			out.print("				<tr class=\"align-middle\">\r\n"
-					+ "					<th scope=\"row\">1</th>\r\n"
-					+ "					<td>" + ware.getName() + "</td>\r\n"
-					+ "					<td>" + ware.getKategorie() + "</td>\r\n"
-					+ "					<td>\r\n"
-					+ "						<a href=artikel-Menge?methode=minus&id=" + ware.getId() + "&menge=" + ware.getMenge() + "><i class=\"bi bi-dash-square-fill\"></i></a>\r\n"
+		double gesamtpreis = 0.00;
+		int anzahl = 1;
+		
+		for(Warenkorb ware : warenkorb) {
+			out.print("				<tr class=\"align-middle\">"
+					+ "					<th scope=\"row\">" + anzahl + "</th>"
+					+ "					<td>" + ware.getName() + "</td>"
+					+ "					<td>" + ware.getKategorie() + "</td>"
+					+ "					<td>"
+					+ "						<a href=artikel-Menge?methode=minus&id=" + ware.getId() + "&menge=" + ware.getMenge() + "><i class=\"bi bi-dash-square-fill\"></i></a>"
 					+ "						"+ ware.getMenge() +"\r\n"
-					+ "						<a href=artikel-Menge?methode=plus&id=" + ware.getId() + "&menge=" + ware.getMenge() + "><i class=\"bi bi-plus-square-fill\"></i></a>\r\n"
-					+ "						</td>\r\n"
-					+ "					<td>" + ware.getPreis() + "�</td>\r\n"
+					+ "						<a href=artikel-Menge?methode=plus&id=" + ware.getId() + "&menge=" + ware.getMenge() + "><i class=\"bi bi-plus-square-fill\"></i></a>"
+					+ "					</td>"
+					+ "					<td>" + String.format("%.02f", ware.getPreis()) + " €</td>"
 					+ "				</tr>");
-			gesamtpreis += ware.getPreis();
+			gesamtpreis += ware.getPreis() * ware.getMenge();
+			anzahl++;
 		}
-		session.setAttribute("gesamtpreis", gesamtpreis);
+		out.print("<tr class=\"align-middle table-light\">"
+				+ "		<td scope=\"row\" colspan=\"4\">Gesamtpreis</td>"
+				+ "		<td class=\"fw-bold\">" + String.format("%.02f", gesamtpreis) + " €</td>"
+				+ "</tr>");
 	}	
 		
 

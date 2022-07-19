@@ -19,18 +19,15 @@ public class ArtikelTag extends SimpleTagSupport {
 		JspWriter out = getJspContext().getOut();
 		PageContext pageContext = (PageContext) getJspContext();
 		HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
+		HttpSession session = request.getSession();
+		
 		ArrayList<Artikel> artikelListe = ArtikelDatabase.getAlleArtikel();
-		HttpSession session = request.getSession();          
+		
 		session.setAttribute("artikelListe", artikelListe);
 		
-		@SuppressWarnings("unchecked")
-		ArrayList<Artikel> gefiltereArtikelliste = (ArrayList<Artikel>) session.getAttribute("gefiltereArtikelliste");
-			
-		if(gefiltereArtikelliste != null) {
-			artikelListe = gefiltereArtikelliste;
+		if(request.getAttribute("gefiltereArtikelliste") != null) {
+			artikelListe = (ArrayList<Artikel>) request.getAttribute("gefiltereArtikelliste");
 		}
-		
-		
 		
 		for(Artikel artikel : artikelListe) {
 			System.out.println(artikel.getId());

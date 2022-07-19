@@ -60,7 +60,7 @@ public class WarenkorbDatabase {
 				posten.setMenge(rs.getInt("menge"));
 				posten.setName(rs.getString("name"));
 				posten.setKategorie(rs.getString("kategorie"));
-				posten.setPreis(rs.getDouble("preis") * posten.getMenge());
+				posten.setPreis(rs.getDouble("preis"));
 				warenkorb.add(posten);
 				
 			}
