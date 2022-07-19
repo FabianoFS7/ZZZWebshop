@@ -35,5 +35,10 @@
 		<tag-class>tags.BestelllisteTag</tag-class>
 		<body-content>empty</body-content>
 	</tag>
+	<tag>
+		<name>ErfolgreicheBestellung</name>
+		<tag-class>tags.BestellungAuflisten</tag-class>
+		<body-content>empty</body-content>
+	</tag>
 
 </taglib>

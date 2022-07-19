@@ -27,7 +27,7 @@
 		</div>
 		<div class="col col-6">
 			<h4 class="mb-3">Ihre Bestellung</h4>
-			<jsp:include page="templates/warenkorbListe.jsp" />
+			<jsp:include page="templates/erfolgreicheBestellung.jsp" />
 
 		</div>
 	</div>

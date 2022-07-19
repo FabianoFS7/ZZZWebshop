@@ -1,11 +1,10 @@
 package data;
 
 
-public class Bestellung extends Artikel{
+public class Bestellung extends Warenkorb{
 
 	private int bestellId;
 	private int menge;
-	private String bestelldatum;
 	
 	public Bestellung() {
 		
@@ -27,13 +26,7 @@ public class Bestellung extends Artikel{
 		this.menge = menge;
 	}
 
-	public String getBestelldatum() {
-		return bestelldatum;
-	}
 
-	public void setBestelldatum(String bestelldatum) {
-		this.bestelldatum = bestelldatum;
-	}
 	
 	
 	
