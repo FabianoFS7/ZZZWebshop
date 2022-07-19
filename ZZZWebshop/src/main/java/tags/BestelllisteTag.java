@@ -27,44 +27,22 @@ public class BestelllisteTag extends SimpleTagSupport {
 		double gesamtpreis = 0.00;
 		
 		for(Warenkorb ware : warenkorb) {	
-			out.print("	<div class=\"card my-4\" style=\"width: 34rem;\">\r\n"
-					+ "		<div class=\"row\">\r\n"
-					+ "			<div class=\"col\">\r\n"
-					+ "				<div class=\"card-body\">\r\n"
-					+ "					<h5 class=\"card-title\">" + ware.getName() + "</h5>\r\n"
-					+ "				</div>\r\n"
-					+ "			</div>\r\n"
-					+ "			<div class=\"col my-auto col-md-3\">\r\n"
-					+ "				<div class=\"btn-group btn-group-sm\" role=\"group\">\r\n"
-					+ "\r\n"
-					+ "					\r\n"
-					+ "					<a href=bestell-Menge?methode=minus&id=" + ware.getId() + "&menge=" + ware.getMenge() + ">-</a>\r\n"
-					+ "					\r\n"
-					+ "					<div class=\"col my-auto col-md-2\">				\r\n"
-					+ "						<h5 class=\"card-title\">"+ware.getMenge()+"</h5>\r\n"
-					+ "					</div>\r\n"
-					+ "					\r\n"
-					+ "					<a href=bestell-Menge?methode=plus&id=" + ware.getId() + "&menge=" + ware.getMenge() + ">+</a>\r\n"
-					+ "					\r\n"
-					+ "\r\n"
-					+ "				</div>\r\n"
-					+ "			</div>\r\n"
-					+ "			<div class=\"col my-auto col-md-2\">\r\n"
-					+ "				<h5 class=\"card-title\">" + ware.getPreis() + "</h5>\r\n"
-					+ "			</div>\r\n"
-					+ "		</div>\r\n"
-					+ "		<div class=\"row\">\r\n"
-					+ "			<div class=\"col\">\r\n"
-					+ "				<div class=\"card-body\">\r\n"
-					+ "					<p class=\"card-text\">Kategorie: " + ware.getKategorie() + "</p>\r\n"
-					+ "	\r\n"
-					+ "				</div>\r\n"
-					+ "			</div>\r\n"
-					+ "		</div>\r\n"
+			out.print("	<div class=\"card my-4\" style=\"width: 34rem;\">"
+					+ "		<div class=\"row card-body\">"
+					+ "			<div class=\"col col-8\">"
+					+ "					<h5 class=\"card-title\">" + ware.getName() + "</h5>"
+					+ "			</div>"
+					+ "			<div class=\"col col-2\">"
+					+ "				<h5 class=\"card-title\">" + ware.getMenge() + " x</h5>"
+					+ "			</div>"
+					+ "			<div class=\"col col-2\">"
+					+ "				<h5 class=\"card-title\">" + String.format("%.02f",ware.getPreis()) + " &euro;</h5>"
+					+ "			</div>"
+					+ "		</div>"
+					+ "		<div class=\"card-footer text-muted\">Kategorie: " + ware.getKategorie() + "</div>"
 					+ "	</div>");
-			gesamtpreis += ware.getPreis();
+			gesamtpreis += ware.getPreis() * ware.getMenge();
 		}
-		session.setAttribute("gesamtpreis", gesamtpreis);
+		out.print("<h4>Gesamtpreis: " + String.format("%.02f", gesamtpreis) + " &euro;</h4>");
 	}
-
 }

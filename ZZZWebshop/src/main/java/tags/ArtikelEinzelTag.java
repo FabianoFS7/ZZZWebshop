@@ -34,9 +34,9 @@ public class ArtikelEinzelTag extends SimpleTagSupport {
 				+ "				<div class=\"col col-1\">"
 				+ "					<a href=\"add-warenkorb?id="+ artikel.getId() +"\" class=\"btn btn-dark bi bi-cart-plus-fill\" type=\"button\"></a>"
 				+ "				</div>"
+				+ "				<div class=\"col col-10\">" + artikel.getBeschreibung() + "</div>"
 				+ "			</div>"
-				+ "			<div class=\"card-text\">" + artikel.getBeschreibung() + "</div>"
-				+ "			<div class=\"row mx-4\">"
+				+ "			<div class=\"row m-4\">"
 				+ "				<div class=\"col col-10\">"
 				+ "					<p class=\"card-text\">"
 				+ "						<small class=\"text-muted\">Kategorie:"
@@ -44,7 +44,7 @@ public class ArtikelEinzelTag extends SimpleTagSupport {
 				+ "					</p>"
 				+ "				</div>"
 				+ "				<div class=\"col col-2\">"
-				+ "					<h5 class=\"card-title\">" + String.format("%.02f", artikel.getPreis()) + "</h5>"
+				+ "					<h5 class=\"card-title\">" + String.format("%.02f", artikel.getPreis()) + " &euro;</h5>"
 				+ "				</div>"
 				+ "			</div>");
 	}

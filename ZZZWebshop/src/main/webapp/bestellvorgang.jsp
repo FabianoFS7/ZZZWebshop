@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="/WEB-INF/taglib/customtags.tld" prefix="my"%>
 
 <jsp:include page="templates/header.jsp">
 	<jsp:param name="title" value="Bestellung" />
@@ -33,23 +34,22 @@
 			<div class="container">
 				<h4 class="mb-3">Zahlungsmethode</h4>
 				<form method="POST" action="BestellungsServlet">
-				<div class="col col-3">
-					<select name="zahlunngsmethode" class="form-select" aria-label="Default select example">
-						<option selected disabled>wählen</option>
-						<option value="kreditkarte">Kreditkarte</option>
-						<option value="klarna">Klarna</option>
-						<option value="paypal">PayPal</option>
-					</select>
-				</div>
-			<div class="container">
-				<br> <input class="btn btn-dark" type="submit" value="Bestellen">
-			</div>
-			</form>
+					<div class="col col-3">
+						<select name="zahlunngsmethode" class="form-select"
+							aria-label="Default select example" required>
+							<option selected disabled>wählen</option>
+							<option value="kreditkarte">Kreditkarte</option>
+							<option value="klarna">Klarna</option>
+							<option value="paypal">PayPal</option>
+						</select>
+					</div>
+					<input class="btn btn-dark mt-2" type="submit" value="Bestellen">
+				</form>
 			</div>
 		</div>
 		<div class="col col-6">
 			<h4 class="mb-3">Warenkorb</h4>
-			<jsp:include page="templates/warenkorbListe.jsp" />
+			<my:Bestellliste />
 		</div>
 	</div>
 </div>
