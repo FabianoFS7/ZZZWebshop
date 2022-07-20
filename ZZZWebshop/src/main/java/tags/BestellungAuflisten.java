@@ -13,6 +13,12 @@ import data.Bestellung;
 
 import java.util.ArrayList;
 
+/**
+ * BestellungAuflisten.java
+ * TODO Beschreibung vervollständigen
+ * @author Eve-Marie Hellmer (356925) & Fabian Segieth (360266)
+ */
+
 public class BestellungAuflisten extends SimpleTagSupport{
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
@@ -21,6 +27,9 @@ public class BestellungAuflisten extends SimpleTagSupport{
 		HttpSession session = request.getSession(); 
 		ArrayList<Bestellung> bestellungen = (ArrayList<Bestellung>) session.getAttribute("bestellung");
 		
+		 /*
+	        * Ausgabe der Artikel aus der Bestellung
+	        */	
 		for(Bestellung bestellung : bestellungen) {	
 			out.print("	<div class=\"card my-4\" style=\"width: 34rem;\">"
 					+ "		<div class=\"row\">"

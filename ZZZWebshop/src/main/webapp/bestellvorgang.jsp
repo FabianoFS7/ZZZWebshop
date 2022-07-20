@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="/WEB-INF/taglib/customtags.tld" prefix="my"%>
 
@@ -18,7 +17,7 @@
 					<c:out value="${sessionScope.benutzer.getFullName()}" />
 				</p>
 				<p class="fw-normal">
-					Straﬂe & Hausnummer:
+					Stra√üe & Hausnummer:
 					<c:out value="${sessionScope.benutzer.getFullStrasse()}" />
 				</p>
 				<p class="fw-normal">
@@ -35,9 +34,9 @@
 				<h4 class="mb-3">Zahlungsmethode</h4>
 				<form method="POST" action="BestellungsServlet">
 					<div class="col col-3">
-						<select name="zahlunngsmethode" class="form-select"
+						<select name="zahlungsmethode" class="form-select"
 							aria-label="Default select example" required>
-							<option selected disabled>w‰hlen</option>
+							<option selected disabled>w√§hlen</option>
 							<option value="kreditkarte">Kreditkarte</option>
 							<option value="klarna">Klarna</option>
 							<option value="paypal">PayPal</option>
