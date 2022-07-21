@@ -2,6 +2,7 @@ package database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import data.Benutzer;
@@ -10,26 +11,29 @@ public class RegistriereBenutzer {
 
 	private static Connection con = null;
 
-	public static boolean registriereBenutzer(Benutzer benutzer) {
-		boolean erfolg = false;
+	public static Benutzer registriereBenutzer(Benutzer benutzer) {
 
 		try {
 			con = DatabaseConnection.getConnection();
 
-			PreparedStatement pstmt = con.prepareStatement("INSERT INTO benutzer VALUES(?,?,?,?,?,?,?,?,?)");
-			pstmt.setInt(1, 122);//Zähler einrichten
-			pstmt.setString(2, benutzer.getVorname());
-			pstmt.setString(3, benutzer.getNachname());
-			pstmt.setString(4, benutzer.getEmail());
-			pstmt.setString(5, benutzer.getPasswort());
-			pstmt.setString(6, benutzer.getStrasse());
-			pstmt.setString(7, benutzer.getHausnummer());
-			pstmt.setInt(8, benutzer.getPostleitzahl());
-			pstmt.setString(9, benutzer.getOrt());
-			int zeilen = pstmt.executeUpdate();
-			if (zeilen > 0) {
-				erfolg = true;
-			}					
+			PreparedStatement pstmt = con.prepareStatement("INSERT INTO benutzer (vorname, nachname, email, passwort, strasse, hausnummer, plz, ort, admin) VALUES (?,?,?,?,?,?,?,?,false)");
+			pstmt.setString(1, benutzer.getVorname());
+			pstmt.setString(2, benutzer.getNachname());
+			pstmt.setString(3, benutzer.getEmail());
+			pstmt.setString(4, benutzer.getPasswort());
+			pstmt.setString(5, benutzer.getStrasse());
+			pstmt.setString(6, benutzer.getHausnummer());
+			pstmt.setInt(7, benutzer.getPostleitzahl());
+			pstmt.setString(8, benutzer.getOrt());
+			pstmt.executeUpdate();
+			try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
+	            if (generatedKeys.next()) {
+	                benutzer.setId(generatedKeys.getInt(1));
+	    			System.out.println("[INFO] BenutzerId: " + generatedKeys.getInt(1));
+	            } else {
+	                throw new SQLException("Creating user failed, no ID obtained.");
+	            }
+	        }					
 			
 		} catch (SQLException e) {
 			System.err.println("[SQL] Fehler bei registriereBenutzer()" + e.toString());
@@ -43,7 +47,7 @@ public class RegistriereBenutzer {
 				System.err.println("[SQL] Fehler bei registriereBenutzer() - Verbindung geschlossen?");
 			}
 		}
-		return erfolg;
+		return benutzer;
 	}
 
 }

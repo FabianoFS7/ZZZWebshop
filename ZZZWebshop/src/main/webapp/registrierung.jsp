@@ -21,7 +21,7 @@
 			<div class="input-group">
 				<span class="input-group-text"><i class="bi bi-person-fill"></i></span>
 				<input type="text" class="form-control" name="vorname"
-					aria-describedby="vorname" required>
+					aria-describedby="vorname" pattern="[A-Z]{1}[a-z]+(-?|\s?)?([A-Z][a-z]+)?" required>
 			</div>
 		</div>
 		<%-- Feld, zur Abfrage des Nachnamens --%>
@@ -30,7 +30,7 @@
 			<div class="input-group">
 				<span class="input-group-text"><i class="bi bi-person-fill"></i></span>
 				<input type="text" class="form-control" name="nachname"
-					aria-describedby="nachname" required>
+					aria-describedby="nachname" pattern="[A-Z]{1}[a-z]+(-?|\s?)?([A-Z][a-z]+)?" required>
 			</div>
 		</div>
 		<%-- Feld, zur Abfrage der Mailadresse --%>
@@ -39,7 +39,7 @@
 			<div class="input-group">
 				<span class="input-group-text"><i class="bi bi-at"></i></span> <input
 					type="email" class="form-control" name="mail"
-					aria-describedby="mail" required>
+					aria-describedby="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
 			</div>
 		</div>
 		<%-- Feld, zur Abfrage des Passworts--%>
@@ -48,18 +48,17 @@
 			<div class="input-group">
 				<span class="input-group-text"><i class="bi bi-key-fill"></i></span>
 				<input type="password" class="form-control" name="passwort"
-					aria-describedby="passwort" required>
+					aria-describedby="passwort" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[.!@#&()–{}:;',?/*~$^+=<>]).{8,}" required>
 			</div>
 		</div>
-		<%-- Feld, zur wiederholten Abfrage des Passworts 
-			 TODO Wird geprüft ob die Passwörter gleich sind? --%>
+		<%-- Feld, zur wiederholten Abfrage des Passworts --%>
 		<div class="container mb-3">
 			<label for="passwortWDH" class="form-label">Passwort
 				wiederholen</label>
 			<div class="input-group">
 				<span class="input-group-text"><i class="bi bi-key-fill"></i></span>
 				<input type="password" class="form-control" name="passwortWDH"
-					aria-describedby="passwortWDH" required>
+					aria-describedby="passwortWDH" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[.!@#&()–{}:;',?/*~$^+=<>]).{8,}" required>
 			</div>
 		</div>
 		<%-- Feld, zur Abfrage der Straße --%>
@@ -77,9 +76,9 @@
 			<label for="hausnummer" class="form-label">Hausnummer</label>
 			<div class="input-group">
 				<span class="input-group-text"><i
-					class="bi bi-house-door-fill"></i></span> <input type="text"
+					class="bi bi-hash"></i></span> <input type="text"
 					class="form-control" name="hausnummer"
-					aria-describedby="hausnummer" required>
+					aria-describedby="hausnummer" pattern="[1-9]{1,1}[0-9]{0,2}[a-zA-Z]?" required>
 			</div>
 		</div>
 		<%-- Feld, zur Abfrage der Postleitzahl --%>
@@ -89,7 +88,7 @@
 				<span class="input-group-text"><i
 					class="bi bi-signpost-split-fill"></i></span> <input type="number"
 					class="form-control" name="postleitzahl" aria-describedby="plz"
-					required>
+					pattern="[0-9]{5}$" required>
 			</div>
 		</div>
 		<%-- Feld, zur Abfrage des Wohnortes --%>
@@ -103,7 +102,7 @@
 		</div>
 		<%-- Buttons zum Registrieren bzw. falls Nutzer bereits ein Konto hat Weiterleitung zur Anmeldung --%>
 		<div class="container d-flex justify-content-between">
-			<a href="login.jsp" class="btn btn-secundary" type="button">Anmelden</a>
+			<a href="login.jsp" class="btn btn-secondary" type="button">Anmelden</a>
 			<button class="btn btn-dark" type="submit">Registrieren</button>
 		</div>
 	</form>

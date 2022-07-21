@@ -107,8 +107,7 @@ public class ArtikelDatabase {
 	            if (generatedKeys.next()) {
 	                artikel.setId(generatedKeys.getInt(1));
 	    			System.out.println("[INFO] ArtikelId: " + generatedKeys.getInt(1));
-	            }
-	            else {
+	            } else {
 	                throw new SQLException("Creating user failed, no ID obtained.");
 	            }
 	        }

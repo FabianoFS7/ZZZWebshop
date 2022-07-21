@@ -39,7 +39,7 @@ public class RegistrierungsServlet extends HttpServlet {
 		String hausnummer = request.getParameter("hausnummer");
 		String postleitzahl = request.getParameter("postleitzahl");
 		String ort = request.getParameter("ort");
-		String fehler = null;
+		String fehler = "";
 		String weiterleitung = "registrierung.jsp";
 
 		if (!EingabeValidierung.istLeer(vorname) && !EingabeValidierung.istLeer(nachname)
@@ -49,29 +49,37 @@ public class RegistrierungsServlet extends HttpServlet {
 				&& !EingabeValidierung.istLeer(ort)) {
 			if(RegEx.pruefeEmail(mail)) {
 				if(EingabeValidierung.wiederholePW(passwort, passwortWDH)) {
-					if(RegEx.pruefeHausnummer(hausnummer)) {
-						if(EingabeValidierung.istZahl(postleitzahl) && postleitzahl.length() > 4 &&
-								postleitzahl.length() < 6) {
-							HttpSession session = request.getSession();
-							Benutzer benutzer = new Benutzer(vorname, nachname, mail, passwort, strasse, hausnummer, Integer.parseInt(postleitzahl), ort, false);
-							
-							try {
-								if(RegistriereBenutzer.registriereBenutzer(benutzer)) {
-									session.setAttribute("benutzer", benutzer);
-									weiterleitung = "index.jsp";
-									request.setAttribute("erfolg", "Du bist nun Registriert.");
-								} else {
-									fehler += "Benutzer existiert bereits! ";
+					if (RegEx.pruefePasswort(passwort)) {
+						if(RegEx.pruefeHausnummer(hausnummer)) {
+							if(EingabeValidierung.istZahl(postleitzahl) && postleitzahl.length() > 4 &&
+									postleitzahl.length() < 6) {
+								HttpSession session = request.getSession();
+								Benutzer benutzer = new Benutzer(vorname, nachname, mail, passwort, strasse, hausnummer, Integer.parseInt(postleitzahl), ort, false);
+								
+								try {
+									benutzer = RegistriereBenutzer.registriereBenutzer(benutzer);
+									if (benutzer == null) {
+										session.setAttribute("benutzer", benutzer);
+										weiterleitung = "index.jsp";
+										request.setAttribute("erfolg", "Du bist nun Registriert.");
+									} else {
+										fehler += "Benutzer existiert bereits! ";
+									}
+								} catch (NullPointerException npe) {
+									
+								} catch (Exception e) {
+									
 								}
-							} catch (NullPointerException npe) {
-								
-							} catch (Exception e) {
-								
+							} else {
+								fehler += "Postleitzahl entspricht nicht dem richtigen Format! (5 Zahlen)";
 							}
+						} else {
+							fehler += "Hausnummer entspricht nicht dem richtigen Format! (3 Zeichen)";
 						}
 					} else {
-						fehler += "Hausnummer entspricht nicht dem richtigen Format! ";
+						fehler += "Passwört entspricht nicht dem richtigen Format! (mind. 8 Zeichen inkl. Großbuchstabe, Kleinbuchstabe & Sonderzeichen)";
 					}
+					
 				} else {
 					fehler += "Passwörter stimmen nicht überein! ";
 				}
