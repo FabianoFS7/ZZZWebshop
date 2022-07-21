@@ -33,7 +33,7 @@ public class BestellungsServlet extends HttpServlet {
 		ArrayList<Warenkorb> warenkorb = (ArrayList<Warenkorb>) session.getAttribute("warenkorb");
 		ArrayList<Bestellung> bestellung = new ArrayList<Bestellung>();
 		Benutzer benutzer = (Benutzer) session.getAttribute("benutzer");
-		int bestellid = BestellungDatabase.hoechsteBestellid(benutzer.getId() + 1);		
+		int bestellid = BestellungDatabase.hoechsteBestellid(benutzer.getId()) + 1;		
 		// Bestellung in die Datenbank eintragen
 		for (Warenkorb ware : warenkorb) {
 			Bestellung bs = new Bestellung();

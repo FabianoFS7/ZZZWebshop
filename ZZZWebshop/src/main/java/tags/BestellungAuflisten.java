@@ -25,8 +25,10 @@ public class BestellungAuflisten extends SimpleTagSupport{
 		PageContext pageContext = (PageContext) getJspContext();
 		HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
 		HttpSession session = request.getSession(); 
+		@SuppressWarnings("unchecked")
 		ArrayList<Bestellung> bestellungen = (ArrayList<Bestellung>) session.getAttribute("bestellung");
-		
+		double gesamtpreis = 0.00;
+
 		 /*
 	        * Ausgabe der Artikel aus der Bestellung
 	        */	
@@ -40,7 +42,7 @@ public class BestellungAuflisten extends SimpleTagSupport{
 					+ "			</div>"
 					+ "			<div class=\"col my-auto col-md-3\">"
 					+ "				<div class=\"btn-group btn-group-sm\" role=\"group\">"
-					+ "					<h5 class=\"card-title\">" + bestellung.getMenge() + "</h5>"
+					+ "					<h5 class=\"card-title\">" + bestellung.getMenge() + "x</h5>"
 					+ "				</div>"
 					+ "			</div>"
 					+ "			<div class=\"col my-auto col-md-2\">"
@@ -55,7 +57,9 @@ public class BestellungAuflisten extends SimpleTagSupport{
 					+ "			</div>"
 					+ "		</div>"
 					+ "	</div>");
+			gesamtpreis += bestellung.getPreis() * bestellung.getMenge();
 		}
-		
+		out.print("<h4>Gesamtpreis: " + String.format("%.02f", gesamtpreis) + " &euro;</h4>");
+
 	}	
 }

@@ -41,7 +41,7 @@
 		<div class="col col-6">
 			<h4 class="mb-3">Ihre Bestellung</h4>
 			<%-- TODO funktioniert noch nicht --%>
-			<my:Bestellliste />
+			<my:ErfolgreicheBestellung />
 		</div>
 	</div>
 </div>
