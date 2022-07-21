@@ -26,7 +26,7 @@ public class BestellungsServlet extends HttpServlet {
   
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String zahlungsmethode = request.getParameter("zahlunngsmethode");
+		String zahlungsmethode = request.getParameter("zahlungsmethode");
 		HttpSession session = request.getSession();
 		
 		@SuppressWarnings("unchecked")

@@ -14,6 +14,12 @@ import data.Benutzer;
 import data.Warenkorb;
 import database.WarenkorbDatabase;
 
+/**
+ * BestelllisteTag
+ * TODO Beschreibung vervollständigen
+ * @author Eve-Marie Hellmer (356925) & Fabian Segieth (360266)
+ */
+
 public class BestelllisteTag extends SimpleTagSupport {
 	//generiert Inhalte auf der warenkorbliste.jsp im templates ordner.
 	public void doTag() throws JspException, IOException {
@@ -26,6 +32,9 @@ public class BestelllisteTag extends SimpleTagSupport {
 		session.setAttribute("warenkorb", warenkorb);
 		double gesamtpreis = 0.00;
 		
+		 /*
+	        * Ausgabe der Artikel aus der Bestellung
+	        */	
 		for(Warenkorb ware : warenkorb) {	
 			out.print("	<div class=\"card my-4\" style=\"width: 34rem;\">"
 					+ "		<div class=\"row card-body\">"

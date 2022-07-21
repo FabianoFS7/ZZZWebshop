@@ -10,6 +10,12 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 import data.Artikel;
 import database.ArtikelDatabase;
 
+/**
+ * ArtikelVerwaltung
+ * TODO Beschreibung vervollständigen
+ * @author Eve-Marie Hellmer (356925) & Fabian Segieth (360266)
+ */
+
 public class ArtikelVerwaltung extends SimpleTagSupport {
 
 	public void doTag() throws JspException, IOException {
@@ -17,6 +23,9 @@ public class ArtikelVerwaltung extends SimpleTagSupport {
 		JspWriter out = getJspContext().getOut();
 		ArrayList<Artikel> artikelListe = ArtikelDatabase.getAlleArtikel();	
 		
+		 /*
+	        * Ausgabe aller Artikel
+	        */
 		for(Artikel artikel : artikelListe) {
 			out.print("		<tr class=\"align-middle artikel_eintrag\""
 					+ "			data-id=\"" + artikel.getId() + "\""
