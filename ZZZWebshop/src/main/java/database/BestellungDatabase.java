@@ -11,14 +11,14 @@ public class BestellungDatabase {
 	
 	private static Connection con = null;
 
-	public static boolean fuegeBestellung(Warenkorb warenkorb, String zahlungsmethode) {
+	public static boolean fuegeBestellung(Warenkorb warenkorb, String zahlungsmethode, int bestellid) {
 		boolean erfolg = false;
 
 		try {
 			con = DatabaseConnection.getConnection();
 
 			PreparedStatement pstmt = con.prepareStatement("INSERT INTO bestellungen VALUES(?,?,?,?,?)");
-			pstmt.setInt(1, 3);//Z�hler einrichten
+			pstmt.setInt(1, bestellid);//Z�hler einrichten
 			pstmt.setInt(2, warenkorb.getWarenkorbId());
 			pstmt.setInt(3, warenkorb.getId());
 			pstmt.setInt(4, warenkorb.getMenge());
@@ -49,7 +49,7 @@ public class BestellungDatabase {
 
 		try {
 			con = DatabaseConnection.getConnection();
-			PreparedStatement pstmt = con.prepareStatement("SELECT id FROM bestellungen WHERE benutzerid = ? ORDER BY kontoid DESC LIMIT(1)");
+			PreparedStatement pstmt = con.prepareStatement("SELECT id FROM bestellungen WHERE benutzerid = ? ORDER BY id DESC LIMIT(1)");
 			pstmt.setInt(1, benutzerid);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
