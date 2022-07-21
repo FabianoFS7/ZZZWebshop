@@ -65,7 +65,7 @@ public class WarenkorbDatabase {
 				
 			}
 		} catch (SQLException sqle) {
-			System.err.println("[ERROR] Login auf Datenbankebene fehlgeschlagen.");
+			System.err.println("[ERROR] getWarenkorb auf Datenbankebene fehlgeschlagen.");
 			sqle.printStackTrace();
 		} catch (Exception e) {
 			System.out.println("[ERROR] Unerwarteter Fehler.");
@@ -74,7 +74,7 @@ public class WarenkorbDatabase {
 			try {
 				con.close();
 			} catch (SQLException e) {
-				System.err.println("[SQL] Fehler bei registriereBenutzer() - Verbindung geschlossen?");
+				System.err.println("[SQL] Fehler bei getWarenkorb() - Verbindung geschlossen?");
 			}
 		}
 		return warenkorb;

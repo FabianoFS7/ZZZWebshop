@@ -40,5 +40,11 @@
 		<tag-class>tags.BestellungAuflisten</tag-class>
 		<body-content>empty</body-content>
 	</tag>
+	
+		<tag>
+		<name>Konto</name>
+		<tag-class>tags.LetztenBestellungen</tag-class>
+		<body-content>empty</body-content>
+	</tag>
 
 </taglib>
