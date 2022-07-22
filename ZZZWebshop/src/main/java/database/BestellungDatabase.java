@@ -85,7 +85,6 @@ public class BestellungDatabase {
 				posten.setName(rs.getString("name"));				
 				posten.setPreis(rs.getDouble("preis"));
 				bestellungen.add(posten);
-				
 			}
 		} catch (SQLException sqle) {
 			System.err.println("[ERROR] getBestellungen auf Datenbankebene fehlgeschlagen.");
@@ -114,7 +113,6 @@ public class BestellungDatabase {
 			
 			while (rs.next()) {
 				bestellnummern.add(rs.getInt("nummer"));
-				System.out.println("Bestellnummer: " + rs.getInt("nummer"));
 			}
 		} catch (SQLException sqle) {
 			System.err.println("[ERROR] getBestellnummern auf Datenbankebene fehlgeschlagen.");

@@ -40,7 +40,7 @@ public class ArtikelVerwaltung extends SimpleTagSupport {
 					+ "		class=\"d-block h-100 w-100\"alt=\"Artikelbild\"</td>"
 					+ "		<td class=\"artikel_beschreibung\">" + artikel.getBeschreibung() + "</td>"
 					+ "		<td class=\"artikel_kategorie\">" + artikel.getKategorie() + "</td>"
-					+ "		<td class=\"artikel_preis\">" + String.format("%.02f", artikel.getPreis()) + " &euro;</td>"
+					+ "		<td class=\"artikel_preis\" style=\"white-space: nowrap;\">" + String.format("%.02f", artikel.getPreis()) + " &euro;</td>"
 					+ "	</tr>");
 		}
 	}
