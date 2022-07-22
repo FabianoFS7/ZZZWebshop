@@ -23,17 +23,12 @@ public class LetztenBestellungen extends SimpleTagSupport {
 		HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
 		HttpSession session = request.getSession();
 		Benutzer benutzer = (Benutzer) session.getAttribute("benutzer");
-		System.out.println("BenutzerId: " + benutzer.getId());
 
 		ArrayList<ArrayList<Bestellung>> alleBestellungen = new ArrayList<ArrayList<Bestellung>>();
 		List<Integer> bestellnummern = BestellungDatabase.getBestellnummern(benutzer.getId());
 		ArrayList<Bestellung> bestellung = new ArrayList<Bestellung>();
 		
-		System.out.println("Bestellnummern: " + bestellnummern.toString());
-		
-		if (bestellnummern != null || bestellnummern.size() == 0) {
-			System.out.println("Bestellungen gefunden!");
-			
+		if (bestellnummern.size() != 0) {
 			for (Integer bsNr : bestellnummern) {
 				bestellung = BestellungDatabase.getBestellungen(benutzer.getId(), bsNr);
 				alleBestellungen.add(bestellung);
@@ -82,15 +77,10 @@ public class LetztenBestellungen extends SimpleTagSupport {
 				i++;
 			}
 		} else {
-			System.out.println("keine Bestellungen!");
-			out.print("<div class=\"fw-bolder\">"
-					+ "		keine Bestellungen verfügbar"
+			out.print("<div>"
+					+ "		Es wurde noch keine Bestellung aufgegeben"
 					+ "</div>");
 		}
-
-		
-
-		System.out.println(alleBestellungen.get(0).get(0).getBestelltAm());
 	}
 
 }

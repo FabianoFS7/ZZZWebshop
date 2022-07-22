@@ -33,29 +33,21 @@ public class BestellungAuflisten extends SimpleTagSupport{
 	        * Ausgabe der Artikel aus der Bestellung
 	        */	
 		for(Bestellung bestellung : bestellungen) {	
-			out.print("	<div class=\"card my-4\" style=\"width: 34rem;\">"
-					+ "		<div class=\"row\">"
-					+ "			<div class=\"col\">"
-					+ "				<div class=\"card-body\">"
+			out.print("	<div class=\"card mb-3\">"
+					+ "		<div class=\"card-body\">"
+					+ "			<div class=\"row\">"
+					+ "				<div class=\"col col-6\">"
 					+ "					<h5 class=\"card-title\">" + bestellung.getName() + "</h5>"
 					+ "				</div>"
-					+ "			</div>"
-					+ "			<div class=\"col my-auto col-md-3\">"
-					+ "				<div class=\"btn-group btn-group-sm\" role=\"group\">"
-					+ "					<h5 class=\"card-title\">" + bestellung.getMenge() + "x</h5>"
+					+ "				<div class=\"col col-3\">"
+					+ "					<h5 class=\"card-title\">" + bestellung.getMenge() + " x " + String.format("%.02f",bestellung.getPreis()) + " &euro;</h5>"
 					+ "				</div>"
-					+ "			</div>"
-					+ "			<div class=\"col my-auto col-md-2\">"
-					+ "				<h5 class=\"card-title\">" + bestellung.getPreis() + "</h5>"
-					+ "			</div>"
-					+ "		</div>"
-					+ "		<div class=\"row\">"
-					+ "			<div class=\"col\">"
-					+ "				<div class=\"card-body\">"
-					+ "					<p class=\"card-text\">Kategorie: " + bestellung.getKategorie() + "</p>"
+					+ "				<div class=\"col col-3\">"
+					+ "					<h5 class=\"card-title\">= " + String.format("%.02f",bestellung.getPreis() * bestellung.getMenge()) + " &euro;</h5>"
 					+ "				</div>"
 					+ "			</div>"
 					+ "		</div>"
+					+ "		<div class=\"card-footer text-muted\">Kategorie: " + bestellung.getKategorie() + "</div>"
 					+ "	</div>");
 			gesamtpreis += bestellung.getPreis() * bestellung.getMenge();
 		}
