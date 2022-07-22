@@ -17,6 +17,8 @@ import database.BestellungDatabase;
 import database.WarenkorbDatabase;
 
 /**
+ * In dieser Klasse bekommen wir Informationen ueber die Bestellung, nachdem wir den Bestellen Button
+ * auf der bestelluebersich.jsp betaetigt haben.
  * Servlet implementation class BestellungsServlet
  */
 @WebServlet("/BestellungsServlet")
@@ -24,11 +26,13 @@ public class BestellungsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
   
-
+	/**
+	 * Der Inhalt der Warenkorbliste wird hier in eine Bestellliste kopiert, die dann in die Session gespeichert wird und bei der
+	 * Rechnungsbestatigung angezeigt wird. Beim Bestellen wird auﬂerdem der Warenkorb des Benutzers geloescht.
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String zahlungsmethode = request.getParameter("zahlungsmethode");
-		HttpSession session = request.getSession();
-		
+		HttpSession session = request.getSession();		
 		@SuppressWarnings("unchecked")
 		ArrayList<Warenkorb> warenkorb = (ArrayList<Warenkorb>) session.getAttribute("warenkorb");
 		ArrayList<Bestellung> bestellung = new ArrayList<Bestellung>();
@@ -46,7 +50,6 @@ public class BestellungsServlet extends HttpServlet {
 			WarenkorbDatabase.deletePosten(ware.getWarenkorbId(), ware.getId());
 		}
 		session.setAttribute("bestellung", bestellung);
-		System.out.println(BestellungDatabase.hoechsteBestellid(benutzer.getId()));
 		request.getRequestDispatcher("rechnung.jsp").forward(request, response);
 	}
 

@@ -15,11 +15,15 @@ import java.util.ArrayList;
 
 /**
  * BestellungAuflisten.java
- * TODO Beschreibung vervollständigen
+ * Dieser Tag dient zur Auflistung einer Bestellung auf der rechnung.jsp.
  * @author Eve-Marie Hellmer (356925) & Fabian Segieth (360266)
  */
 
 public class BestellungAuflisten extends SimpleTagSupport{
+	
+	/**
+	 * Fuer jeden Eintrag in der Bestellliste, die wir uns aus der Session holen, wird dynamisch eine "card" erstellt.
+	 */
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
 		PageContext pageContext = (PageContext) getJspContext();

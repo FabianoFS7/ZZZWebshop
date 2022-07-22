@@ -8,11 +8,22 @@ import java.util.ArrayList;
 
 
 import data.Warenkorb;
-
+/**
+ * In dieser Klasse wird ein Warenkorb in die Datenbank hinzugefuegt, geändert oder geloescht.
+ * @author Fabian Segieth.
+ *
+ */
 public class WarenkorbDatabase {
 	
 	private static Connection con = null;
 
+	/**
+	 * Diese Methode schreibt den aktuellen Warenkorb eines Benutzers in die Datenbank.
+	 * @param benutzerId Ermittelt den Nutzer.
+	 * @param artikelId Ermittelt den Artikel, der hinzugefuegt wird.
+	 * @param menge Die Menge des hinzugefuegtenArtikels.
+	 * @return True, falls hinzufuegen erfolgreich war, false sonst.
+	 */
 	public static boolean fuegeWarenkorb(int benutzerId, int artikelId, int menge) {
 		boolean erfolg = false;
 
@@ -44,6 +55,11 @@ public class WarenkorbDatabase {
 		return erfolg;
 	}
 	
+	/**
+	 * Gibt den gesamten Warenkorb einen Benutzers aus der Datenbank als ArrayList vom Typ Warenkorb zurueck.
+	 * @param benutzerId Warenkorb wird zum Benutzer zugeordnet.
+	 * @return ArrayList vom Typ Warenkorb mir aktuellem Warenkorb des Benutezrs.
+	 */
 	public static ArrayList<Warenkorb> getWarenkorb(int benutzerId) {
 		ArrayList<Warenkorb> warenkorb = new ArrayList<Warenkorb>();
 		try {
@@ -65,7 +81,7 @@ public class WarenkorbDatabase {
 				
 			}
 		} catch (SQLException sqle) {
-			System.err.println("[ERROR] getWarenkorb auf Datenbankebene fehlgeschlagen.");
+			System.err.println("[ERROR] getWarenkorb() auf Datenbankebene fehlgeschlagen.");
 			sqle.printStackTrace();
 		} catch (Exception e) {
 			System.out.println("[ERROR] Unerwarteter Fehler.");
@@ -80,6 +96,12 @@ public class WarenkorbDatabase {
 		return warenkorb;
 	}
 	
+	/**
+	 * Loescht Posten des Warenkorbs eines Nutzers aus der Datenbank.
+	 * @param warenkorbid Eindeutiger Warenkorb des Nutzers.
+	 * @param artikelid Damit wird der Artikel ermittelt, der entfernt wird.
+	 * @return True, falls loeschen des Artikels erfolgrecih war, false sonst.
+	 */
 	public static boolean deletePosten(int warenkorbid, int artikelid) {
 		boolean erfolg = false;
 
@@ -108,6 +130,13 @@ public class WarenkorbDatabase {
 		return erfolg;
 	}
 	
+	/**
+	 * Aktualisert die Menge eines Artikels im Warenkorb in der Datenbank.
+	 * @param menge Neue Menge des Artikels.
+	 * @param warenkorbid Zugehoeriger Warenkorb des Benutzers.
+	 * @param artikelid Id des Artikels, dessen Menge aktuallisiert wird.
+	 * @return True wenn update erfolgreich war, false sonst.
+	 */
 	public static boolean updateMenge(int menge, int warenkorbid, int artikelid) {
 		boolean erfolg = false;
 

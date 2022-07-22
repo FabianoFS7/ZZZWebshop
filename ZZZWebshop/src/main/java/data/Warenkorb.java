@@ -1,10 +1,18 @@
 package data;
 
+/**
+ * Warenkorbklasse, erbt vom Artikel und hat zusatzlich eine eigene Warenkorb.Id und eine Menge. 
+ * @author Fabian Segieth
+ *
+ */
 public class Warenkorb extends Artikel {
 	
 	private int warenkorbId;
 	private int menge;
 
+	/**
+	 * Defaultkonstruktor fuer den Warenkorb.
+	 */
 	public Warenkorb() {
 
 	}

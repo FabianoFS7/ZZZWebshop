@@ -1,5 +1,10 @@
 package data;
 
+/**
+ * Benutzerklasse, hier wird ein Benutzerobjekt konstruiert.
+ * @author Fabian Segieth.
+ *
+ */
 public class Benutzer {
 
 	private int id;
@@ -12,7 +17,20 @@ public class Benutzer {
 	private int postleitzahl;
 	private String ort;
 	private boolean admin;
-
+	
+	/**
+	 * Konstruktor fuer Benutzerobjekt.
+	 * @param id
+	 * @param vorname
+	 * @param nachname
+	 * @param email
+	 * @param passwort
+	 * @param strasse
+	 * @param hausnummer
+	 * @param postleitzahl
+	 * @param ort
+	 * @param admin
+	 */
 	public Benutzer(int id, String vorname, String nachname, String email, String passwort, String strasse, String hausnummer, int postleitzahl, String ort, boolean admin) {
 		this.id = id;
 		this.vorname = vorname;
@@ -39,7 +57,6 @@ public class Benutzer {
 	}
 	
 	public Benutzer () {		
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getId() {

@@ -16,12 +16,17 @@ import database.WarenkorbDatabase;
 
 /**
  * WarenkorbTag
- * TODO Beschreibung vervollständigen
+ * In diesem tag wird der Warenkorb visualisiert.
  * @author Eve-Marie Hellmer (356925) & Fabian Segieth (360266)
  */
 
 public class WarenkorbTag extends SimpleTagSupport{
 	
+	/**
+	 * Wir holen uns alle Informationen ueber den Warenkorb eines Benutzers aus der Datenbank und speichern
+	 * diese in einer Liste. Danach generieren wir fuer jeden Eintrag der Liste einen Posten im Warenkorb.
+	 * Dieser Warenkorb wird somit fuer den Nutzer visualisiert.
+	 */
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
 		PageContext pageContext = (PageContext) getJspContext();

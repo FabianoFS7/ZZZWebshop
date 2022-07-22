@@ -15,16 +15,20 @@ import inputmanager.EingabeValidierung;
 import inputmanager.RegEx;
 
 /**
+ * Diese Klasse ist fuer die Registrierung des Benutzers zustaendig.
+ * @author Fabian Segieth.
  * Servlet implementation class RegistrieurngsServlet
  */
 @WebServlet("/RegistrierungsServlet")
 public class RegistrierungsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-	}
-
+	/**
+	 * In dieser Methode bekommen wir alle Registrierungsdaten des Nutzers und ueberpruefen diese Daten,
+	 * ob diese den Vorgaben entsprechen und ob der Nutzer nicht schon registriert ist.
+	 * Nach erfolgreicher Registrierung wird der Benutzer in die Datenbank geschrieben und ein Benutzerobjekt
+	 * wird in der Session angelegt.
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

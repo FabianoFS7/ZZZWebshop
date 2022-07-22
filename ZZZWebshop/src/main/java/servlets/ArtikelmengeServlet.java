@@ -13,13 +13,20 @@ import data.Benutzer;
 import database.WarenkorbDatabase;
 
 /**
+ * Dieses Servlet aktuallisiert die Menge einen Artikels, je nach dem ob sie gemindert oder vermehrt wird.
+ * @author Fabian Segieth.
  * Servlet implementation class ArtikelmengeServlet
  */
 @WebServlet("/artikel-Menge")
 public class ArtikelmengeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
+	/**
+	 * Wir bekommen eine methode, id und menge aus der Request, nach dem wir den Plus oder Minus Button 
+	 * neben der Menge betaetigt haben. Die Menge eines Artikels werden hier je nach Mehtode auf Datenbankebene
+	 * angepasst. Wenn die Menge 1 ist und der Minus Button betatigt wird, wird der Artikel aus dem Warenkorb
+	 * auf Datenbankebene geloescht.
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String methode = request.getParameter("methode");
 		int artikelid = Integer.parseInt(request.getParameter("id"));
@@ -30,7 +37,7 @@ public class ArtikelmengeServlet extends HttpServlet {
 		if (methode.equals("minus")) {
 			if (menge == 1) {
 				WarenkorbDatabase.deletePosten(benutzer.getId(), artikelid);
-				request.setAttribute("info", "Artikel im Warenkorb gelÃ¶scht.");
+				request.setAttribute("info", "Artikel im Warenkorb gelöscht.");
 			} else {
 				request.setAttribute("info", "Artikelmenge im Warenkorb verringert.");
 			}
@@ -41,10 +48,4 @@ public class ArtikelmengeServlet extends HttpServlet {
 		}
 		request.getRequestDispatcher("warenkorb.jsp").forward(request, response);
 	}
-
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
-
 }

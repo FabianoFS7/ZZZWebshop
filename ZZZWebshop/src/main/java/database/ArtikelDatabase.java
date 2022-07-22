@@ -8,10 +8,19 @@ import java.util.ArrayList;
 
 import data.Artikel;
 
+/**
+ * In dieser Klasse holen, veraendern und loeschen wir Daten ueber den Artikel aus der Datenbank.
+ * @author Fabian Segieth
+ *
+ */
 public class ArtikelDatabase {
 
 	private static Connection con = null;
 
+	/**
+	 * Hier speichern wir alle Artikel aus der Datenbank in einer Array List vom Typ Artikel.
+	 * @return ArrayList vom Typ Artikel, mit allen Artikeln.
+	 */
 	public static ArrayList<Artikel> getAlleArtikel() {
 		ArrayList<Artikel> artikelListe = new ArrayList<Artikel>();
 		try {
@@ -38,6 +47,11 @@ public class ArtikelDatabase {
 		return artikelListe;
 	}
 
+	/**
+	 * Gibt einen einzelnen Artikel anhand der Artikel-Id zurueck.
+	 * @param artikelId Eindeutige Id zum identifizieren des Artikels.
+	 * @return Artikelobjekt mit der eingebenen Id.
+	 */
 	public static Artikel getArtikel(int artikelId) {
 		Artikel artikel = null;
 		try {
@@ -65,6 +79,11 @@ public class ArtikelDatabase {
 		return artikel;
 	}
 
+	/**
+	 * Diese Methode veraendert einen Artikeldatensatz.
+	 * @param artikel Artikelobjekt, das geaendert wird.
+	 * @return Gibt den geänderten Artikel zurueck.
+	 */
 	public static Artikel updateArtikel(Artikel artikel) {
 		try {
 			con = DatabaseConnection.getConnection();
@@ -92,6 +111,11 @@ public class ArtikelDatabase {
 		return artikel;
 	}
 
+	/**
+	 * Mit dieser Methode wird ein Artikelobjekt in die Datenbank geschrieben.
+	 * @param artikel Artikel, der in die Datenbank geschrieben wird.
+	 * @return
+	 */
 	public static Artikel addArtikel(Artikel artikel) {
 
 		try {
@@ -126,6 +150,11 @@ public class ArtikelDatabase {
 		return artikel;
 	}
 	
+	/**
+	 * Damit wird ein Artikel aus der Datenbank geloescht.
+	 * @param artikel Artikel, der geloescht wird.
+	 * @return 
+	 */
 	public static Artikel deleteArtikel(Artikel artikel) {
 
 		try {

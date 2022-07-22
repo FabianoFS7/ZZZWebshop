@@ -6,11 +6,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import data.Benutzer;
-
+/**
+ * Klasse, um den Login eines Benutzers mit der Datenbank abzugleichen.
+ * @author Fabian Segieth
+ *
+ */
 public class LoginBenutzer {
 	
 	private static Connection con = null;
 	
+	/**
+	 * Prueft, ob in der Datenbank die Kombination aus eingebener Email und Passwort, vorhanden ist.
+	 * Wenn dies der Fall ist, wird Login gewahrt und das Benutezrobjekt zurueck gegeben.
+	 * @param email Email des Nutzers.
+	 * @param passwort Passwort des Nutzers.
+	 * @return Eingeloggter Benutzer.
+	 */
 	public static Benutzer loginBenutzer(String email, String passwort) {
 		Benutzer benutzer = null;
 		try {

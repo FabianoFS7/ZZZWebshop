@@ -1,10 +1,14 @@
 package inputmanager;
-
+/**
+ * In dieser Klasse gibt es Methoden, zum pruefen von Eingaben des Nutzers.
+ * @author Fabian Segieth
+ *
+ */
 public class EingabeValidierung {
 	
 	/** Prueft auf leeren String
-	 * @param eingabe
-	 * @return
+	 * @param eingabe Zu pruefender String.
+	 * @return True, wenn String leer ist. False sonst.
 	 */
 	public static boolean istLeer(String eingabe) {
 		boolean isEmpty = false;
@@ -17,18 +21,18 @@ public class EingabeValidierung {
 		return isEmpty;
 	}
 	
-	/** Prueft Passwortwiederholung.
-	 * @param passwort
+	/** Prueft ob zwei Strings gleich sind.
+	 * @param passwort 
 	 * @param passwortWDH
-	 * @return
+	 * @return True, wenn Passwoerter uebereinstimmen, false sont.
 	 */
 	public static boolean wiederholePW(String passwort, String passwortWDH) {
 		return passwort.equals(passwortWDH);
 	}
 	
-	/** Prueft, ob wirklich eine Zahl eingeben wurde.
-	 * @param eingabe
-	 * @return
+	/** Prueft, ob es sich um eine Zahl handelt.
+	 * @param eingabe Stringeingabe des Benutzers.
+	 * @return True, wenn eingabe eine Zahl ist, false sonst.
 	 */
 	public static boolean istZahl(String eingabe) {
 		boolean isZahl = false;

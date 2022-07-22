@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /** Klasse um die Verbindung zur SQL-Datenbank zu erstellen
+ * Diese Klasse wurde aus dem Learnweb uebernommen.
  * @author Jan Sarstedt
  */
 public class DatabaseConnection {

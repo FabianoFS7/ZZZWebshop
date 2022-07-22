@@ -1,11 +1,21 @@
 package data;
 
-
+/**
+ * Bestellungsklasse, erbt vom Warenkorb, hat zusaetzlich eine eigene id, menge und Bestellzeitpunkt.
+ * @author Fabian Segieth
+ *
+ */
 public class Bestellung extends Warenkorb{
 
 	private int bestellId;
 	private int menge;
 	private String bestelltAm;
+	
+	/**
+	 * Defaultkonstruktor fuer eine Bestellung.
+	 */
+	public Bestellung() {		
+	}
 	
 	public String getBestelltAm() {
 		return bestelltAm;
@@ -15,9 +25,6 @@ public class Bestellung extends Warenkorb{
 		this.bestelltAm = bestelltAm;
 	}
 
-	public Bestellung() {
-		
-	}
 
 	public int getBestellId() {
 		return bestellId;

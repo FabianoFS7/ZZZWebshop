@@ -15,12 +15,17 @@ import database.ArtikelDatabase;
 
 /**
  * ArtikelTag
- * TODO Beschreibung vervollständigen
+ * Dieser Tag ist fuer die optische Auflistung aller Artikel aus der Datenbank zustaendig.
  * @author Eve-Marie Hellmer (356925) & Fabian Segieth (360266)
  */
 
 public class ArtikelTag extends SimpleTagSupport {
-
+	/**
+	 * Hier werden sogenannte cards fuer alle Artikel dynmaisch generiert. Dies dient zur Darstellung aller Artikel auf 
+	 * der artikeuebersicht.jsp. Dabei holen wir alle Artikel aus der Datenbank und generieren dann mit der Liste fuer jeden Artikel
+	 * eine visuelle Karte auf der Seite.
+	 */
+	@SuppressWarnings("unchecked")
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
 		PageContext pageContext = (PageContext) getJspContext();

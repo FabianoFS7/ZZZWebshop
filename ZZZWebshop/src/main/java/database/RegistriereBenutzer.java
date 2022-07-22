@@ -7,10 +7,20 @@ import java.sql.SQLException;
 
 import data.Benutzer;
 
+/**
+ * In der Klasse wird ein sich registrierender Benutzer in die Datenbank geschrieben.
+ * @author Fabian
+ *
+ */
 public class RegistriereBenutzer {
 
 	private static Connection con = null;
 
+	/**
+	 * Schreibt einen Benutzer nach erfolgreicher Registrierung in die Datenbank und gibt ein Benutzrrobjekt zurueck.
+	 * @param benutzer Benutzerobjekt fuer Registrierung.
+	 * @return Benutzerobjekt nach erfolreicher Registrierung.
+	 */
 	public static Benutzer registriereBenutzer(Benutzer benutzer) {
 
 		try {

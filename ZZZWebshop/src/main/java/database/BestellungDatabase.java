@@ -8,11 +8,22 @@ import java.util.ArrayList;
 
 import data.Bestellung;
 import data.Warenkorb;
-
+/**
+ * In dieser Klasse holen wir uns Daten ueber die Bestellung aus der Datenbank.
+ * @author Fabian Segieth
+ *
+ */
 public class BestellungDatabase {
 	
 	private static Connection con = null;
 
+	/**
+	 * Schreibt eine Bestellung in die Datenbank.
+	 * @param warenkorb Warenkorbobjekt.
+	 * @param zahlungsmethode Zahlungsmethode der Bestellung.
+	 * @param bestellid eindeutige Id der Bestellung.
+	 * @return True, falls Eintrag in die Datenbank erfolgreich war, false sont.
+	 */
 	public static boolean fuegeBestellung(Warenkorb warenkorb, String zahlungsmethode, int bestellid) {
 		boolean erfolg = false;
 
@@ -46,13 +57,18 @@ public class BestellungDatabase {
 		return erfolg;
 	}
 	
-	public static int hoechsteBestellid(int benutzerid) {
+	/**
+	 * Ermittelt die hoechste Bestell-Id in der Datenbank.
+	 * @param Zuordnung zum Benutzer
+	 * @return Hoechste Benutzer-Id.
+	 */
+	public static int hoechsteBestellid(int benutzerId) {
 		int id = 1;
 
 		try {
 			con = DatabaseConnection.getConnection();
 			PreparedStatement pstmt = con.prepareStatement("SELECT id FROM bestellungen WHERE benutzerid = ? ORDER BY id DESC LIMIT(1)");
-			pstmt.setInt(1, benutzerid);
+			pstmt.setInt(1, benutzerId);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				id = rs.getInt(1);
@@ -64,6 +80,13 @@ public class BestellungDatabase {
 		return id;
 	}
 	
+	/**
+	 * Diese Methode gibt alle Bestellungen innerhalb einer groﬂen Bestellung mit der selben Bestellid
+	 *  eines genauen Benutzers als Liste zurueck.
+	 * @param benutzerId Identifikation Benutezr.
+	 * @param bestellId Bestellungen mit der selben Id bilden eine gesamte Bestellung.
+	 * @return ArrayList vom Typ Bestellung mit allen Bestellungen.
+	 */
 	public static ArrayList<Bestellung> getBestellungen(int benutzerId, int bestellId) {
 		ArrayList<Bestellung> bestellungen = new ArrayList<Bestellung>();
 		try {
@@ -102,6 +125,11 @@ public class BestellungDatabase {
 		return bestellungen;
 	}
 	
+	/**
+	 * Gibt bestellids aller Bestellungen eines Benutzers zurueck, um alle Bestellungen zu ermitteln. 
+	 * @param benutzerId Zugehoerigkeit von Bestellung zu Benutzer.
+	 * @return Alle Bestellnummern von kompletten Bestellugnen eines Benutzers.
+	 */
 	public static ArrayList<Integer> getBestellnummern(int benutzerId) {
 		ArrayList<Integer> bestellnummern = new ArrayList<Integer>();
 		try {

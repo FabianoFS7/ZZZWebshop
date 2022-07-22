@@ -16,12 +16,16 @@ import database.WarenkorbDatabase;
 
 /**
  * BestelllisteTag
- * TODO Beschreibung vervollständigen
+ * Dieses Tag visualisiert die Bestellung eines Nutzers.
  * @author Eve-Marie Hellmer (356925) & Fabian Segieth (360266)
  */
 
 public class BestelllisteTag extends SimpleTagSupport {
-	//generiert Inhalte auf der warenkorbliste.jsp im templates ordner.
+
+	/**
+	 * Wir holen uns den aktuellen Warenkorb aus der Datenbank und anhand des Warenkorbs listen wir alle Artikel
+	 * mit Name, Menge, Preis und Kategorie auf.
+	 */
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
 		PageContext pageContext = (PageContext) getJspContext();

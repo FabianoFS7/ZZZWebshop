@@ -11,13 +11,17 @@ import javax.servlet.http.HttpSession;
 import data.Benutzer;
 
 /**
+ * Hier wird der Logout vom Benutzer gemanaged.
+ * @author Fabian Segieth
  * Servlet implementation class LogoutServlet
  */
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
+	/**
+	 * Beim Aufrufen dieser Methode wird das Benutzerobjekt aus der Session geloescht und die Session invalidiert.
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(); 
 		try {
@@ -32,10 +36,4 @@ public class LogoutServlet extends HttpServlet {
 		
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
-
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
-
 }

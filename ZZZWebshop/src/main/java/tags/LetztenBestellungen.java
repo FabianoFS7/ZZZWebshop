@@ -14,8 +14,19 @@ import data.Benutzer;
 import data.Bestellung;
 import database.BestellungDatabase;
 
+/**
+ * Mit diesem Tag werden die letzten Bestellungen auf der Kontoseite des Benutzers angezeigt.
+ * @author Fabian Segieth
+ *
+ */
 public class LetztenBestellungen extends SimpleTagSupport {
-
+	
+	/**
+	 * Aus der Datenbank werden alle Bestellungen eines Nutzers geholt. Dann werden alle Bestellnummern einzelnen 
+	 * aus der Datenbank geholt, um die Gesamtbestellungen zu ermitteln. Anhand der Bestellnummern können wir uns die 
+	 * genauen Bestellungen mit der gleichen Bestellnummer zusammen in einer Liste abspeichern. Diese Bestellungen werden
+	 * dann visuell als Art Liste fuer den Benutzer angezeigt.
+	 */
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
 		PageContext pageContext = (PageContext) getJspContext();
@@ -46,7 +57,7 @@ public class LetztenBestellungen extends SimpleTagSupport {
 					+ "\"\r\n" + "								aria-expanded=\"false\" aria-controls=\"collapse+" + i
 					+ "\">								<div class=\"row justify-content-between\">\r\n"
 					+ "									<div class=\"col-10\">Bestellung vom "+bestellungen.get(0).getBestelltAm()+"</div>\r\n"
-					+ "									<div class=\"col-2\">" + gesamtpreis + "</div>\r\n"
+					+ "									<div class=\"col-2\">" + String.format("%.02f", gesamtpreis) + "</div>\r\n"
 					+ "								</div></button>\r\n" + "						</h2>\r\n"
 					+ "						<div id=\"collapse" + i + "\" class=\"accordion-collapse collapse\"\r\n"
 					+ "							aria-labelledby=\"headingTwo\" data-bs-parent=\"#accordionExample\">");
@@ -70,8 +81,6 @@ public class LetztenBestellungen extends SimpleTagSupport {
 			out.print("						</div>\r\n" + "					</div>");
 			i++;
 		}
-
-		System.out.println(alleBestellungen.get(0).get(0).getBestelltAm());
 	}
 
 }

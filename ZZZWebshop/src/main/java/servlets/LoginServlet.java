@@ -12,18 +12,18 @@ import data.Benutzer;
 import database.LoginBenutzer;
 
 /**
+ * Bekommt Eingaben des Nutzers beim Login und ueberprueft diese.
+ * @author Fabian Segieth
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
-
-
+	
+	/**
+	 * Bekommt email und passwort aus der request. Dann wird anhand einer Datenbankmethode ueberprueft, ob Logindaten mit 
+	 * der Datenbank uebereinstimmen. nach erfolgreichem login wird der Benutzer in die Session geschrieben.
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email"); 
 		String passwort = request.getParameter("passwort"); 
@@ -31,10 +31,8 @@ public class LoginServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(); 
 		try {
-			// Gehe Kundenliste durch und prüfe, ob Kombination aus E-Mail und Passwort bereits vorhanden ist. 
 			Benutzer benutzer = LoginBenutzer.loginBenutzer(email, passwort); 
 				if (benutzer != null) {
-					// Kunde kunde = DatenbankStatements.befuelleKundenobjekt(email, passwort); 
 					session.setAttribute("benutzer", benutzer);
 					weiterleitung = "index.jsp";
 					request.setAttribute("erfolg", "Du bist nun angemeldet."); 

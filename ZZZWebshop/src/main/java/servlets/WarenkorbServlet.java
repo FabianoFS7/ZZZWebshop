@@ -15,13 +15,18 @@ import data.Warenkorb;
 import database.WarenkorbDatabase;
 
 /**
+ * Dieses Servlet fuegt einen Artiekl zum Warenkorb hinzu.
+ * @author Fabian Segieth
  * Servlet implementation class WarenkorbServlet
  */
 @WebServlet("/add-warenkorb")
 public class WarenkorbServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
+	/**
+	 * Nach dem betaetigen des hinzufuegen Buttons wird der Artikel auf Datenbankebene in den Warenkorb gelegt.
+	 * Wenn der Artikel bereits im Warenkorb ist, wird eine Benachrichtigung darueber gemacht.
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		HttpSession session = request.getSession();
@@ -38,15 +43,10 @@ public class WarenkorbServlet extends HttpServlet {
 		}
 		if (!enthalten) {
 			WarenkorbDatabase.fuegeWarenkorb(benutzer.getId(), id, 1);
-			request.setAttribute("erfolg", "Artikel wurde zum Warenkorb hinzugefÃ¼gt.");
+			request.setAttribute("erfolg", "Artikel wurde zum Warenkorb hinzugefügt.");
 		} else {
 			request.setAttribute("info", "Der Artikel befindet sich bereits im Warenkorb.");
 		}
 		request.getRequestDispatcher("artikel.jsp?artikelId=" + id).forward(request, response);
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
-
 }

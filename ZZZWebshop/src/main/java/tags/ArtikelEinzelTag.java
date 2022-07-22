@@ -1,10 +1,8 @@
 package tags;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
@@ -15,12 +13,17 @@ import database.ArtikelDatabase;
 
 /**
  * ArtikelEinzelTag
- * TODO Beschreibung vervollständigen
+ * Hier werden Informationen fuer einen einzelnen Artikel geholt und im Anschluss wird HTML-Code
+ * fuer die Darstellung eines einzelnen Artikels generiert.
  * @author Eve-Marie Hellmer (356925) & Fabian Segieth (360266)
  */
 
 public class ArtikelEinzelTag extends SimpleTagSupport {
 	
+	/**
+	 * Wir holen uns hier einen bestimmten Artikel anhand seiner Id aus der Datenbank und generieren dann mit dem 
+	 * JspWriter den Code fuer seine Darstellung.
+	 */
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
 		PageContext pageContext = (PageContext) getJspContext();

@@ -14,12 +14,17 @@ import javax.servlet.http.HttpSession;
 import data.Artikel;
 
 /**
+ * Implementation der Suchfunktion auf der artikeluebersicht.jsp.
+ * @author Fabian Segieth.
  * Servlet implementation class SuchServlet
  */
 @WebServlet("/SuchServlet")
 public class SuchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Mit dieser Methode wird der Suchfilter wieder entfernt.
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -28,6 +33,11 @@ public class SuchServlet extends HttpServlet {
 
 	}
 
+	/**
+	 * Wir bekommen einen String als Filter. Wir ueberpruefen alle Artikelnamen sowie deren Beschreibungen auf
+	 * uebereinstimmung mit der Eingabe, groﬂ und kleinschreibung wird dabei nicht beachtet. Wenn ein Artikel uebereinstimmt,
+	 * wird dieser in eine Liste aufgenommen, die die gefilterten Artikel enthaelt.
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
