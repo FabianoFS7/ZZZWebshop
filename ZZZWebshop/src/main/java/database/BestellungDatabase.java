@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import data.Bestellung;
 import data.Warenkorb;
@@ -19,7 +20,7 @@ public class BestellungDatabase {
 		try {
 			con = DatabaseConnection.getConnection();
 
-			PreparedStatement pstmt = con.prepareStatement("INSERT INTO bestellungen VALUES(?,?,?,?,?)");
+			PreparedStatement pstmt = con.prepareStatement("INSERT INTO bestellungen (nummer, benutzerid, artikelid, menge, zahlungsmethode) VALUES(?,?,?,?,?)");
 			pstmt.setInt(1, bestellid);
 			pstmt.setInt(2, warenkorb.getWarenkorbId());
 			pstmt.setInt(3, warenkorb.getId());
@@ -46,13 +47,13 @@ public class BestellungDatabase {
 		return erfolg;
 	}
 	
-	public static int hoechsteBestellid(int benutzerid) {
+	public static int hoechsteBestellid(int benutzerId) {
 		int id = 1;
 
 		try {
 			con = DatabaseConnection.getConnection();
 			PreparedStatement pstmt = con.prepareStatement("SELECT id FROM bestellungen WHERE benutzerid = ? ORDER BY id DESC LIMIT(1)");
-			pstmt.setInt(1, benutzerid);
+			pstmt.setInt(1, benutzerId);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				id = rs.getInt(1);
@@ -71,7 +72,7 @@ public class BestellungDatabase {
 			PreparedStatement pstmt = con
 					.prepareStatement("SELECT bestellungen.id, bestellungen.menge, bestellungen.bestellt_am, artikel.name, artikel.preis "
 							+ "FROM bestellungen JOIN artikel on artikelid = artikel.id  "
-							+ "WHERE benutzerid = ? AND bestellungen.id = ?");
+							+ "WHERE benutzerid = ? AND bestellungen.nummer = ?");
 			pstmt.setInt(1, benutzerId);
 			pstmt.setInt(2, bestellId);
 			ResultSet rs = pstmt.executeQuery();
@@ -102,19 +103,18 @@ public class BestellungDatabase {
 		return bestellungen;
 	}
 	
-	public static ArrayList<Integer> getBestellnummern(int benutzerId) {
-		ArrayList<Integer> bestellnummern = new ArrayList<Integer>();
+	public static List<Integer> getBestellnummern(int benutzerId) {
+		List<Integer> bestellnummern = new ArrayList<Integer>();
 		try {
 			con = DatabaseConnection.getConnection();
 			PreparedStatement pstmt = con
-					.prepareStatement("SELECT DISTINCT id from bestellungen WHERE benutzerid = ? order by id DESC");
+					.prepareStatement("SELECT DISTINCT nummer from bestellungen WHERE benutzerid = ? order by nummer DESC");
 			pstmt.setInt(1, benutzerId);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				int bsNummer = rs.getInt("id");
-				bestellnummern.add(bsNummer);
-				
+				bestellnummern.add(rs.getInt("nummer"));
+				System.out.println("Bestellnummer: " + rs.getInt("nummer"));
 			}
 		} catch (SQLException sqle) {
 			System.err.println("[ERROR] getBestellnummern auf Datenbankebene fehlgeschlagen.");

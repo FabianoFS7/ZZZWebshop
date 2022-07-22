@@ -31,14 +31,13 @@ public class ArtikelTag extends SimpleTagSupport {
 		
 		session.setAttribute("artikelListe", artikelListe);
 		
-		if(request.getAttribute("gefiltereArtikelliste") != null) {
+		if (request.getAttribute("gefiltereArtikelliste") != null) {
 			artikelListe = (ArrayList<Artikel>) request.getAttribute("gefiltereArtikelliste");
 		}
 		 /*
 	        * Ausgabe der Artikelübersicht
 	        */
 		for(Artikel artikel : artikelListe) {
-			System.out.println(artikel.getId());
 			out.print("		<div class=\"col-sm-3 col-md-4\">" // Erzeugung der Spalte
 					+ "			<div class=\"card shadow mb-3\">" // Hintergrundschatten hinzufügen
 					+ "				<img src=\"assets/images/"+ artikel.getBild() + "\"" // Anzeige des Artikelbilds

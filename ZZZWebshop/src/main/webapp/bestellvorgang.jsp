@@ -36,7 +36,6 @@
 					<div class="col col-3">
 						<select name="zahlungsmethode" class="form-select"
 							aria-label="Default select example" required>
-							<option selected disabled>wählen</option>
 							<option value="kreditkarte">Kreditkarte</option>
 							<option value="klarna">Klarna</option>
 							<option value="paypal">PayPal</option>

@@ -23,6 +23,7 @@
 					<th scope="col">Kategorie</th>
 					<th scope="col">Anzahl</th>
 					<th scope="col">Preis</th>
+					<th scope="col">Gesamt</th>
 				</tr>
 			</thead>
 			<tbody class="table-group-divider">

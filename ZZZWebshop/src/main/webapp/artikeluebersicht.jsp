@@ -1,7 +1,8 @@
-<%-- Artikel¸bersicht GUI
+<%-- Artikel√ºbersicht GUI
 	 @author Eve-Marie Hellmer (356925) --%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="/WEB-INF/taglib/customtags.tld" prefix="my"%>
 
@@ -11,34 +12,43 @@
 	<jsp:param name="navbar" value="fixed-top" />
 </jsp:include>
 
-<%-- Erstellung Container f¸r gesamte Artikel¸bersicht --%>
+<%-- Erstellung Container f√ºr gesamte Artikel√ºbersicht --%>
 <div class="container body-container">
-	<%-- Zeile f¸r die Anzeige von Suchleiste & Filtern, die auf die Artikel angewendet werden kˆnnen --%>
+	<%-- Zeile f√ºr die Anzeige von Suchleiste & Filtern, die auf die Artikel angewendet werden k√∂nnen --%>
 	<div class="row mb-3">
-		<%-- Spalte, f¸r die Suchleiste inkl. Button 
-			 TODO: Beschreibung vervollst‰ndigen --%>
+		<%-- Spalte, f√ºr die Suchleiste inkl. Button 
+			 TODO: Beschreibung vervollst√§ndigen --%>
 		<div class="col col-4">
 			<form class="d-flex" role="search" method="POST" action="SuchServlet">
 				<input class="form-control me-2" name="suchfilter" type="search"
-					placeholder="Suchbegriff" aria-label="Search" value="<c:if test = "${suchfilter != null}"><c:out value = "${ suchfilter }"/></c:if>">
-				<button class="btn btn-outline-secondary" type="submit">Suchen</button>
+					placeholder="Suchbegriff" aria-label="Search"
+					value="<c:if test = "${suchfilter != null}"><c:out value = "${ suchfilter }"/></c:if>">
+				<%-- Spalte f√ºr die Anzeige der Filterfunktion --%>
+				<select class="form-select me-2" aria-label="Default select example"
+					name="suchkategorie">
+					<option value="all"
+						<c:if test="${ suchkategorie.equals('all') || suchkategorie == null }">selected</c:if>>alle
+						Kategorien</option>
+					<option value="Ern√§hrung"
+						<c:if test="${ suchkategorie.equals('Ern√§hrung') }">selected</c:if>>Ern√§hrung</option>
+					<option value="Zubeh√∂r"
+						<c:if test="${ suchkategorie.equals('Schlafen') }">selected</c:if>>Zubeh√∂r</option>
+					<option value="Schlafen"
+						<c:if test="${ suchkategorie.equals('Schlafen') }">selected</c:if>>Schlafen</option>
+					<option value="Pflege"
+						<c:if test="${ suchkategorie.equals('Pflege') }">selected</c:if>>Pflege</option>
+				</select>
+
+				<button class="btn btn-outline-dark" type="submit">Suchen</button>
 			</form>
 		</div>
-		<%-- Splate f¸r die Anzeige der Filterfunktion --%>
-		<div class="col col-2">
-			<select class="form-select" aria-label="Default select example">
-				<option selected disabled>Kategorien Filtern</option>
-				<option value="1">Erneahrung</option>
-				<option value="2">Zubehoer</option>
-				<option value="3">Schlafen</option>
-				<option value="4">Pflege</option>
-			</select>
-		</div>
+		<%-- Spalte f√ºr die Anzeige der Filterfunktion --%>
+
 	</div>
-	<%-- Erzeugung von Zeilen f¸r die Darstellungen der Artikelvorschauen --%>
-	<div class="row">	
-		<%-- Einbindung von ArtikeTag.java, zum dynamischen F¸llen des Inhalts --%>
-		<my:ArtikelListe/>
+	<%-- Erzeugung von Zeilen f√ºr die Darstellungen der Artikelvorschauen --%>
+	<div class="row">
+		<%-- Einbindung von ArtikeTag.java, zum dynamischen F√ºllen des Inhalts --%>
+		<my:ArtikelListe />
 	</div>
 </div>
 

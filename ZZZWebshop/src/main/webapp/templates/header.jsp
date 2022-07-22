@@ -41,7 +41,7 @@
 				<li class="nav-item"><a class="nav-link link-dark"
 					href="index.jsp">Startseite</a></li>
 				<li class="nav-item"><a class="nav-link link-dark"
-					href="artikeluebersicht.jsp">Produkte</a></li>
+					href="artikeluebersicht.jsp">Artikelübersicht</a></li>
 			</ul>
 			<form class="justify-content-end" action="LogoutServlet"
 				method="POST">

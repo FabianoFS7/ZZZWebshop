@@ -1,12 +1,12 @@
 <%-- Konto GUI
 	 TODO Kommentare im Bestellungenteil
 	 @author Eve-Marie Hellmer (356925) & Fabian Segieth (360266) --%>
-	 
+
 <%@ page language="java" session="true"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="/WEB-INF/taglib/customtags.tld" prefix="my"%>	
-<%@ taglib uri="/WEB-INF/taglib/customtags.tld" prefix="my"%>	
+<%@ taglib uri="/WEB-INF/taglib/customtags.tld" prefix="my"%>
+<%@ taglib uri="/WEB-INF/taglib/customtags.tld" prefix="my"%>
 
 
 <%-- Einbindung des Headers --%>
@@ -22,7 +22,7 @@
 		<%-- Erzeugung erste Spalte, für Anzeige von Kontodaten --%>
 		<div class="col col-6">
 			<div class="container">
-				<h4 class="mb-3"> Persönliche Daten</h4>
+				<h4 class="mb-3">Persönliche Daten</h4>
 				<%-- Ausgabe des Vor- & Nachnamen der dem Konto zugeordnet ist --%>
 				<p class="fw-normal">
 					Name:
@@ -50,10 +50,8 @@
 		<%-- Erzeugung zweite Spalte, für Anzeige von den letzten Bestellungen mit dem Konto --%>
 		<div class="col col-6">
 			<h4 class="mb-3">Letzte Bestellungen</h4>
-			<div class="d-flex align-items-center justify-content-center">
-				<div class="accordion" id="accordionExample">
-					<my:Konto/>
-				</div>
+			<div class="accordion">
+				<my:Konto />
 			</div>
 		</div>
 		<div class="col col-4"></div>
