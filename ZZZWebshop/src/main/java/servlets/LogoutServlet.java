@@ -23,6 +23,7 @@ public class LogoutServlet extends HttpServlet {
 	 * Beim Aufrufen dieser Methode wird das Benutzerobjekt aus der Session geloescht und die Session invalidiert.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(); 
 		try {
 			Benutzer benutzer = (Benutzer) session.getAttribute("benutzer"); 

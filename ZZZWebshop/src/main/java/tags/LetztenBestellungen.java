@@ -24,7 +24,7 @@ public class LetztenBestellungen extends SimpleTagSupport {
 	
 	/**
 	 * Aus der Datenbank werden alle Bestellungen eines Nutzers geholt. Dann werden alle Bestellnummern einzelnen 
-	 * aus der Datenbank geholt, um die Gesamtbestellungen zu ermitteln. Anhand der Bestellnummern können wir uns die 
+	 * aus der Datenbank geholt, um die Gesamtbestellungen zu ermitteln. Anhand der Bestellnummern kï¿½nnen wir uns die 
 	 * genauen Bestellungen mit der gleichen Bestellnummer zusammen in einer Liste abspeichern. Diese Bestellungen werden
 	 * dann visuell als Art Liste fuer den Benutzer angezeigt.
 	 */
@@ -44,35 +44,6 @@ public class LetztenBestellungen extends SimpleTagSupport {
 				bestellung = BestellungDatabase.getBestellungen(benutzer.getId(), bsNr);
 				alleBestellungen.add(bestellung);
 			}
-<<<<<<< HEAD
-			out.print("					<div class=\"accordion-item\">\r\n"
-					+ "						<h2 class=\"accordion-header\" id=\"headingTwo\">\r\n"
-					+ "							<button class=\"accordion-button collapsed\" type=\"button\"\r\n"
-					+ "								data-bs-toggle=\"collapse\" data-bs-target=\"#collapse" + i
-					+ "\"\r\n" + "								aria-expanded=\"false\" aria-controls=\"collapse+" + i
-					+ "\">								<div class=\"row justify-content-between\">\r\n"
-					+ "									<div class=\"col-10\">Bestellung vom "+bestellungen.get(0).getBestelltAm()+"</div>\r\n"
-					+ "									<div class=\"col-2\">" + String.format("%.02f", gesamtpreis) + "</div>\r\n"
-					+ "								</div></button>\r\n" + "						</h2>\r\n"
-					+ "						<div id=\"collapse" + i + "\" class=\"accordion-collapse collapse\"\r\n"
-					+ "							aria-labelledby=\"headingTwo\" data-bs-parent=\"#accordionExample\">");
-
-			for (Bestellung bs : bestellungen) {
-				out.print("							<div class=\"accordion-body\">\r\n"
-						+ "								<div class=\"card my-1\" style=\"width: 35rem;\">\r\n"
-						+ "									<div class=\"row\">\r\n"
-						+ "										<div class=\"col\">\r\n"
-						+ "											<div class=\"card-body\">\r\n"
-						+ "												<p class=\"card-text\">" + bs.getMenge() + " * "
-						+ bs.getName() + "</p>\r\n" + "											</div>\r\n"
-						+ "										</div>\r\n"
-						+ "										<div class=\"col my-auto col-md-2\">\r\n"
-						+ "											<h5 class=\"card-title\">"
-						+ bs.getMenge() * bs.getPreis() + "</h5>\r\n"
-						+ "										</div>\r\n"
-						+ "									</div>\r\n" + "								</div>\r\n"
-						+ "							</div>");
-=======
 			int i = 1;
 			for (ArrayList<Bestellung> bestellungen : alleBestellungen) {
 				double gesamtpreis = 0.00;
@@ -85,7 +56,7 @@ public class LetztenBestellungen extends SimpleTagSupport {
 						+ "				data-bs-toggle=\"collapse\" data-bs-target=\"#collapse_" + i + "\""
 						+ "				aria-expanded=\"false\" aria-controls=\"collapse_" + i + "\">"
 						+ "				<div class=\"row w-100\">"
-						+ "					<div class=\"col-10\">Bestellung vom " + bestellungen.get(0).getBestelltAm() + "</div>"
+						+ "					<div class=\"col-10\">Bestellung vom " + bestellungen.get(0).getBestellDatum() + "</div>"
 						+ "					<div class=\"col-2\">" + String.format("%.02f", gesamtpreis) + " &euro;</div>"
 						+ "				</div>"
 						+ " 		</button>"
@@ -115,7 +86,6 @@ public class LetztenBestellungen extends SimpleTagSupport {
 						+ "		</div>"
 						+ "	</div>");
 				i++;
->>>>>>> branch 'master' of https://github.com/FabianoFS7/ZZZWebshop.git
 			}
 		} else {
 			out.print("<div>"

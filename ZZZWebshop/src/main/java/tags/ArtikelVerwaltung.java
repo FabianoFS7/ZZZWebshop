@@ -24,9 +24,9 @@ public class ArtikelVerwaltung extends SimpleTagSupport {
 		ArrayList<Artikel> artikelListe = ArtikelDatabase.getAlleArtikel();	
 		
 		 /*
-	        * Ausgabe aller Artikel
-	        */
-		for(Artikel artikel : artikelListe) {
+	      * Ausgabe aller Artikel mit data-Attributen welche durch Javascript wieder ausgelesen werden
+	      */
+		for (Artikel artikel : artikelListe) {
 			out.print("	<tr class=\"align-middle artikel_eintrag\""
 					+ "		data-id=\"" + artikel.getId() + "\""
 					+ "		data-name=\"" + artikel.getName() + "\""

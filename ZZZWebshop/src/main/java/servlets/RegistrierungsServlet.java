@@ -31,7 +31,6 @@ public class RegistrierungsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		request.setCharacterEncoding("UTF-8");
 
 		String vorname = request.getParameter("vorname");
@@ -46,16 +45,18 @@ public class RegistrierungsServlet extends HttpServlet {
 		String fehler = "";
 		String weiterleitung = "registrierung.jsp";
 
+		// alle Benutzereingaben werden vor der Registrierung validiert
+		// Bei fehlerhaften Eingaben erhält der Nutzer eine entsprechene Info-nachricht
 		if (!EingabeValidierung.istLeer(vorname) && !EingabeValidierung.istLeer(nachname)
 				&& !EingabeValidierung.istLeer(mail) && !EingabeValidierung.istLeer(passwort)
 				&& !EingabeValidierung.istLeer(passwortWDH) && !EingabeValidierung.istLeer(strasse)
 				&& !EingabeValidierung.istLeer(hausnummer) && !EingabeValidierung.istLeer(postleitzahl)
 				&& !EingabeValidierung.istLeer(ort)) {
-			if(RegEx.pruefeEmail(mail)) {
-				if(EingabeValidierung.wiederholePW(passwort, passwortWDH)) {
+			if (RegEx.pruefeEmail(mail)) {
+				if (EingabeValidierung.wiederholePW(passwort, passwortWDH)) {
 					if (RegEx.pruefePasswort(passwort)) {
-						if(RegEx.pruefeHausnummer(hausnummer)) {
-							if(RegEx.pruefePostleitzahl(postleitzahl)) {
+						if (RegEx.pruefeHausnummer(hausnummer)) {
+							if (RegEx.pruefePostleitzahl(postleitzahl)) {
 								HttpSession session = request.getSession();
 								Benutzer benutzer = new Benutzer(vorname, nachname, mail, passwort, strasse, hausnummer, Integer.parseInt(postleitzahl), ort, false);
 								

@@ -17,19 +17,13 @@ public class RegistriereBenutzer {
 
 	private static Connection con = null;
 
-<<<<<<< HEAD
 	/**
 	 * Schreibt einen Benutzer nach erfolgreicher Registrierung in die Datenbank und gibt ein Benutzrrobjekt zurueck.
 	 * @param benutzer Benutzerobjekt fuer Registrierung.
 	 * @return Benutzerobjekt nach erfolreicher Registrierung.
 	 */
-	public static Benutzer registriereBenutzer(Benutzer benutzer) {
-=======
 	public static boolean registriereBenutzer(Benutzer benutzer) {
-
 		boolean erfolg = false;
->>>>>>> branch 'master' of https://github.com/FabianoFS7/ZZZWebshop.git
-
 		try {
 			con = DatabaseConnection.getConnection();
 

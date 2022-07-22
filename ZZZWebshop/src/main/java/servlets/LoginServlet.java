@@ -25,6 +25,7 @@ public class LoginServlet extends HttpServlet {
 	 * der Datenbank uebereinstimmen. nach erfolgreichem login wird der Benutzer in die Session geschrieben.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("email"); 
 		String passwort = request.getParameter("passwort"); 
 		String weiterleitung = "login.jsp"; 

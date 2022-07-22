@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import data.Warenkorb;
 /**
- * In dieser Klasse wird ein Warenkorb in die Datenbank hinzugefuegt, geändert oder geloescht.
+ * In dieser Klasse wird ein Warenkorb in die Datenbank hinzugefuegt, geï¿½ndert oder geloescht.
  * @author Fabian Segieth.
  *
  */
@@ -97,17 +97,13 @@ public class WarenkorbDatabase {
 		return warenkorb;
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * Loescht Posten des Warenkorbs eines Nutzers aus der Datenbank.
-	 * @param warenkorbid Eindeutiger Warenkorb des Nutzers.
+	 * @param benutzerId Eindeutiger Benutzer zum Warenkorb
 	 * @param artikelid Damit wird der Artikel ermittelt, der entfernt wird.
 	 * @return True, falls loeschen des Artikels erfolgrecih war, false sonst.
 	 */
-	public static boolean deletePosten(int warenkorbid, int artikelid) {
-=======
 	public static boolean deletePosten(int benutzerId, int artikelid) {
->>>>>>> branch 'master' of https://github.com/FabianoFS7/ZZZWebshop.git
 		boolean erfolg = false;
 
 		try {
@@ -135,18 +131,15 @@ public class WarenkorbDatabase {
 		return erfolg;
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * Aktualisert die Menge eines Artikels im Warenkorb in der Datenbank.
 	 * @param menge Neue Menge des Artikels.
-	 * @param warenkorbid Zugehoeriger Warenkorb des Benutzers.
+	 * @param benutzerId Zugehoeriger Benutzer zum Warenkorb
 	 * @param artikelid Id des Artikels, dessen Menge aktuallisiert wird.
 	 * @return True wenn update erfolgreich war, false sonst.
 	 */
-	public static boolean updateMenge(int menge, int warenkorbid, int artikelid) {
-=======
+
 	public static boolean updateMenge(int menge, int benutzerId, int artikelid) {
->>>>>>> branch 'master' of https://github.com/FabianoFS7/ZZZWebshop.git
 		boolean erfolg = false;
 
 		try {

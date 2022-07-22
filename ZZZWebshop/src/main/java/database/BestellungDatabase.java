@@ -58,14 +58,11 @@ public class BestellungDatabase {
 		return erfolg;
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * Ermittelt die hoechste Bestell-Id in der Datenbank.
 	 * @param Zuordnung zum Benutzer
 	 * @return Hoechste Benutzer-Id.
 	 */
-=======
->>>>>>> branch 'master' of https://github.com/FabianoFS7/ZZZWebshop.git
 	public static int hoechsteBestellid(int benutzerId) {
 		int id = 1;
 
@@ -85,7 +82,7 @@ public class BestellungDatabase {
 	}
 	
 	/**
-	 * Diese Methode gibt alle Bestellungen innerhalb einer großen Bestellung mit der selben Bestellid
+	 * Diese Methode gibt alle Bestellungen innerhalb einer groï¿½en Bestellung mit der selben Bestellid
 	 *  eines genauen Benutzers als Liste zurueck.
 	 * @param benutzerId Identifikation Benutezr.
 	 * @param bestellId Bestellungen mit der selben Id bilden eine gesamte Bestellung.
@@ -107,7 +104,7 @@ public class BestellungDatabase {
 				Bestellung posten = new Bestellung();
 				posten.setBestellId(rs.getInt("id"));
 				posten.setMenge(rs.getInt("menge"));
-				posten.setBestelltAm(rs.getString("bestellt_am"));
+				posten.setBestellDatum(rs.getString("bestellt_am"));
 				posten.setName(rs.getString("name"));				
 				posten.setPreis(rs.getDouble("preis"));
 				bestellungen.add(posten);
@@ -128,18 +125,13 @@ public class BestellungDatabase {
 		return bestellungen;
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * Gibt bestellids aller Bestellungen eines Benutzers zurueck, um alle Bestellungen zu ermitteln. 
 	 * @param benutzerId Zugehoerigkeit von Bestellung zu Benutzer.
 	 * @return Alle Bestellnummern von kompletten Bestellugnen eines Benutzers.
 	 */
-	public static ArrayList<Integer> getBestellnummern(int benutzerId) {
-		ArrayList<Integer> bestellnummern = new ArrayList<Integer>();
-=======
 	public static List<Integer> getBestellnummern(int benutzerId) {
 		List<Integer> bestellnummern = new ArrayList<Integer>();
->>>>>>> branch 'master' of https://github.com/FabianoFS7/ZZZWebshop.git
 		try {
 			con = DatabaseConnection.getConnection();
 			PreparedStatement pstmt = con

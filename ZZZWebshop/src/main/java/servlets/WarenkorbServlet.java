@@ -28,6 +28,7 @@ public class WarenkorbServlet extends HttpServlet {
 	 * Wenn der Artikel bereits im Warenkorb ist, wird eine Benachrichtigung darueber gemacht.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		int id = Integer.parseInt(request.getParameter("id"));
 		HttpSession session = request.getSession();
 		Benutzer benutzer = (Benutzer) session.getAttribute("benutzer");
@@ -43,7 +44,7 @@ public class WarenkorbServlet extends HttpServlet {
 		}
 		if (!enthalten) {
 			WarenkorbDatabase.fuegeWarenkorb(benutzer.getId(), id, 1);
-			request.setAttribute("erfolg", "Artikel wurde zum Warenkorb hinzugefügt.");
+			request.setAttribute("erfolg", "Artikel wurde zum Warenkorb hinzugefÃ¼gt.");
 		} else {
 			request.setAttribute("info", "Der Artikel befindet sich bereits im Warenkorb.");
 		}

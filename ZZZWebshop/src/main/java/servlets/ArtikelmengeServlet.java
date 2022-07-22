@@ -28,6 +28,7 @@ public class ArtikelmengeServlet extends HttpServlet {
 	 * auf Datenbankebene geloescht.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String methode = request.getParameter("methode");
 		int artikelid = Integer.parseInt(request.getParameter("id"));
 		int menge = Integer.parseInt(request.getParameter("menge"));
@@ -37,7 +38,7 @@ public class ArtikelmengeServlet extends HttpServlet {
 		if (methode.equals("minus")) {
 			if (menge == 1) {
 				WarenkorbDatabase.deletePosten(benutzer.getId(), artikelid);
-				request.setAttribute("info", "Artikel im Warenkorb gelöscht.");
+				request.setAttribute("info", "Artikel im Warenkorb gelï¿½scht.");
 			} else {
 				request.setAttribute("info", "Artikelmenge im Warenkorb verringert.");
 			}

@@ -109,6 +109,7 @@
 
 <script>
 	$(document).ready(function() {
+		// Einlesen aller data-Attribute und diese dann in die Input Felder im Modal ersetzen (mit Löschen Button)
 		$('#artikel_tabelle').on('click', '.artikel_eintrag', function() {
 			Id = $(this).data('id');
 			Name = $(this).data('name');
@@ -127,12 +128,14 @@
 			$('#modal').modal('show');
 		});
 
+		// Oeffnen des Modals (ohne Löschen Button) beim bestaetigen auf "Hinzufügen"
 		$('#artikel_hinzufügen').click(function() {
 			$('#artikel_form').trigger('reset');
 			$('#form_delete').hide();
 			$('#form_type').val('add');
 		});
 
+		// Automatisches Bestaetigen des Formulars im Artikel zu loeschen
 		$('#form_delete').click(function() {
 			$('#form_type').val('delete');
 			$('#artikel_form').submit();
