@@ -55,14 +55,12 @@ public class RegistrierungsServlet extends HttpServlet {
 				if(EingabeValidierung.wiederholePW(passwort, passwortWDH)) {
 					if (RegEx.pruefePasswort(passwort)) {
 						if(RegEx.pruefeHausnummer(hausnummer)) {
-							if(EingabeValidierung.istZahl(postleitzahl) && postleitzahl.length() > 4 &&
-									postleitzahl.length() < 6) {
+							if(RegEx.pruefePostleitzahl(postleitzahl)) {
 								HttpSession session = request.getSession();
 								Benutzer benutzer = new Benutzer(vorname, nachname, mail, passwort, strasse, hausnummer, Integer.parseInt(postleitzahl), ort, false);
 								
 								try {
-									benutzer = RegistriereBenutzer.registriereBenutzer(benutzer);
-									if (benutzer == null) {
+									if (RegistriereBenutzer.registriereBenutzer(benutzer)) {
 										session.setAttribute("benutzer", benutzer);
 										weiterleitung = "index.jsp";
 										request.setAttribute("erfolg", "Du bist nun Registriert.");

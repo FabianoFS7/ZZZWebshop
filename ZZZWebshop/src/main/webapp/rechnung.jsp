@@ -15,9 +15,10 @@
 <%-- Erstellung Container für gesamten Inhalt --%>
 <div class="container mx-auto my-4">
 	<%-- Erzeugung erste Zeile --%>
-	<div class="row justify-content-between">
+	<div class="row">
 		<%-- Erzeugung erste Spalte, für Anzeige von Bestellinformationen --%>
 		<div class="col col-6">
+			<h4 class="mb-3">Status:</h4>
 			<%-- Erzeugung eines Alerts über erfolgreiche Bestellung --%>
 			<div class="alert alert-success" role="alert">
 				<h4 class="alert-heading">Ihre Bestellung war erfolgreich!</h4>
@@ -39,7 +40,7 @@
 		</div>
 		<%-- Erzeugung zweite Spalte, für Anzeige von Bestelldetails, wie Artikelanzahl, -menge & -preis --%>
 		<div class="col col-6">
-			<h4 class="mb-3">Ihre Bestellung</h4>
+			<h4 class="mb-3">Ihre Bestellung:</h4>
 			<%-- TODO funktioniert noch nicht --%>
 			<my:ErfolgreicheBestellung />
 		</div>

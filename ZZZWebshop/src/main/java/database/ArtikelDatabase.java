@@ -32,7 +32,7 @@ public class ArtikelDatabase {
 						rs.getString(4), rs.getString(5), rs.getString(6)));
 			}
 		} catch (SQLException sqle) {
-			System.err.println("[ERROR] Login auf Datenbankebene fehlgeschlagen.");
+			System.err.println("[ERROR] Fehler bei getAlleArtikel().");
 			sqle.printStackTrace();
 		} catch (Exception e) {
 			System.out.println("[ERROR] Unerwarteter Fehler.");
@@ -64,16 +64,16 @@ public class ArtikelDatabase {
 						rs.getString(5), rs.getString(6));
 			}
 		} catch (SQLException sqle) {
-			System.err.println("[ERROR] Login auf Datenbankebene fehlgeschlagen.");
+			System.err.println("[ERROR] Fehler bei getArtikel(): " + sqle.toString());
 			sqle.printStackTrace();
 		} catch (Exception e) {
-			System.out.println("[ERROR] Unerwarteter Fehler.");
+			System.out.println("[ERROR] Unerwarteter Fehler: " + e.toString());
 			e.printStackTrace();
 		} finally {
 			try {
 				con.close();
 			} catch (SQLException e) {
-				System.err.println("[SQL] Fehler bei registriereBenutzer() - Verbindung geschlossen?");
+				System.err.println("[SQL] Fehler getArtikel() - Verbindung geschlossen?");
 			}
 		}
 		return artikel;
@@ -87,19 +87,18 @@ public class ArtikelDatabase {
 	public static Artikel updateArtikel(Artikel artikel) {
 		try {
 			con = DatabaseConnection.getConnection();
-			PreparedStatement pstmt = con.prepareStatement("UPDATE artikel SET name=?, preis=?, beschreibung=?, kategorie=? WHERE id=?");
+			PreparedStatement pstmt = con.prepareStatement("UPDATE artikel SET name=?, bild=?, preis=?, beschreibung=?, kategorie=? WHERE id=?");
 			pstmt.setString(1, artikel.getName());
-			pstmt.setDouble(2, artikel.getPreis());
-			pstmt.setString(3, artikel.getBeschreibung());
-			pstmt.setString(4, artikel.getKategorie());
-			pstmt.setInt(5, artikel.getId());
+			pstmt.setString(2, artikel.getBild());
+			pstmt.setDouble(3, artikel.getPreis());
+			pstmt.setString(4, artikel.getBeschreibung());
+			pstmt.setString(5, artikel.getKategorie());
+			pstmt.setInt(6, artikel.getId());
 			pstmt.executeUpdate();
-
-			System.out.println("[INFO] Artikel geupdated.");
-		} catch (SQLException e) {
-			System.err.println("[SQL] Fehler bei updateArtikel()" + e.toString());
+		} catch (SQLException sqle) {
+			System.err.println("[SQL] Fehler bei updateArtikel(): " + sqle.toString());
 		} catch (Exception e) {
-			System.out.println("[ERROR] Unerwarteter Fehler.");
+			System.out.println("[ERROR] Unerwarteter Fehler: " + e.toString());
 			e.printStackTrace();
 		} finally {
 			try {
@@ -130,15 +129,14 @@ public class ArtikelDatabase {
 			try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
 	            if (generatedKeys.next()) {
 	                artikel.setId(generatedKeys.getInt(1));
-	    			System.out.println("[INFO] ArtikelId: " + generatedKeys.getInt(1));
 	            } else {
 	                throw new SQLException("Creating user failed, no ID obtained.");
 	            }
 	        }
-		} catch (SQLException e) {
-			System.err.println("[SQL] Fehler bei updateArtikel()" + e.toString());
+		} catch (SQLException sqle) {
+			System.err.println("[SQL] Fehler bei updateArtikel(): " + sqle.toString());
 		} catch (Exception e) {
-			System.out.println("[ERROR] Unerwarteter Fehler.");
+			System.out.println("[ERROR] Unerwarteter Fehler: " + e.toString());
 			e.printStackTrace();
 		} finally {
 			try {
@@ -162,10 +160,10 @@ public class ArtikelDatabase {
 			PreparedStatement pstmt = con.prepareStatement("DELETE FROM artikel WHERE id=?");
 			pstmt.setInt(1, artikel.getId());
 			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			System.err.println("[SQL] Fehler bei deleteArtikel()" + e.toString());
+		} catch (SQLException sqle) {
+			System.err.println("[SQL] Fehler bei deleteArtikel()" + sqle.toString());
 		} catch (Exception e) {
-			System.out.println("[ERROR] Unerwarteter Fehler.");
+			System.out.println("[ERROR] Unerwarteter Fehler: " + e.toString());
 			e.printStackTrace();
 		} finally {
 			try {

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import data.Benutzer;
 
@@ -16,17 +17,23 @@ public class RegistriereBenutzer {
 
 	private static Connection con = null;
 
+<<<<<<< HEAD
 	/**
 	 * Schreibt einen Benutzer nach erfolgreicher Registrierung in die Datenbank und gibt ein Benutzrrobjekt zurueck.
 	 * @param benutzer Benutzerobjekt fuer Registrierung.
 	 * @return Benutzerobjekt nach erfolreicher Registrierung.
 	 */
 	public static Benutzer registriereBenutzer(Benutzer benutzer) {
+=======
+	public static boolean registriereBenutzer(Benutzer benutzer) {
+
+		boolean erfolg = false;
+>>>>>>> branch 'master' of https://github.com/FabianoFS7/ZZZWebshop.git
 
 		try {
 			con = DatabaseConnection.getConnection();
 
-			PreparedStatement pstmt = con.prepareStatement("INSERT INTO benutzer (vorname, nachname, email, passwort, strasse, hausnummer, plz, ort, admin) VALUES (?,?,?,?,?,?,?,?,false)");
+			PreparedStatement pstmt = con.prepareStatement("INSERT INTO benutzer (vorname, nachname, email, passwort, strasse, hausnummer, plz, ort, admin) VALUES (?,?,?,?,?,?,?,?,false)", Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, benutzer.getVorname());
 			pstmt.setString(2, benutzer.getNachname());
 			pstmt.setString(3, benutzer.getEmail());
@@ -36,11 +43,13 @@ public class RegistriereBenutzer {
 			pstmt.setInt(7, benutzer.getPostleitzahl());
 			pstmt.setString(8, benutzer.getOrt());
 			pstmt.executeUpdate();
-			try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
-	            if (generatedKeys.next()) {
-	                benutzer.setId(generatedKeys.getInt(1));
-	    			System.out.println("[INFO] BenutzerId: " + generatedKeys.getInt(1));
+			
+			try (ResultSet rs = pstmt.getGeneratedKeys()) {
+	            if (rs.next()) {
+	                benutzer.setId(rs.getInt(1));
+	                erfolg = true;
 	            } else {
+	    			System.out.println("[SQL] Unerwarteter Fehler.");
 	                throw new SQLException("Creating user failed, no ID obtained.");
 	            }
 	        }					
@@ -57,7 +66,7 @@ public class RegistriereBenutzer {
 				System.err.println("[SQL] Fehler bei registriereBenutzer() - Verbindung geschlossen?");
 			}
 		}
-		return benutzer;
+		return erfolg;
 	}
 
 }

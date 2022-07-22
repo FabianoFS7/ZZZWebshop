@@ -26,7 +26,7 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession(); 
 		try {
 			Benutzer benutzer = (Benutzer) session.getAttribute("benutzer"); 
-			request.setAttribute("info", "Bis zum nächsten mal " + benutzer.getVorname());
+			request.setAttribute("info", "Bis zum nächsten mal " + benutzer.getFullName() + ". Du bist nun abgemeldet.");
 			
 			session.removeAttribute("benutzer");
 			session.invalidate();

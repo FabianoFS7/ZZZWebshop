@@ -24,23 +24,23 @@
 		<%-- Erzeugung erste Spalte --%>
 		<div class="col-sm-4">
 			<%-- Erzeugung Card mit Hintergrundschatten, zur besseren Abhebung vom Hintergrund --%>
-			<div class="card shadow">
+			<div class="card shadow h-100">
 				<%-- Anzeige des Kategoriebilds, zur Verdeutlichung um welche Kategorie es sich handelt --%>
 				<img src="assets/images/Trockenfleisch.jpg" class="card-img-top"
 					alt="Trockenfleisch">
 				<%-- Anzeige des des Kategorienames & Bedeutung --%>
 				<div class="card-body">
-					<h5 class="card-title">Ernährung & Pfege</h5>
+					<h5 class="card-title">Ernährung & Pflege</h5>
 					<p class="card-text">Alles rund um ausgewogene Mahlzeiten und
 						Snacks für deinen liebsten Vierbeiner. Und wenn es mal matschig
-						ist, kann man ihn auch mal mit einer Verwöhndusche überraschen.!</p>
+						ist, kann man ihn auch mal mit einer Verwöhndusche überraschen!</p>
 				</div>
 			</div>
 		</div>
 		<%-- Erzeugung zweite Spalte --%>
 		<div class="col-sm-4">
 			<%-- Erzeugung Card mit Hintergrundschatten, zur besseren Abhebung vom Hintergrund --%>
-			<div class="card shadow">
+			<div class="card shadow h-100">
 				<%-- Anzeige des Kategoriebilds, zur Verdeutlichung um welche Kategorie es sich handelt --%>
 				<img src="assets/images/Hundeleine_sport.jpg" class="card-img-top"
 					alt="Hundeleine">
@@ -56,7 +56,7 @@
 		<%-- Erzeugung dritte Spalte --%>
 		<div class="col-sm-4">
 			<%-- Erzeugung Card mit Hintergrundschatten, zur besseren Abhebung vom Hintergrund --%>
-			<div class="card shadow">
+			<div class="card shadow h-100">
 				<%-- Anzeige des Kategoriebilds, zur Verdeutlichung um welche Kategorie es sich handelt --%>
 				<img src="assets/images/Hundebett_Superweich.jpg"
 					class="card-img-top" alt="Hundebett">

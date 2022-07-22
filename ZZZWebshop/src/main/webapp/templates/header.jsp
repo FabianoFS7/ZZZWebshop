@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <%-- Anzeige des Seittitels im Tab --%>
-<title>${param.title} | Puppy-Deluxe</title>
+<title>${param.title} | PuppieDeluxe</title>
 <%-- Eindindung von Bootstrap Version 5.2 --%>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
@@ -18,7 +18,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 <link rel="stylesheet" href="css/stylesheet.css">
 <%-- Eindindung des Logos als Tab-Symbol --%>
-<link rel="icon" href="assets/logos/logo.jpg">
+<link rel="icon" href="assets/logos/logo.png">
 </head>
 <body>
 	<%-- Eindindung von Bootstraps JS --%>
@@ -33,15 +33,15 @@
 		<div class="container-fluid">
 			<%-- Anzeige von Logo & Websitename --%>
 			<a class="navbar-brand" href="index.jsp"> <img
-				src="assets/logos/logo.jpg" alt="Logo" width="30" height="24"
-				class="d-inline-block align-text-top"> Puppy-Deluxe Webshop
+				src="assets/logos/logo.png" alt="Logo" width="40"
+				class="d-inline-block align-text-top me-2"> PuppieDeluxe Webshop
 			</a>
 			<%-- Links zum navigieren zu Startseite & Artikelübersicht --%>
 			<ul class="nav justify-content-center">
 				<li class="nav-item"><a class="nav-link link-dark"
 					href="index.jsp">Startseite</a></li>
 				<li class="nav-item"><a class="nav-link link-dark"
-					href="artikeluebersicht.jsp">Produkte</a></li>
+					href="artikeluebersicht.jsp">Artikelübersicht</a></li>
 			</ul>
 			<form class="justify-content-end" action="LogoutServlet"
 				method="POST">

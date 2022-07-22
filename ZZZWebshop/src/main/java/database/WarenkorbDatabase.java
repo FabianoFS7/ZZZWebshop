@@ -30,7 +30,7 @@ public class WarenkorbDatabase {
 		try {
 			con = DatabaseConnection.getConnection();
 
-			PreparedStatement pstmt = con.prepareStatement("INSERT INTO warenkorb VALUES(?,?,?)");
+			PreparedStatement pstmt = con.prepareStatement("INSERT INTO warenkorb (benutzerid, artikelid, menge) VALUES(?,?,?)");
 			pstmt.setInt(1, benutzerId);
 			pstmt.setInt(2, artikelId);
 			pstmt.setInt(3, menge);
@@ -65,14 +65,14 @@ public class WarenkorbDatabase {
 		try {
 			con = DatabaseConnection.getConnection();
 			PreparedStatement pstmt = con
-					.prepareStatement("SELECT * FROM warenkorb JOIN artikel on artikelid = artikel.id WHERE warenkorb.id = ? ORDER BY artikel.name");
+					.prepareStatement("SELECT artikelid, menge, name, kategorie, preis FROM warenkorb JOIN artikel on artikelid = artikel.id WHERE warenkorb.benutzerid = ? ORDER BY artikel.name");
 			pstmt.setInt(1, benutzerId);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
 				Warenkorb posten = new Warenkorb();
 				posten.setWarenkorbId(benutzerId);
-				posten.setId(rs.getInt("artikelId"));
+				posten.setId(rs.getInt("artikelid"));
 				posten.setMenge(rs.getInt("menge"));
 				posten.setName(rs.getString("name"));
 				posten.setKategorie(rs.getString("kategorie"));
@@ -84,6 +84,7 @@ public class WarenkorbDatabase {
 			System.err.println("[ERROR] getWarenkorb() auf Datenbankebene fehlgeschlagen.");
 			sqle.printStackTrace();
 		} catch (Exception e) {
+			
 			System.out.println("[ERROR] Unerwarteter Fehler.");
 			e.printStackTrace();
 		} finally {
@@ -96,6 +97,7 @@ public class WarenkorbDatabase {
 		return warenkorb;
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * Loescht Posten des Warenkorbs eines Nutzers aus der Datenbank.
 	 * @param warenkorbid Eindeutiger Warenkorb des Nutzers.
@@ -103,12 +105,15 @@ public class WarenkorbDatabase {
 	 * @return True, falls loeschen des Artikels erfolgrecih war, false sonst.
 	 */
 	public static boolean deletePosten(int warenkorbid, int artikelid) {
+=======
+	public static boolean deletePosten(int benutzerId, int artikelid) {
+>>>>>>> branch 'master' of https://github.com/FabianoFS7/ZZZWebshop.git
 		boolean erfolg = false;
 
 		try {
 			con = DatabaseConnection.getConnection();
-			PreparedStatement pstmt = con.prepareStatement("DELETE FROM warenkorb WHERE id = ? AND artikelid = ?");
-			pstmt.setInt(1, warenkorbid);
+			PreparedStatement pstmt = con.prepareStatement("DELETE FROM warenkorb WHERE benutzerid = ? AND artikelid = ?");
+			pstmt.setInt(1, benutzerId);
 			pstmt.setInt(2, artikelid);
 			
 			int zeilen = pstmt.executeUpdate();
@@ -130,6 +135,7 @@ public class WarenkorbDatabase {
 		return erfolg;
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * Aktualisert die Menge eines Artikels im Warenkorb in der Datenbank.
 	 * @param menge Neue Menge des Artikels.
@@ -138,13 +144,16 @@ public class WarenkorbDatabase {
 	 * @return True wenn update erfolgreich war, false sonst.
 	 */
 	public static boolean updateMenge(int menge, int warenkorbid, int artikelid) {
+=======
+	public static boolean updateMenge(int menge, int benutzerId, int artikelid) {
+>>>>>>> branch 'master' of https://github.com/FabianoFS7/ZZZWebshop.git
 		boolean erfolg = false;
 
 		try {
 			con = DatabaseConnection.getConnection();
-			PreparedStatement pstmt = con.prepareStatement("UPDATE warenkorb SET menge = ? WHERE id = ? AND artikelid = ?");
+			PreparedStatement pstmt = con.prepareStatement("UPDATE warenkorb SET menge = ? WHERE benutzerid = ? AND artikelid = ?");
 			pstmt.setInt(1, menge);
-			pstmt.setInt(2, warenkorbid);
+			pstmt.setInt(2, benutzerId);
 			pstmt.setInt(3, artikelid);
 			
 			int zeilen = pstmt.executeUpdate();
