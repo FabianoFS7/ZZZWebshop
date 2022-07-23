@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import data.Warenkorb;
 /**
- * In dieser Klasse wird ein Warenkorb in die Datenbank hinzugefuegt, ge�ndert oder geloescht.
+ * In dieser Klasse wird ein Warenkorb in die Datenbank hinzugefuegt, geaendert oder geloescht.
  * @author Fabian Segieth.
  *
  */

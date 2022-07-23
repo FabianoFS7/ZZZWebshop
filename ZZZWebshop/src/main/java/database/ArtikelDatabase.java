@@ -10,8 +10,8 @@ import data.Artikel;
 
 /**
  * In dieser Klasse holen, veraendern und loeschen wir Daten ueber den Artikel aus der Datenbank.
+ * @author Eve-Marie Hellmer
  * @author Fabian Segieth
- *
  */
 public class ArtikelDatabase {
 
@@ -28,8 +28,14 @@ public class ArtikelDatabase {
 			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM artikel ORDER BY id");
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				artikelListe.add(new Artikel(rs.getInt(1), rs.getString(2), rs.getDouble(3),
-						rs.getString(4), rs.getString(5), rs.getString(6)));
+				artikelListe.add(new Artikel(
+						rs.getInt(1), 
+						rs.getString(2), 
+						rs.getDouble(3),
+						rs.getString(4), 
+						rs.getString(5), 
+						rs.getString(6)
+						));
 			}
 		} catch (SQLException sqle) {
 			System.err.println("[ERROR] Fehler bei getAlleArtikel().");
@@ -82,7 +88,7 @@ public class ArtikelDatabase {
 	/**
 	 * Diese Methode veraendert einen Artikeldatensatz.
 	 * @param artikel Artikelobjekt, das geaendert wird.
-	 * @return Gibt den geänderten Artikel zurueck.
+	 * @return Gibt den geaenderten Artikel zurueck.
 	 */
 	public static Artikel updateArtikel(Artikel artikel) {
 		try {
@@ -113,10 +119,9 @@ public class ArtikelDatabase {
 	/**
 	 * Mit dieser Methode wird ein Artikelobjekt in die Datenbank geschrieben.
 	 * @param artikel Artikel, der in die Datenbank geschrieben wird.
-	 * @return
+	 * @return artikel Artikel, mit Id welcher in der Datnbank generiert wurde.
 	 */
 	public static Artikel addArtikel(Artikel artikel) {
-
 		try {
 			con = DatabaseConnection.getConnection();
 			PreparedStatement pstmt = con.prepareStatement("INSERT INTO artikel (name, preis, beschreibung, kategorie, bild) VALUES(?,?,?,?,?)");
@@ -151,10 +156,9 @@ public class ArtikelDatabase {
 	/**
 	 * Damit wird ein Artikel aus der Datenbank geloescht.
 	 * @param artikel Artikel, der geloescht wird.
-	 * @return 
+	 * @return artikel Artikel, der geloescht wurde.
 	 */
 	public static Artikel deleteArtikel(Artikel artikel) {
-
 		try {
 			con = DatabaseConnection.getConnection();
 			PreparedStatement pstmt = con.prepareStatement("DELETE FROM artikel WHERE id=?");

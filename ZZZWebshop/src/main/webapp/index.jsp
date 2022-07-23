@@ -30,7 +30,7 @@
 					alt="Trockenfleisch">
 				<%-- Anzeige des des Kategorienames & Bedeutung --%>
 				<div class="card-body">
-					<h5 class="card-title">Ernährung & Pflege</h5>
+					<h5 class="card-title">Ernährung &amp; Pflege</h5>
 					<p class="card-text">Alles rund um ausgewogene Mahlzeiten und
 						Snacks für deinen liebsten Vierbeiner. Und wenn es mal matschig
 						ist, kann man ihn auch mal mit einer Verwöhndusche überraschen!</p>
@@ -46,7 +46,7 @@
 					alt="Hundeleine">
 				<%-- Anzeige des des Kategorienames & Bedeutung --%>
 				<div class="card-body">
-					<h5 class="card-title">Zubehör & Spielzeug</h5>
+					<h5 class="card-title">Zubehör &amp; Spielzeug</h5>
 					<p class="card-text">Was das kleine Herz höher schlägenlässt.
 						Von sportlichen Gadjets und Leinen bis hin zum Kuscheltier. Damit
 						kannst du es deinem Hund so richtig schön machen!</p>
@@ -62,7 +62,7 @@
 					class="card-img-top" alt="Hundebett">
 				<%-- Anzeige des des Kategorienames & Bedeutung --%>
 				<div class="card-body">
-					<h5 class="card-title">Schlafen & Erholung</h5>
+					<h5 class="card-title">Schlafen &amp; Erholung</h5>
 					<p class="card-text">Auch Helden müssen mal schlafen. Am besten
 						auf einer flauschigen und bewuemen Matte. Gönne deinem Puppie
 						einen schönen Schlaf!</p>

@@ -28,7 +28,7 @@ public class BestellungsServlet extends HttpServlet {
   
 	/**
 	 * Der Inhalt der Warenkorbliste wird hier in eine Bestellliste kopiert, die dann in die Session gespeichert wird und bei der
-	 * Rechnungsbestatigung angezeigt wird. Beim Bestellen wird au�erdem der Warenkorb des Benutzers geloescht.
+	 * Rechnungsbestatigung angezeigt wird. Beim Bestellen wird ausserdem der Warenkorb des Benutzers geloescht.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");

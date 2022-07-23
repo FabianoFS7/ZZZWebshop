@@ -38,7 +38,7 @@ public class ArtikelmengeServlet extends HttpServlet {
 		if (methode.equals("minus")) {
 			if (menge == 1) {
 				WarenkorbDatabase.deletePosten(benutzer.getId(), artikelid);
-				request.setAttribute("info", "Artikel im Warenkorb gel�scht.");
+				request.setAttribute("info", "Artikel im Warenkorb gelöscht.");
 			} else {
 				request.setAttribute("info", "Artikelmenge im Warenkorb verringert.");
 			}

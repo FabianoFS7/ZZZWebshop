@@ -24,7 +24,7 @@ public class LetztenBestellungen extends SimpleTagSupport {
 	
 	/**
 	 * Aus der Datenbank werden alle Bestellungen eines Nutzers geholt. Dann werden alle Bestellnummern einzelnen 
-	 * aus der Datenbank geholt, um die Gesamtbestellungen zu ermitteln. Anhand der Bestellnummern k�nnen wir uns die 
+	 * aus der Datenbank geholt, um die Gesamtbestellungen zu ermitteln. Anhand der Bestellnummern koennen wir uns die 
 	 * genauen Bestellungen mit der gleichen Bestellnummer zusammen in einer Liste abspeichern. Diese Bestellungen werden
 	 * dann visuell als Art Liste fuer den Benutzer angezeigt.
 	 */
@@ -39,18 +39,25 @@ public class LetztenBestellungen extends SimpleTagSupport {
 		List<Integer> bestellnummern = BestellungDatabase.getBestellnummern(benutzer.getId());
 		ArrayList<Bestellung> bestellung = new ArrayList<Bestellung>();
 		
+		// Wurden bereits Bestellungen geteatigt? Dann alle anzeigen, ansonsten Hinweistext mit dieser Info.
 		if (bestellnummern.size() != 0) {
 			for (Integer bsNr : bestellnummern) {
 				bestellung = BestellungDatabase.getBestellungen(benutzer.getId(), bsNr);
 				alleBestellungen.add(bestellung);
 			}
+			// Variable zum Zählen der Bestellungen um ab dem 5ten Element die .multicollape Klasse hinzuzufügen
 			int i = 1;
+			// String in dem die .multicollape Klasse gespeichert wird
+			String mehrAnzeigen ="";
 			for (ArrayList<Bestellung> bestellungen : alleBestellungen) {
 				double gesamtpreis = 0.00;
 				for (Bestellung bs : bestellungen) {
 					gesamtpreis += bs.getPreis() * bs.getMenge();
 				}
-				out.print("	<div class=\"accordion-item\" id=\"accordion\">"
+				if (i > 5) {
+					mehrAnzeigen = "collapse multi-collapse";
+				}
+				out.print("	<div class=\"accordion-item " + mehrAnzeigen + "\" id=\"accordion\">"
 						+ "		<h2 class=\"accordion-header\" id=\"heading_" + i + "\">"
 						+ "			<button class=\"accordion-button\" type=\"button\""
 						+ "				data-bs-toggle=\"collapse\" data-bs-target=\"#collapse_" + i + "\""
@@ -87,6 +94,9 @@ public class LetztenBestellungen extends SimpleTagSupport {
 						+ "	</div>");
 				i++;
 			}
+			// Button zum Anzeigen aller Elemente mit .multicollape Klasse
+			// Der Button wird dabei auch selbst ausgeblendet
+			out.print(" <div class=\"btn btn-dark mt-2 collapse multi-collapse show\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\".multi-collapse\">mehr anzeigen</div>");
 		} else {
 			out.print("<div>"
 					+ "		Es wurde noch keine Bestellung aufgegeben"

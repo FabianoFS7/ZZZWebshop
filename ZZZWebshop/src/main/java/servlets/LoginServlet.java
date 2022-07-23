@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 			Benutzer benutzer = LoginBenutzer.loginBenutzer(email, passwort); 
 				if (benutzer != null) {
 					session.setAttribute("benutzer", benutzer);
-					weiterleitung = "index.jsp";
+					weiterleitung = "konto.jsp";
 					request.setAttribute("erfolg", "Willkommen zurück " + benutzer.getVorname() + ". Du bist nun angemeldet."); 
 				} else {
 					request.setAttribute("fehler", "Die Kombination aus E-Mail und Passwort ist nicht korrekt!"); 

@@ -11,17 +11,17 @@
 	<div class="row justify-content-between">
 		<div class="col col-6">
 			<div class="container">
-				<h4 class="mb-3">Rechnungs- & Versandadresse</h4>
+				<h4 class="mb-3">Rechnungs- &amp; Versandadresse</h4>
 				<p class="fw-normal">
 					Name:
 					<c:out value="${sessionScope.benutzer.getFullName()}" />
 				</p>
 				<p class="fw-normal">
-					Straße & Hausnummer:
+					Straße &amp; Hausnummer:
 					<c:out value="${sessionScope.benutzer.getFullStrasse()}" />
 				</p>
 				<p class="fw-normal">
-					PLZ & Ort:
+					PLZ &amp; Ort:
 					<c:out value="${sessionScope.benutzer.getFullOrt()}" />
 				</p>
 				<br>

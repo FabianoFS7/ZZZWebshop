@@ -82,7 +82,7 @@ public class BestellungDatabase {
 	}
 	
 	/**
-	 * Diese Methode gibt alle Bestellungen innerhalb einer gro�en Bestellung mit der selben Bestellid
+	 * Diese Methode gibt alle Bestellungen innerhalb einer grossen Bestellung mit der selben Bestellid
 	 *  eines genauen Benutzers als Liste zurueck.
 	 * @param benutzerId Identifikation Benutezr.
 	 * @param bestellId Bestellungen mit der selben Id bilden eine gesamte Bestellung.

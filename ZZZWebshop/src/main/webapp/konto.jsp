@@ -30,12 +30,12 @@
 				</p>
 				<%-- Ausgabe der Straﬂe & Hausnummer die dem Konto zugeordnet ist --%>
 				<p class="fw-normal">
-					Straﬂe & Hausnummer:
+					Straﬂe &amp; Hausnummer:
 					<c:out value="${sessionScope.benutzer.getFullStrasse()}" />
 				</p>
 				<%-- Ausgabe des Wohnorts die dem Konto zugeordnet ist --%>
 				<p class="fw-normal">
-					PLZ & Ort:
+					PLZ &amp; Ort:
 					<c:out value="${sessionScope.benutzer.getFullOrt()}" />
 				</p>
 				<br>
@@ -54,7 +54,6 @@
 				<my:Konto />
 			</div>
 		</div>
-		<div class="col col-4"></div>
 	</div>
 </div>
 

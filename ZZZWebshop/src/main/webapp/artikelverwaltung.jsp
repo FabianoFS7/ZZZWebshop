@@ -1,5 +1,4 @@
 <%-- Artikelverwaltung GUI
-	 TODO Kommentare im Scriptteil
 	 @author Eve-Marie Hellmer (356925) --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"

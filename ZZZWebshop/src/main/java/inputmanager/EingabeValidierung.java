@@ -1,4 +1,5 @@
 package inputmanager;
+
 /**
  * In dieser Klasse gibt es Methoden, zum pruefen von Eingaben des Nutzers.
  * @author Fabian Segieth
@@ -43,5 +44,4 @@ public class EingabeValidierung {
 		}
 		return isZahl;
 	}
-
 }

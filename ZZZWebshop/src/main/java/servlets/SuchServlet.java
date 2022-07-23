@@ -37,7 +37,7 @@ public class SuchServlet extends HttpServlet {
 
 	/**
 	 * Wir bekommen einen String als Filter. Wir ueberpruefen alle Artikelnamen sowie deren Beschreibungen auf
-	 * uebereinstimmung mit der Eingabe, gro� und kleinschreibung wird dabei nicht beachtet. Wenn ein Artikel uebereinstimmt,
+	 * uebereinstimmung mit der Eingabe, gross und kleinschreibung wird dabei nicht beachtet. Wenn ein Artikel uebereinstimmt,
 	 * wird dieser in eine Liste aufgenommen, die die gefilterten Artikel enthaelt.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
