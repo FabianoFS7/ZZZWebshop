@@ -40,8 +40,10 @@
 			<ul class="nav justify-content-center">
 				<li class="nav-item"><a class="nav-link link-dark"
 					href="index.jsp">Startseite</a></li>
-				<li class="nav-item"><a class="nav-link link-dark"
-					href="artikeluebersicht.jsp">Artikelübersicht</a></li>
+				<c:if test="${benutzer != null }">
+					<li class="nav-item"><a class="nav-link link-dark"
+						href="artikeluebersicht.jsp">Artikelübersicht</a></li>
+				</c:if>	
 			</ul>
 			<form class="justify-content-end" action="LogoutServlet"
 				method="POST">
