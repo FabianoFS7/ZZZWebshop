@@ -15,17 +15,19 @@ import inputmanager.EingabeValidierung;
 import inputmanager.RegEx;
 
 /**
- * Diese Klasse ist fuer die Registrierung des Benutzers zustaendig.
+ * RegistrierungsServlet
+ * Klasse f√ºr Registrierung des Benutzers
  * 
- * @author Fabian Segieth. Servlet implementation class RegistrieurngsServlet
+ * @author Fabian Segieth (360266) & Eve-Marie Hellmer (356925)
  */
+
 @WebServlet("/RegistrierungsServlet")
 public class RegistrierungsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * In dieser Methode bekommen wir alle Registrierungsdaten des Nutzers und
-	 * ueberpruefen diese Daten, ob diese den Vorgaben entsprechen und ob der Nutzer
+	/*
+	 * Erhalt aller Registrierungsdaten des Nutzers und
+	 * √úberpr√ºfung dieser Daten, ob diese den Vorgaben entsprechen und ob der Nutzer
 	 * nicht schon registriert ist. Nach erfolgreicher Registrierung wird der
 	 * Benutzer in die Datenbank geschrieben und ein Benutzerobjekt wird in der
 	 * Session angelegt.
@@ -82,18 +84,17 @@ public class RegistrierungsServlet extends HttpServlet {
 							fehler += "Hausnummer entspricht nicht dem richtigen Format! (3 Zeichen)";
 						}
 					} else {
-						fehler += "Passwort entspricht nicht dem richtigen Format! (mind. 8 Zeichen inkl. Groﬂbuchstabe, Kleinbuchstabe & Sonderzeichen)";
+						fehler += "Passwort entspricht nicht dem richtigen Format! (mind. 8 Zeichen inkl. Gro√übuchstabe, Kleinbuchstabe & Sonderzeichen)";
 					}
 
 				} else {
-					fehler += "Passwˆrter stimmen nicht ‹berein! ";
+					fehler += "Passw√∂rter stimmen nicht √ºberein! ";
 				}
 			} else {
 				fehler += "Die Email entspricht nicht der Vorgabe! ";
 			}
-
 		} else {
-			fehler += "Es wurden nicht alle Pflichtfelder ausgef¸llt!";
+			fehler += "Es wurden nicht alle Pflichtfelder ausgef√ºllt!";
 		}
 		request.setAttribute("fehler", fehler);
 		request.getRequestDispatcher(weiterleitung).forward(request, response);

@@ -12,7 +12,7 @@ import data.Warenkorb;
  * In dieser Klasse wird ein Warenkorb in die Datenbank hinzugefuegt, geaendert
  * oder geloescht.
  * 
- * @author Fabian Segieth.
+ * @author Fabian Segieth (360266) & Eve-Marie Hellmer (356925)
  *
  */
 public class WarenkorbDatabase {

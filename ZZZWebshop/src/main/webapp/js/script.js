@@ -1,18 +1,6 @@
-function nameToUpperCase(field) {
-	field.value = field.value.toUpperCase();
-}
+/* JavaScript */
 
-function checkRating(field) {
-	var value = field.value;
-
-	if (value <= 0 || value > 5) {
-		field.style.backgroundColor = 'red';
-	} else {
-		field.style.backgroundColor = 'green';
-	}
-}
-
-
+/* Ermöglicht dynamisches Ausbleben nach drei Sekunden von allen alert-nachicht */
 $(document).ready(function() {
 	window.setTimeout(function() {
 		$(".alert-nachricht").fadeTo(1000, 0).slideUp(1000, function() {

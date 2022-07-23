@@ -11,9 +11,10 @@ import javax.servlet.http.HttpSession;
 import data.Benutzer;
 
 /**
- * Hier wird der Logout vom Benutzer gemanaged.
+ * LogoutServlet
+ * Hier wird der Logout vom Benutzer gemanaged
  * 
- * @author Fabian Segieth Servlet implementation class LogoutServlet
+ * @author Fabian Segieth (360266) & Eve-Marie Hellmer (356925)
  */
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {

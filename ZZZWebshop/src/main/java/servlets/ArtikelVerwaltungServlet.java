@@ -13,32 +13,19 @@ import database.ArtikelDatabase;
 import inputmanager.EingabeValidierung;
 
 /**
- * Servlet implementation class IndexServlet
+ * ArtikelVerwaltungServlet
+ * Einlesen der Formulardaten und entsprechend Artikel verändern
+ * 
+ * @author Eve-Marie Hellmer (356925)
  */
 @WebServlet("/ArtikelVerwaltungServlet")
 public class ArtikelVerwaltungServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public ArtikelVerwaltungServlet() {
-		super();
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	/*
+	 * Bekommt type, id, name, bild, beschreibung, kategorie und preis aus der request. 
+	 * Dann wird anhand des type ein Artikel erstellt, verändert oder gelöscht
+	 * geschrieben.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -56,6 +43,7 @@ public class ArtikelVerwaltungServlet extends HttpServlet {
 		try {
 			switch (type) {
 			case "add":
+				// Artikel wird in der Datenbank nach prüfen der Eingabeparameter erstellt
 				if (!EingabeValidierung.istLeer(type) && !EingabeValidierung.istLeer(name)
 						&& !EingabeValidierung.istLeer(bild)
 						&& !EingabeValidierung.istLeer(beschreibung) 
@@ -66,9 +54,12 @@ public class ArtikelVerwaltungServlet extends HttpServlet {
 					artikel.setKategorie(kategorie);
 					artikel.setPreis(Double.parseDouble(preis));
 					ArtikelDatabase.addArtikel(artikel);
+				} else {
+					request.setAttribute("fehler", "Eingabefehler bei der Artikelerstellung!");
 				}
 				break;
 			case "edit":
+				// Artikel wird in der Datenbank nach prüfen der Eingabeparameter verändert
 				if (EingabeValidierung.istZahl(id) && !EingabeValidierung.istLeer(type)
 						&& !EingabeValidierung.istLeer(bild)
 						&& !EingabeValidierung.istLeer(name) 
@@ -81,22 +72,28 @@ public class ArtikelVerwaltungServlet extends HttpServlet {
 					artikel.setKategorie(kategorie);
 					artikel.setPreis(Double.parseDouble(preis));
 					ArtikelDatabase.updateArtikel(artikel);
+				}else {
+					request.setAttribute("fehler", "Eingabefehler bei der Artikeländerung");
 				}
 				break;
 			case "delete":
+				// Artikel wird in der Datenbank nach prüfen des Eingabeparameters gelöscht
 				if (EingabeValidierung.istZahl(id)) {
 					artikel.setId(Integer.parseInt(id));
 					ArtikelDatabase.deleteArtikel(artikel);
+				}else {
+					request.setAttribute("fehler", "Eingabefehler bei der Artikellöschung!");
 				}
 				break;
 			default:
+				// Falls type nicht korrekt ist wird eine Fehlermeldung ausgegeben
 				request.setAttribute("fehler", "Type ist nicht gesetzt!");
 				break;
 			}
 		} catch (NullPointerException npe) {
-			request.setAttribute("fehler", "NullPointerException !");
+			request.setAttribute("fehler", "Type ist nicht gesetzt!");
 		} catch (Exception e) {
-			request.setAttribute("fehler", "Exception !");
+			request.setAttribute("fehler", "Type ist nicht gesetzt!");
 		}
 		request.getRequestDispatcher("artikelverwaltung.jsp").forward(request, response);
 	}

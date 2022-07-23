@@ -26,7 +26,7 @@
 			<%-- Erzeugung Card mit Hintergrundschatten, zur besseren Abhebung vom Hintergrund --%>
 			<div class="card shadow h-100">
 				<%-- Anzeige des Kategoriebilds, zur Verdeutlichung um welche Kategorie es sich handelt --%>
-				<img src="assets/images/Trockenfleisch.jpg" class="card-img-top"
+				<img src="assets/images/Trockenfleisch.jpg"
 					alt="Trockenfleisch">
 				<%-- Anzeige des des Kategorienames & Bedeutung --%>
 				<div class="card-body">
@@ -42,7 +42,7 @@
 			<%-- Erzeugung Card mit Hintergrundschatten, zur besseren Abhebung vom Hintergrund --%>
 			<div class="card shadow h-100">
 				<%-- Anzeige des Kategoriebilds, zur Verdeutlichung um welche Kategorie es sich handelt --%>
-				<img src="assets/images/Hundeleine_sport.jpg" class="card-img-top"
+				<img src="assets/images/Hundeleine_sport.jpg"
 					alt="Hundeleine">
 				<%-- Anzeige des des Kategorienames & Bedeutung --%>
 				<div class="card-body">
@@ -59,7 +59,7 @@
 			<div class="card shadow h-100">
 				<%-- Anzeige des Kategoriebilds, zur Verdeutlichung um welche Kategorie es sich handelt --%>
 				<img src="assets/images/Hundebett_Superweich.jpg"
-					class="card-img-top" alt="Hundebett">
+					 alt="Hundebett">
 				<%-- Anzeige des des Kategorienames & Bedeutung --%>
 				<div class="card-body">
 					<h5 class="card-title">Schlafen &amp; Erholung</h5>

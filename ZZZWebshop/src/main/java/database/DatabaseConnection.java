@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /** Klasse um die Verbindung zur SQL-Datenbank zu erstellen
- * Diese Klasse wurde aus dem Learnweb uebernommen.
- * @author Jan Sarstedt
+ *  Diese Klasse wurde aus dem Learnweb uebernommen.
+ *  @author Jan Sarstedt
  */
 public class DatabaseConnection {
 	
@@ -35,7 +35,7 @@ public class DatabaseConnection {
 		return null;
 	}
 
-	/** Rufe eine Verbindung auf, wenn eine bereits existiert. Wenn nicht, rufe init() auf 
+	/** Rufe  Verbindung auf, wenn eine bereits existiert. Wenn nicht, rufe init() auf 
 	 * @throws SQLException */
 	public static Connection getConnection() throws SQLException {
 		try {

@@ -14,17 +14,16 @@ import data.Bestellung;
 import java.util.ArrayList;
 
 /**
- * BestellungAuflisten.java Dieser Tag dient zur Auflistung einer Bestellung auf
- * der rechnung.jsp.
+ * BestellungAuflisten
+ * Tag dient zur Auflistung einer Bestellung der rechnung.jsp.
  * 
  * @author Eve-Marie Hellmer (356925) & Fabian Segieth (360266)
  */
 
 public class BestellungAuflisten extends SimpleTagSupport {
 
-	/**
-	 * Fuer jeden Eintrag in der Bestellliste, die wir uns aus der Session holen,
-	 * wird dynamisch eine "card" erstellt.
+	/*
+	 * Fuer jeden Eintrag in der Bestellliste, aus der Session wird dynamisch eine Card erstellt
 	 */
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
@@ -39,20 +38,25 @@ public class BestellungAuflisten extends SimpleTagSupport {
 		 * Ausgabe der Artikel aus der Bestellung
 		 */
 		for (Bestellung bestellung : bestellungen) {
-			out.print("	<div class=\"card mb-3\">" + "		<div class=\"card-body\">" + "			<div class=\"row\">"
-					+ "				<div class=\"col col-6\">" + "					<h5 class=\"card-title\">"
-					+ bestellung.getName() + "</h5>" + "				</div>"
-					+ "				<div class=\"col col-3\">" + "					<h5 class=\"card-title\">"
-					+ bestellung.getMenge() + " x " + String.format("%.02f", bestellung.getPreis()) + " &euro;</h5>"
-					+ "				</div>" + "				<div class=\"col col-3\">"
-					+ "					<h5 class=\"card-title\">= "
-					+ String.format("%.02f", bestellung.getPreis() * bestellung.getMenge()) + " &euro;</h5>"
-					+ "				</div>" + "			</div>" + "		</div>"
-					+ "		<div class=\"card-footer text-muted\">Kategorie: " + bestellung.getKategorie() + "</div>"
+			out.print("	<div class=\"card mb-3\">" // Erstellung Card, für jeden einezlenen Artikel
+					+ "		<div class=\"card-body\">" 
+					+ "			<div class=\"row\">" // Erzeugung erste Zeile
+					+ "				<div class=\"col col-6\">"  // Erzeugung erste Spalte, für Darstellung des Artikelnamen
+					+ "					<h5 class=\"card-title\">" + bestellung.getName() + "</h5>" 
+					+ "				</div>"
+					+ "				<div class=\"col col-3\">"  // Erzeugung zweite Spalte, für Darstellung des Artikeleinzelpreises und der Menge; String.format gibt Preis im gerundeten Euroformat aus
+					+ "					<h5 class=\"card-title\">" + bestellung.getMenge() + " x " + String.format("%.02f", bestellung.getPreis()) + " &euro;</h5>"
+					+ "				</div>" 
+					+ "				<div class=\"col col-3\">" // Erzeugung dritte Spalte, für Darstellung des Preises für gesmate Menge des Artikels; String.format gibt Preis im gerundeten Euroformat aus
+					+ "					<h5 class=\"card-title\">= " + String.format("%.02f", bestellung.getPreis() * bestellung.getMenge()) + " &euro;</h5>"
+					+ "				</div>" 
+					+ "			</div>"
+					+ "		</div>"
+					+ "		<div class=\"card-footer text-muted\">Kategorie: " + bestellung.getKategorie() + "</div>" //Zeite Zeile, für Ausgabe der Kategorie
 					+ "	</div>");
-			gesamtpreis += bestellung.getPreis() * bestellung.getMenge();
+			gesamtpreis += bestellung.getPreis() * bestellung.getMenge(); // Berechnung des Gesamtpreises
 		}
-		out.print("<h4>Gesamtpreis: " + String.format("%.02f", gesamtpreis) + " &euro;</h4>");
+		out.print("<h4>Gesamtpreis: " + String.format("%.02f", gesamtpreis) + " &euro;</h4>"); // Ausgabe Gesamtpreis; String.format gibt Preis im gerundeten Euroformat aus
 
 	}
 }

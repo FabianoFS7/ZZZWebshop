@@ -13,21 +13,21 @@ import data.Benutzer;
 import database.WarenkorbDatabase;
 
 /**
- * Dieses Servlet aktuallisiert die Menge einen Artikels, je nach dem ob sie
- * gemindert oder vermehrt wird.
+ * ArtikelmengeServlet
+ * Servlet aktuallisiert  Menge eines Artikels, je nach dem ob sie
+ * gemindert oder vermehrt wird
  * 
- * @author Fabian Segieth. Servlet implementation class ArtikelmengeServlet
+ * @author Fabian Segieth (360266)
  */
 @WebServlet("/artikel-Menge")
 public class ArtikelmengeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Wir bekommen eine methode, id und menge aus der Request, nach dem wir den
-	 * Plus oder Minus Button neben der Menge betaetigt haben. Die Menge eines
-	 * Artikels werden hier je nach Mehtode auf Datenbankebene angepasst. Wenn die
+	/*
+	 * Erhalt einer Methode, id und Menge aus der Request, nach dem Menge betaetigt wurde.
+	 * Menge eines Artikels werden hier je nach Mehtode auf Datenbankebene angepasst. Wenn die
 	 * Menge 1 ist und der Minus Button betatigt wird, wird der Artikel aus dem
-	 * Warenkorb auf Datenbankebene geloescht.
+	 * Warenkorb auf Datenbankebene gelöscht.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

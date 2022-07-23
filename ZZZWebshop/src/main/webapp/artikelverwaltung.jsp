@@ -130,6 +130,7 @@
 		// Oeffnen des Modals (ohne Löschen Button) beim bestaetigen auf "Hinzufügen"
 		$('#artikel_hinzufügen').click(function() {
 			$('#artikel_form').trigger('reset');
+			$('#form_bild').val('NochKeinBildVorhanden.jpg');
 			$('#form_delete').hide();
 			$('#form_type').val('add');
 		});

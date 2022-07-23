@@ -37,7 +37,7 @@ public class RegistriereBenutzer {
 			pstmt.setString(1, benutzer.getVorname());
 			pstmt.setString(2, benutzer.getNachname());
 			pstmt.setString(3, benutzer.getEmail());
-			pstmt.setString(4, benutzer.getPasswort()); // benutzer.getPasswort()
+			pstmt.setString(4, benutzer.getPasswort());
 			pstmt.setString(5, benutzer.getStrasse());
 			pstmt.setString(6, benutzer.getHausnummer());
 			pstmt.setInt(7, benutzer.getPostleitzahl());

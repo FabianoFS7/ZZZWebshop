@@ -1,17 +1,11 @@
+/* Style */
+
+/* Alle body-container Klassen haben oben und unten Abstand von 70 Pixeln (Navigatiosnleiste & Footer) */
 .body-container {
 	margin: 70px auto;
 }
 
-.card-img-top {
-    width: 100%;
-    height: 15vw;
-    object-fit: contain;
-}
-
-.card-img-produkt {
-	height: 12vw;
-}
-
+/* Alle alert-nachichten Klassen (Meldungen) werden unten rechts auf der Seite über alle Elemente gelegt */
 .alert-nachricht {
 	z-index: 99999;
 	width: fit-content;

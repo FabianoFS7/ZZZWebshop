@@ -9,21 +9,18 @@ import java.util.ArrayList;
 import data.Artikel;
 
 /**
- * In dieser Klasse holen, veraendern und loeschen wir Daten ueber den Artikel
- * aus der Datenbank.
+ * Klasse zum holen, veraendern und loeschen von Daten zum Artikel
  * 
- * @author Eve-Marie Hellmer
- * @author Fabian Segieth
+ * @author Eve-Marie Hellmer (356925) & Fabian Segieth (360266)
  */
 public class ArtikelDatabase {
 
 	private static Connection con = null;
 
 	/**
-	 * Hier speichern wir alle Artikel aus der Datenbank in einer Array List vom Typ
-	 * Artikel.
+	 * Speichern aller Artikel aus der Datenbank in Array List vom Typ Artikel
 	 * 
-	 * @return ArrayList vom Typ Artikel, mit allen Artikeln.
+	 * @return ArrayList vom Typ Artikel, mit allen Artikeln
 	 */
 	public static ArrayList<Artikel> getAlleArtikel() {
 		ArrayList<Artikel> artikelListe = new ArrayList<Artikel>();
@@ -52,9 +49,9 @@ public class ArtikelDatabase {
 	}
 
 	/**
-	 * Gibt einen einzelnen Artikel anhand der Artikel-Id zurueck.
+	 * Zurückgeben eines einzelnen Artikels anhand der Artikel-Id
 	 * 
-	 * @param artikelId Eindeutige Id zum identifizieren des Artikels.
+	 * @param artikelId Eindeutige Id zum identifizieren des Artikels
 	 * @return Artikelobjekt mit der eingebenen Id.
 	 */
 	public static Artikel getArtikel(int artikelId) {
@@ -85,10 +82,10 @@ public class ArtikelDatabase {
 	}
 
 	/**
-	 * Diese Methode veraendert einen Artikeldatensatz.
+	 * Veränderung eines Artikeldatensatz.
 	 * 
-	 * @param artikel Artikelobjekt, das geaendert wird.
-	 * @return Gibt den geaenderten Artikel zurueck.
+	 * @param artikel Artikelobjekt, das geaendert wird
+	 * @return Gibt den geaenderten Artikel zurueck
 	 */
 	public static Artikel updateArtikel(Artikel artikel) {
 		try {
@@ -118,10 +115,10 @@ public class ArtikelDatabase {
 	}
 
 	/**
-	 * Mit dieser Methode wird ein Artikelobjekt in die Datenbank geschrieben.
+	 * Artikelobjekt wird in der Datenbank angelegt
 	 * 
-	 * @param artikel Artikel, der in die Datenbank geschrieben wird.
-	 * @return artikel Artikel, mit Id welcher in der Datnbank generiert wurde.
+	 * @param artikel Artikel, der in die Datenbank geschrieben wird
+	 * @return artikel Artikel, mit Id welcher in der Datnbank generiert wurde
 	 */
 	public static Artikel addArtikel(Artikel artikel) {
 		try {
@@ -157,10 +154,10 @@ public class ArtikelDatabase {
 	}
 
 	/**
-	 * Damit wird ein Artikel aus der Datenbank geloescht.
+	 * Artikel wird aus der Datenbank geloescht
 	 * 
-	 * @param artikel Artikel, der geloescht wird.
-	 * @return artikel Artikel, der geloescht wurde.
+	 * @param artikel Artikel, der geloescht wird
+	 * @return artikel Artikel, der geloescht wurde
 	 */
 	public static Artikel deleteArtikel(Artikel artikel) {
 		try {

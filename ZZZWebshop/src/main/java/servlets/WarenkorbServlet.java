@@ -15,15 +15,16 @@ import data.Warenkorb;
 import database.WarenkorbDatabase;
 
 /**
- * Dieses Servlet fuegt einen Artiekl zum Warenkorb hinzu.
+ * WarenkorbServlet
+ * Servlet fuegt einen Artiekl zum Warenkorb hinzu
  * 
- * @author Fabian Segieth Servlet implementation class WarenkorbServlet
+ * @author Fabian Segieth (360266)
  */
 @WebServlet("/add-warenkorb")
 public class WarenkorbServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
+	/*
 	 * Nach dem betaetigen des hinzufuegen Buttons wird der Artikel auf
 	 * Datenbankebene in den Warenkorb gelegt. Wenn der Artikel bereits im Warenkorb
 	 * ist, wird eine Benachrichtigung darueber gemacht.

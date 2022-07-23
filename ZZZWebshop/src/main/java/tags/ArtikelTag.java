@@ -14,18 +14,17 @@ import data.Artikel;
 import database.ArtikelDatabase;
 
 /**
- * ArtikelTag Dieser Tag ist fuer die optische Auflistung aller Artikel aus der
- * Datenbank zustaendig.
+ * ArtikelTag 
+ * Tag ist für die Auflistung aller Artikel aus der Datenbank
  * 
  * @author Eve-Marie Hellmer (356925) & Fabian Segieth (360266)
  */
 
 public class ArtikelTag extends SimpleTagSupport {
-	/**
-	 * Hier werden sogenannte cards fuer alle Artikel dynmaisch generiert. Dies
-	 * dient zur Darstellung aller Artikel auf der artikeuebersicht.jsp. Dabei holen
-	 * wir alle Artikel aus der Datenbank und generieren dann mit der Liste fuer
-	 * jeden Artikel eine visuelle Karte auf der Seite.
+	/*
+	 * Hier werden Cards für alle Artikel dynmaisch generiert. Dies
+	 * dient zur Darstellung aller Artikel auf der artikeuebersicht.jsp. Dabei werden
+	 * alle Artikel aus der Datenbank geholt und dann wird eine Liste für jeden Artikel generiert
 	 */
 	@SuppressWarnings("unchecked")
 	public void doTag() throws JspException, IOException {
@@ -48,13 +47,13 @@ public class ArtikelTag extends SimpleTagSupport {
 			out.print("		<div class=\"col-sm-3 col-md-4\">" // Erzeugung der Spalte
 					+ "			<div class=\"card shadow mb-3\">" // Hintergrundschatten hinzufügen
 					+ "				<img src=\"assets/images/" + artikel.getBild() + "\"" // Anzeige des Artikelbilds
-					+ "					class=\"card-img-top card-img-produkt\" alt=\"Artikelbild\">"
+					+ "					 alt=\"Artikelbild\">"
 					+ "				<div class=\"card-body\">" + "					<h5 class=\"card-title\">"
 					+ artikel.getName() + "</h5>" // Anzeige des Artikelnames
 					+ "					<a href=\"artikel.jsp?artikelId=" + artikel.getId()
 					+ "\" class=\"stretched-link\"></a>" // gesamte Card anklickbar machen
 					+ "					<div class=\"card-text text-truncate mb-2\">" + artikel.getBeschreibung()
-					+ "}</div>" // Anzeige Artikelbeschreibung, Benutzung von text-truncate zum Kürzen der
+					+ "</div>" // Anzeige Artikelbeschreibung, Benutzung von text-truncate zum Kürzen der
 								// Beschreibung auf eine Zeile
 					+ "					<div class=\"card-text row\">" // Erzeugung einer Zeile
 					+ "						<div class=\"col col-8\">" // Erzeugung erster Spalte

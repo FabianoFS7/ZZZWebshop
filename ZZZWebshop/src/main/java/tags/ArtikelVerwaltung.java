@@ -12,8 +12,7 @@ import database.ArtikelDatabase;
 
 /**
  * ArtikelVerwaltung
- * TODO Beschreibung vervollständigen
- * @author Eve-Marie Hellmer (356925) & Fabian Segieth (360266)
+ * @author Eve-Marie Hellmer (356925)
  */
 
 public class ArtikelVerwaltung extends SimpleTagSupport {
@@ -37,10 +36,10 @@ public class ArtikelVerwaltung extends SimpleTagSupport {
 					+ "		<th scope=\"row\">" + artikel.getId() + "</th>"
 					+ "		<td class=\"artikel_name\">" + artikel.getName() + "</td>"
 					+ "		<td class=\"artikel_bild\"><img src=\"assets/images/" + artikel.getBild() + "\" "
-					+ "		class=\"d-block h-100 w-100\"alt=\"Artikelbild\"</td>"
+					+ "		class=\"d-block h-100 w-100\" alt=\"Artikelbild\"</td>"
 					+ "		<td class=\"artikel_beschreibung\">" + artikel.getBeschreibung() + "</td>"
 					+ "		<td class=\"artikel_kategorie\">" + artikel.getKategorie() + "</td>"
-					+ "		<td class=\"artikel_preis\" style=\"white-space: nowrap;\">" + String.format("%.02f", artikel.getPreis()) + " &euro;</td>"
+					+ "		<td class=\"artikel_preis\" style=\"white-space: nowrap;\">" + String.format("%.02f", artikel.getPreis()) + " &euro;</td>" // String.format gibt Preis im gerundeten Euroformat aus
 					+ "	</tr>");
 		}
 	}

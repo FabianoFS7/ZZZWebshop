@@ -16,16 +16,16 @@ import database.ArtikelDatabase;
 import inputmanager.EingabeValidierung;
 
 /**
- * Implementation der Suchfunktion auf der artikeluebersicht.jsp.
- * @author Fabian Segieth.
- * Servlet implementation class SuchServlet
+ * Implementation der Suchfunktion auf der artikeluebersicht.jsp
+ * @author Fabian Segieth (360266)
  */
+
 @WebServlet("/SuchServlet")
 public class SuchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Mit dieser Methode wird der Suchfilter wieder entfernt.
+	/*
+	 * Entfernen des Suchfilters
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -35,9 +35,9 @@ public class SuchServlet extends HttpServlet {
 
 	}
 
-	/**
-	 * Wir bekommen einen String als Filter. Wir ueberpruefen alle Artikelnamen sowie deren Beschreibungen auf
-	 * uebereinstimmung mit der Eingabe, gross und kleinschreibung wird dabei nicht beachtet. Wenn ein Artikel uebereinstimmt,
+	/*
+	 * Erhalt von String als Filter. Überprüfung aller Artikelnamen sowie deren Beschreibungen auf
+	 * Übereinstimmung mit der Eingabe, gross und kleinschreibung wird dabei nicht beachtet. Wenn ein Artikel uebereinstimmt,
 	 * wird dieser in eine Liste aufgenommen, die die gefilterten Artikel enthaelt.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

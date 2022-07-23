@@ -13,9 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
 /**
- * Diese Klasse filtern einige, g‰ngige Javascript Angriffe heraus.
+ * Klasse filtert einige, g√§ngige Javascript Angriffe heraus.
  * Klasse wurde aus dem Learnweb uebernommen und wird auf jeder Seite aufgerufen.
  * Servlet Filter implementation class XSSFilter
+ * 
  */
 @WebFilter( urlPatterns={"/*"})
 public class XSSFilter extends BaseFilter implements Filter {

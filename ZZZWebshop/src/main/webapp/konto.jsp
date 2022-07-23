@@ -1,5 +1,4 @@
 <%-- Konto GUI
-	 TODO Kommentare im Bestellungenteil
 	 @author Eve-Marie Hellmer (356925) & Fabian Segieth (360266) --%>
 
 <%@ page language="java" session="true"
@@ -31,18 +30,18 @@
 				<%-- Ausgabe der Straﬂe & Hausnummer die dem Konto zugeordnet ist --%>
 				<p class="fw-normal">
 					Straﬂe &amp; Hausnummer:
-					<c:out value="${sessionScope.benutzer.getFullStrasse()}" />
+					<c:out value="${benutzer.getFullStrasse()}" />
 				</p>
 				<%-- Ausgabe des Wohnorts die dem Konto zugeordnet ist --%>
 				<p class="fw-normal">
 					PLZ &amp; Ort:
-					<c:out value="${sessionScope.benutzer.getFullOrt()}" />
+					<c:out value="${benutzer.getFullOrt()}" />
 				</p>
 				<br>
 				<%-- Ausgabe der Mailadresse die dem Konto zugeordnet ist --%>
 				<p class="fw-normal">
 					Mailadresse:
-					<c:out value="${sessionScope.benutzer.getEmail()}" />
+					<c:out value="${benutzer.getEmail()}" />
 				</p>
 			</div>
 		</div>
@@ -50,6 +49,7 @@
 		<%-- Erzeugung zweite Spalte, f¸r Anzeige von den letzten Bestellungen mit dem Konto --%>
 		<div class="col col-6">
 			<h4 class="mb-3">Letzte Bestellungen</h4>
+			<%-- Erzeugung Accordion, zur ¸bersichtlichen Darstellung von letzten get‰tigten Bestellungen --%>
 			<div class="accordion">
 				<my:Konto />
 			</div>

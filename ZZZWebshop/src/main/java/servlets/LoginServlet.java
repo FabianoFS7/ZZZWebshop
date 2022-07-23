@@ -12,18 +12,19 @@ import data.Benutzer;
 import database.LoginBenutzer;
 
 /**
- * Bekommt Eingaben des Nutzers beim Login und ueberprueft diese.
+ * LoginServlet
+ * Erhalt Eingaben des Nutzers beim Login und anschließende Überprüfung
  * 
- * @author Fabian Segieth Servlet implementation class LoginServlet
+ * @author Fabian Segieth (360266) & Eve-Marie Hellmer (356925)
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
+	/*
 	 * Bekommt email und passwort aus der request. Dann wird anhand einer
 	 * Datenbankmethode ueberprueft, ob Logindaten mit der Datenbank
-	 * uebereinstimmen. nach erfolgreichem login wird der Benutzer in die Session
+	 * uebereinstimmen. Nach erfolgreichem login wird der Benutzer in die Session
 	 * geschrieben.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

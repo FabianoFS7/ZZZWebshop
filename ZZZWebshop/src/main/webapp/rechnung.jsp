@@ -31,9 +31,9 @@
 					</div>
 					<%-- Erzeugung zweite Spalte, für Button für Rechnungsexport --%>
 					<div class="col">
-						<a
-							href="https://www.lexoffice.de/wp-content/uploads/vorlage-rechnung-musterrechnung-kostenlos-lexoffice.png"
-							class="btn btn-dark bi bi-filetype-pdf" type="button"></a>
+						<%-- Weiterleitung zu Beispielpdf, müsste zukünftig selbstständig gerneriert werden --%>
+						<a href="https://www.lexoffice.de/wp-content/uploads/vorlage-rechnung-musterrechnung-kostenlos-lexoffice.png" 
+						   class="btn btn-dark bi bi-filetype-pdf" type="button"></a>
 					</div>
 				</div>
 			</div>

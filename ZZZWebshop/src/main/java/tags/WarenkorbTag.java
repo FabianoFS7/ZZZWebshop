@@ -15,7 +15,8 @@ import data.Warenkorb;
 import database.WarenkorbDatabase;
 
 /**
- * WarenkorbTag In diesem tag wird der Warenkorb visualisiert.
+ * WarenkorbTag 
+ * Visusalisierung des Warenkorbs
  * 
  * @author Eve-Marie Hellmer (356925) & Fabian Segieth (360266)
  */
@@ -23,10 +24,10 @@ import database.WarenkorbDatabase;
 public class WarenkorbTag extends SimpleTagSupport {
 
 	/**
-	 * Wir holen uns alle Informationen ueber den Warenkorb eines Benutzers aus der
-	 * Datenbank und speichern diese in einer Liste. Danach generieren wir fuer
+	 * Abfragen aller Informationen des Warenkorbs eines Benutzers aus der
+	 * Datenbank und speichern dieser in einer Liste. Danach Generierung fuer
 	 * jeden Eintrag der Liste einen Posten im Warenkorb. Dieser Warenkorb wird
-	 * somit fuer den Nutzer visualisiert.
+	 * somit für den Nutzer visualisiert.
 	 */
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
@@ -44,9 +45,7 @@ public class WarenkorbTag extends SimpleTagSupport {
 
 		// Ausgabe der Artikel im Warenkorb
 		for (Warenkorb ware : warenkorb) {
-			out.print("<tr class=\"align-middle\">" + "		<th scope=\"row\">" + anzahl + "</th>" // erste Spalte:
-																									// Zuordnung der
-																									// Zeilen mit Posten
+			out.print("<tr class=\"align-middle\">" + "		<th scope=\"row\">" + anzahl + "</th>" // erste Spalte: Zuordnung der Zeilen mit Posten
 					+ "		<td>" + ware.getName() + "</td>" // zweite Spalte: Anzeige Artikelname
 					+ "		<td>" + ware.getKategorie() + "</td>" // dritte Spalte: Anzeige Artikel Kategorie
 					+ "		<td>" + "			<a href=\"artikel-Menge?methode=minus&id=" + ware.getId() + "&menge="
@@ -54,21 +53,16 @@ public class WarenkorbTag extends SimpleTagSupport {
 					+ ware.getMenge() + "			<a href=\"artikel-Menge?methode=plus&id=" + ware.getId() + "&menge="
 					+ ware.getMenge() + "\" class=\"link-dark\"><i class=\"bi bi-plus-square-fill\"></i></a>"
 					+ "		</td>" // vierte Spalte: Anzeige Menge inkl. Buttons zum verringern & vermehren dieser
-					+ "		<td>" + String.format("%.02f", ware.getPreis()) + " €</td>" // fünfte Spalte: Anzeige
-																							// Artikelpreis
-					+ "		<td>" + String.format("%.02f", ware.getMenge() * ware.getPreis()) + " €</td>" // sechste
-																											// Spalte:
-																											// Anzeige
-																											// Gesamtpreis
-																											// Artikel
+					+ "		<td>" + String.format("%.02f", ware.getPreis()) + " €</td>" // fünfte Spalte: AnzeigeArtikelpreis; String.format gibt Preis im gerundeten Euroformat aus
+					+ "		<td>" + String.format("%.02f", ware.getMenge() * ware.getPreis()) + " €</td>" // sechste Spalte: Anzeige Gesamtpreis Artikel; String.format gibt Preis im gerundeten Euroformat aus
 					+ "	</tr>");
-			// Berechnung & Anzeige in letzter Zeile des Gesamtpreises aus Artikelpreis &
-			// jeweiliger Menge
+			// Berechnung & Anzeige in letzter Zeile des Gesamtpreises aus Artikelpreis & jeweiliger Menge
 			gesamtpreis += ware.getPreis() * ware.getMenge();
 			anzahl++;
 		}
+		// Ausgabe des Gesamtpreises
 		out.print("<tr class=\"align-middle table-light\">" + "		<td scope=\"row\" colspan=\"5\">Gesamtpreis</td>"
-				+ "		<td class=\"fw-bold\">" + String.format("%.02f", gesamtpreis) + " &euro;</td>" + "</tr>");
+				+ "		<td class=\"fw-bold\">" + String.format("%.02f", gesamtpreis) + " &euro;</td>" + "</tr>"); // String.format gibt Preis im gerundeten Euroformat aus
 	}
 
 }

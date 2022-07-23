@@ -11,9 +11,9 @@ import data.Bestellung;
 import data.Warenkorb;
 
 /**
- * In dieser Klasse holen wir uns Daten ueber die Bestellung aus der Datenbank.
+ * Holen der Daten ueber die Bestellung aus der Datenbank.
  * 
- * @author Fabian Segieth
+ * @author Fabian Segieth (360266) & Eve-Marie Hellmer (356925)
  *
  */
 public class BestellungDatabase {
@@ -21,7 +21,7 @@ public class BestellungDatabase {
 	private static Connection con = null;
 
 	/**
-	 * Schreibt eine Bestellung in die Datenbank.
+	 * Schreibt Bestellung in Datenbank
 	 * 
 	 * @param warenkorb       Warenkorbobjekt.
 	 * @param zahlungsmethode Zahlungsmethode der Bestellung.
@@ -63,7 +63,7 @@ public class BestellungDatabase {
 	}
 
 	/**
-	 * Ermittelt die hoechste Bestell-Id in der Datenbank.
+	 * Ermittelt die hoechste Bestell-Id
 	 * 
 	 * @param Zuordnung zum Benutzer
 	 * @return Hoechste Benutzer-Id.

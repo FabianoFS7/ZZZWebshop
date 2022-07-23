@@ -17,15 +17,17 @@ import database.BestellungDatabase;
 import database.WarenkorbDatabase;
 
 /**
- * In dieser Klasse bekommen wir Informationen ueber die Bestellung, nachdem wir
- * den Bestellen Button auf der bestelluebersich.jsp betaetigt haben. Servlet
- * implementation class BestellungsServlet
+ * BestellungsServlet
+ * Erhalt von Informationen über die Bestellung, nachdem Button 
+ * auf der bestelluebersich.jsp betätigt wurde
+ * 
+ * @author Fabian Segieth (360266) & Eve-Marie Hellmer (356925)
  */
 @WebServlet("/BestellungsServlet")
 public class BestellungsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
+	/*
 	 * Der Inhalt der Warenkorbliste wird hier in eine Bestellliste kopiert, die
 	 * dann in die Session gespeichert wird und bei der Rechnungsbestatigung
 	 * angezeigt wird. Beim Bestellen wird ausserdem der Warenkorb des Benutzers

@@ -23,7 +23,7 @@
 				<input class="form-control me-2" name="suchfilter" type="search"
 					placeholder="Suchbegriff" aria-label="Search"
 					value="<c:if test = "${suchfilter != null}"><c:out value = "${ suchfilter }"/></c:if>">
-				<%-- Spalte für die Anzeige der Filterfunktion --%>
+				<%-- Spalte für die Anzeige bzw. Auswahl der Filterfunktion --%>
 				<select class="form-select me-2" aria-label="Default select example"
 					name="suchkategorie">
 					<option value="all"
@@ -38,12 +38,9 @@
 					<option value="Pflege"
 						<c:if test="${ suchkategorie.equals('Pflege') }">selected</c:if>>Pflege</option>
 				</select>
-
 				<button class="btn btn-outline-dark" type="submit">Suchen</button>
 			</form>
 		</div>
-		<%-- Spalte für die Anzeige der Filterfunktion --%>
-
 	</div>
 	<%-- Erzeugung von Zeilen für die Darstellungen der Artikelvorschauen --%>
 	<div class="row">
