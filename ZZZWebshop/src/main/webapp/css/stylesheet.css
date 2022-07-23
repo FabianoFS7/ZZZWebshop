@@ -5,6 +5,12 @@
 	margin: 70px auto;
 }
 
+/* alle card-img-produkt Klassen (Produktbilder) sollen eine spezifische Größe und Seitenverhältnis haben */
+.card-img-produkt {
+    height: 20vh;
+    object-fit: contain;
+}
+
 /* Alle alert-nachichten Klassen (Meldungen) werden unten rechts auf der Seite über alle Elemente gelegt */
 .alert-nachricht {
 	z-index: 99999;

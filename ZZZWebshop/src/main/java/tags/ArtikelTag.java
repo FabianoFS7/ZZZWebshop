@@ -47,7 +47,7 @@ public class ArtikelTag extends SimpleTagSupport {
 			out.print("		<div class=\"col-sm-3 col-md-4\">" // Erzeugung der Spalte
 					+ "			<div class=\"card shadow mb-3\">" // Hintergrundschatten hinzufügen
 					+ "				<img src=\"assets/images/" + artikel.getBild() + "\"" // Anzeige des Artikelbilds
-					+ "					 alt=\"Artikelbild\">"
+					+ "					 class=\"card-img-top card-img-produkt\" alt=\"Artikelbild\">"
 					+ "				<div class=\"card-body\">" + "					<h5 class=\"card-title\">"
 					+ artikel.getName() + "</h5>" // Anzeige des Artikelnames
 					+ "					<a href=\"artikel.jsp?artikelId=" + artikel.getId()
