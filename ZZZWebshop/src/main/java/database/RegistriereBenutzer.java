@@ -9,51 +9,51 @@ import java.sql.Statement;
 import data.Benutzer;
 
 /**
- * In der Klasse wird ein sich registrierender Benutzer in die Datenbank geschrieben.
- * @author Fabian
+ * In der Klasse wird ein sich registrierender Benutzer in die Datenbank
+ * geschrieben.
+ * 
+ * @author Fabian Segieth
  *
  */
 public class RegistriereBenutzer {
 
 	private static Connection con = null;
 
-<<<<<<< HEAD
 	/**
-	 * Schreibt einen Benutzer nach erfolgreicher Registrierung in die Datenbank und gibt ein Benutzrrobjekt zurueck.
+	 * Schreibt einen Benutzer nach erfolgreicher Registrierung in die Datenbank und
+	 * gibt ein Benutzrrobjekt zurueck.
+	 * 
 	 * @param benutzer Benutzerobjekt fuer Registrierung.
 	 * @return Benutzerobjekt nach erfolreicher Registrierung.
 	 */
-	public static Benutzer registriereBenutzer(Benutzer benutzer) {
-=======
 	public static boolean registriereBenutzer(Benutzer benutzer) {
-
 		boolean erfolg = false;
->>>>>>> branch 'master' of https://github.com/FabianoFS7/ZZZWebshop.git
-
 		try {
 			con = DatabaseConnection.getConnection();
 
-			PreparedStatement pstmt = con.prepareStatement("INSERT INTO benutzer (vorname, nachname, email, passwort, strasse, hausnummer, plz, ort, admin) VALUES (?,?,?,?,?,?,?,?,false)", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement pstmt = con.prepareStatement(
+					"INSERT INTO benutzer (vorname, nachname, email, passwort, strasse, hausnummer, plz, ort, admin) VALUES (?,?,?,?,?,?,?,?,false)",
+					Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, benutzer.getVorname());
 			pstmt.setString(2, benutzer.getNachname());
 			pstmt.setString(3, benutzer.getEmail());
-			pstmt.setString(4, benutzer.getPasswort());
+			pstmt.setString(4, benutzer.getPasswort()); // benutzer.getPasswort()
 			pstmt.setString(5, benutzer.getStrasse());
 			pstmt.setString(6, benutzer.getHausnummer());
 			pstmt.setInt(7, benutzer.getPostleitzahl());
 			pstmt.setString(8, benutzer.getOrt());
 			pstmt.executeUpdate();
-			
+
 			try (ResultSet rs = pstmt.getGeneratedKeys()) {
-	            if (rs.next()) {
-	                benutzer.setId(rs.getInt(1));
-	                erfolg = true;
-	            } else {
-	    			System.out.println("[SQL] Unerwarteter Fehler.");
-	                throw new SQLException("Creating user failed, no ID obtained.");
-	            }
-	        }					
-			
+				if (rs.next()) {
+					benutzer.setId(rs.getInt(1));
+					erfolg = true;
+				} else {
+					System.out.println("[SQL] Unerwarteter Fehler.");
+					throw new SQLException("Creating user failed, no ID obtained.");
+				}
+			}
+
 		} catch (SQLException e) {
 			System.err.println("[SQL] Fehler bei registriereBenutzer()" + e.toString());
 		} catch (Exception e) {

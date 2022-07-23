@@ -6,22 +6,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 import data.Warenkorb;
+
 /**
- * In dieser Klasse wird ein Warenkorb in die Datenbank hinzugefuegt, geändert oder geloescht.
+ * In dieser Klasse wird ein Warenkorb in die Datenbank hinzugefuegt, geaendert
+ * oder geloescht.
+ * 
  * @author Fabian Segieth.
  *
  */
 public class WarenkorbDatabase {
-	
+
 	private static Connection con = null;
 
 	/**
-	 * Diese Methode schreibt den aktuellen Warenkorb eines Benutzers in die Datenbank.
+	 * Diese Methode schreibt den aktuellen Warenkorb eines Benutzers in die
+	 * Datenbank.
+	 * 
 	 * @param benutzerId Ermittelt den Nutzer.
-	 * @param artikelId Ermittelt den Artikel, der hinzugefuegt wird.
-	 * @param menge Die Menge des hinzugefuegtenArtikels.
+	 * @param artikelId  Ermittelt den Artikel, der hinzugefuegt wird.
+	 * @param menge      Die Menge des hinzugefuegtenArtikels.
 	 * @return True, falls hinzufuegen erfolgreich war, false sonst.
 	 */
 	public static boolean fuegeWarenkorb(int benutzerId, int artikelId, int menge) {
@@ -30,16 +34,17 @@ public class WarenkorbDatabase {
 		try {
 			con = DatabaseConnection.getConnection();
 
-			PreparedStatement pstmt = con.prepareStatement("INSERT INTO warenkorb (benutzerid, artikelid, menge) VALUES(?,?,?)");
+			PreparedStatement pstmt = con
+					.prepareStatement("INSERT INTO warenkorb (benutzerid, artikelid, menge) VALUES(?,?,?)");
 			pstmt.setInt(1, benutzerId);
 			pstmt.setInt(2, artikelId);
 			pstmt.setInt(3, menge);
-			
+
 			int zeilen = pstmt.executeUpdate();
 			if (zeilen > 0) {
 				erfolg = true;
-			}					
-			
+			}
+
 		} catch (SQLException e) {
 			System.err.println("[SQL] Fehler bei fuegeWarenkorb()" + e.toString());
 		} catch (Exception e) {
@@ -54,9 +59,11 @@ public class WarenkorbDatabase {
 		}
 		return erfolg;
 	}
-	
+
 	/**
-	 * Gibt den gesamten Warenkorb einen Benutzers aus der Datenbank als ArrayList vom Typ Warenkorb zurueck.
+	 * Gibt den gesamten Warenkorb einen Benutzers aus der Datenbank als ArrayList
+	 * vom Typ Warenkorb zurueck.
+	 * 
 	 * @param benutzerId Warenkorb wird zum Benutzer zugeordnet.
 	 * @return ArrayList vom Typ Warenkorb mir aktuellem Warenkorb des Benutezrs.
 	 */
@@ -64,11 +71,11 @@ public class WarenkorbDatabase {
 		ArrayList<Warenkorb> warenkorb = new ArrayList<Warenkorb>();
 		try {
 			con = DatabaseConnection.getConnection();
-			PreparedStatement pstmt = con
-					.prepareStatement("SELECT artikelid, menge, name, kategorie, preis FROM warenkorb JOIN artikel on artikelid = artikel.id WHERE warenkorb.benutzerid = ? ORDER BY artikel.name");
+			PreparedStatement pstmt = con.prepareStatement(
+					"SELECT artikelid, menge, name, kategorie, preis FROM warenkorb JOIN artikel on artikelid = artikel.id WHERE warenkorb.benutzerid = ? ORDER BY artikel.name");
 			pstmt.setInt(1, benutzerId);
 			ResultSet rs = pstmt.executeQuery();
-			
+
 			while (rs.next()) {
 				Warenkorb posten = new Warenkorb();
 				posten.setWarenkorbId(benutzerId);
@@ -78,13 +85,13 @@ public class WarenkorbDatabase {
 				posten.setKategorie(rs.getString("kategorie"));
 				posten.setPreis(rs.getDouble("preis"));
 				warenkorb.add(posten);
-				
+
 			}
 		} catch (SQLException sqle) {
 			System.err.println("[ERROR] getWarenkorb() auf Datenbankebene fehlgeschlagen.");
 			sqle.printStackTrace();
 		} catch (Exception e) {
-			
+
 			System.out.println("[ERROR] Unerwarteter Fehler.");
 			e.printStackTrace();
 		} finally {
@@ -96,11 +103,12 @@ public class WarenkorbDatabase {
 		}
 		return warenkorb;
 	}
-	
+
 	/**
 	 * Loescht Posten des Warenkorbs eines Nutzers aus der Datenbank.
-	 * @param warenkorbid Eindeutiger Warenkorb des Nutzers.
-	 * @param artikelid Damit wird der Artikel ermittelt, der entfernt wird.
+	 * 
+	 * @param benutzerId Eindeutiger Benutzer zum Warenkorb
+	 * @param artikelid  Damit wird der Artikel ermittelt, der entfernt wird.
 	 * @return True, falls loeschen des Artikels erfolgrecih war, false sonst.
 	 */
 	public static boolean deletePosten(int benutzerId, int artikelid) {
@@ -108,14 +116,15 @@ public class WarenkorbDatabase {
 
 		try {
 			con = DatabaseConnection.getConnection();
-			PreparedStatement pstmt = con.prepareStatement("DELETE FROM warenkorb WHERE benutzerid = ? AND artikelid = ?");
+			PreparedStatement pstmt = con
+					.prepareStatement("DELETE FROM warenkorb WHERE benutzerid = ? AND artikelid = ?");
 			pstmt.setInt(1, benutzerId);
 			pstmt.setInt(2, artikelid);
-			
+
 			int zeilen = pstmt.executeUpdate();
 			if (zeilen > 0) {
 				erfolg = true;
-			}	
+			}
 		} catch (SQLException e) {
 			System.err.println("[SQL] Fehler bei deletePosten()" + e.toString());
 		} catch (Exception e) {
@@ -130,29 +139,30 @@ public class WarenkorbDatabase {
 		}
 		return erfolg;
 	}
-	
+
 	/**
 	 * Aktualisert die Menge eines Artikels im Warenkorb in der Datenbank.
-	 * @param menge Neue Menge des Artikels.
-	 * @param warenkorbid Zugehoeriger Warenkorb des Benutzers.
-	 * @param artikelid Id des Artikels, dessen Menge aktuallisiert wird.
+	 * 
+	 * @param menge      Neue Menge des Artikels.
+	 * @param benutzerId Zugehoeriger Benutzer zum Warenkorb
+	 * @param artikelid  Id des Artikels, dessen Menge aktuallisiert wird.
 	 * @return True wenn update erfolgreich war, false sonst.
 	 */
 	public static boolean updateMenge(int menge, int warenkorbid, int artikelid) {
-
 		boolean erfolg = false;
 
 		try {
 			con = DatabaseConnection.getConnection();
-			PreparedStatement pstmt = con.prepareStatement("UPDATE warenkorb SET menge = ? WHERE benutzerid = ? AND artikelid = ?");
+			PreparedStatement pstmt = con
+					.prepareStatement("UPDATE warenkorb SET menge = ? WHERE benutzerid = ? AND artikelid = ?");
 			pstmt.setInt(1, menge);
-			pstmt.setInt(2, benutzerId);
+			pstmt.setInt(2, warenkorbid);
 			pstmt.setInt(3, artikelid);
-			
+
 			int zeilen = pstmt.executeUpdate();
 			if (zeilen > 0) {
 				erfolg = true;
-			}	
+			}
 		} catch (SQLException e) {
 			System.err.println("[SQL] Fehler bei updateMenge()" + e.toString());
 		} catch (Exception e) {

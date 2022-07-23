@@ -9,16 +9,20 @@ import java.util.ArrayList;
 import data.Artikel;
 
 /**
- * In dieser Klasse holen, veraendern und loeschen wir Daten ueber den Artikel aus der Datenbank.
+ * In dieser Klasse holen, veraendern und loeschen wir Daten ueber den Artikel
+ * aus der Datenbank.
+ * 
+ * @author Eve-Marie Hellmer
  * @author Fabian Segieth
- *
  */
 public class ArtikelDatabase {
 
 	private static Connection con = null;
 
 	/**
-	 * Hier speichern wir alle Artikel aus der Datenbank in einer Array List vom Typ Artikel.
+	 * Hier speichern wir alle Artikel aus der Datenbank in einer Array List vom Typ
+	 * Artikel.
+	 * 
 	 * @return ArrayList vom Typ Artikel, mit allen Artikeln.
 	 */
 	public static ArrayList<Artikel> getAlleArtikel() {
@@ -28,8 +32,8 @@ public class ArtikelDatabase {
 			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM artikel ORDER BY id");
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				artikelListe.add(new Artikel(rs.getInt(1), rs.getString(2), rs.getDouble(3),
-						rs.getString(4), rs.getString(5), rs.getString(6)));
+				artikelListe.add(new Artikel(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4),
+						rs.getString(5), rs.getString(6)));
 			}
 		} catch (SQLException sqle) {
 			System.err.println("[ERROR] Fehler bei getAlleArtikel().");
@@ -41,7 +45,7 @@ public class ArtikelDatabase {
 			try {
 				con.close();
 			} catch (SQLException e) {
-				System.err.println("[SQL] Fehler bei registriereBenutzer() - Verbindung geschlossen?");
+				System.err.println("[SQL] Fehler bei getAlleArtikel() - Verbindung geschlossen?");
 			}
 		}
 		return artikelListe;
@@ -49,6 +53,7 @@ public class ArtikelDatabase {
 
 	/**
 	 * Gibt einen einzelnen Artikel anhand der Artikel-Id zurueck.
+	 * 
 	 * @param artikelId Eindeutige Id zum identifizieren des Artikels.
 	 * @return Artikelobjekt mit der eingebenen Id.
 	 */
@@ -60,8 +65,8 @@ public class ArtikelDatabase {
 			pstmt.setInt(1, artikelId);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				artikel = new Artikel(artikelId, rs.getString(2), rs.getDouble(3), rs.getString(4),
-						rs.getString(5), rs.getString(6));
+				artikel = new Artikel(artikelId, rs.getString(2), rs.getDouble(3), rs.getString(4), rs.getString(5),
+						rs.getString(6));
 			}
 		} catch (SQLException sqle) {
 			System.err.println("[ERROR] Fehler bei getArtikel(): " + sqle.toString());
@@ -81,13 +86,15 @@ public class ArtikelDatabase {
 
 	/**
 	 * Diese Methode veraendert einen Artikeldatensatz.
+	 * 
 	 * @param artikel Artikelobjekt, das geaendert wird.
-	 * @return Gibt den geänderten Artikel zurueck.
+	 * @return Gibt den geaenderten Artikel zurueck.
 	 */
 	public static Artikel updateArtikel(Artikel artikel) {
 		try {
 			con = DatabaseConnection.getConnection();
-			PreparedStatement pstmt = con.prepareStatement("UPDATE artikel SET name=?, bild=?, preis=?, beschreibung=?, kategorie=? WHERE id=?");
+			PreparedStatement pstmt = con.prepareStatement(
+					"UPDATE artikel SET name=?, bild=?, preis=?, beschreibung=?, kategorie=? WHERE id=?");
 			pstmt.setString(1, artikel.getName());
 			pstmt.setString(2, artikel.getBild());
 			pstmt.setDouble(3, artikel.getPreis());
@@ -112,14 +119,15 @@ public class ArtikelDatabase {
 
 	/**
 	 * Mit dieser Methode wird ein Artikelobjekt in die Datenbank geschrieben.
+	 * 
 	 * @param artikel Artikel, der in die Datenbank geschrieben wird.
-	 * @return
+	 * @return artikel Artikel, mit Id welcher in der Datnbank generiert wurde.
 	 */
 	public static Artikel addArtikel(Artikel artikel) {
-
 		try {
 			con = DatabaseConnection.getConnection();
-			PreparedStatement pstmt = con.prepareStatement("INSERT INTO artikel (name, preis, beschreibung, kategorie, bild) VALUES(?,?,?,?,?)");
+			PreparedStatement pstmt = con.prepareStatement(
+					"INSERT INTO artikel (name, preis, beschreibung, kategorie, bild) VALUES(?,?,?,?,?)");
 			pstmt.setString(1, artikel.getName());
 			pstmt.setDouble(2, artikel.getPreis());
 			pstmt.setString(3, artikel.getBeschreibung());
@@ -127,14 +135,14 @@ public class ArtikelDatabase {
 			pstmt.setString(5, artikel.getBild());
 			pstmt.executeUpdate();
 			try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
-	            if (generatedKeys.next()) {
-	                artikel.setId(generatedKeys.getInt(1));
-	            } else {
-	                throw new SQLException("Creating user failed, no ID obtained.");
-	            }
-	        }
+				if (generatedKeys.next()) {
+					artikel.setId(generatedKeys.getInt(1));
+				} else {
+					throw new SQLException("Creating user failed, no ID obtained.");
+				}
+			}
 		} catch (SQLException sqle) {
-			System.err.println("[SQL] Fehler bei updateArtikel(): " + sqle.toString());
+			System.err.println("[SQL] Fehler bei addArtikel(): " + sqle.toString());
 		} catch (Exception e) {
 			System.out.println("[ERROR] Unerwarteter Fehler: " + e.toString());
 			e.printStackTrace();
@@ -142,19 +150,19 @@ public class ArtikelDatabase {
 			try {
 				con.close();
 			} catch (SQLException e) {
-				System.err.println("[SQL] Fehler bei updateArtikel() - Verbindung geschlossen?");
+				System.err.println("[SQL] Fehler bei addArtikel() - Verbindung geschlossen?");
 			}
 		}
 		return artikel;
 	}
-	
+
 	/**
 	 * Damit wird ein Artikel aus der Datenbank geloescht.
+	 * 
 	 * @param artikel Artikel, der geloescht wird.
-	 * @return 
+	 * @return artikel Artikel, der geloescht wurde.
 	 */
 	public static Artikel deleteArtikel(Artikel artikel) {
-
 		try {
 			con = DatabaseConnection.getConnection();
 			PreparedStatement pstmt = con.prepareStatement("DELETE FROM artikel WHERE id=?");

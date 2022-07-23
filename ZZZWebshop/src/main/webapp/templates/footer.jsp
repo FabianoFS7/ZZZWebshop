@@ -5,8 +5,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%-- Dooplung mit nachicht.jsp; welche soll behalten werden?
-	 Rückmeldungen in Form von Alerts bei Eingaben bzw. Ereignissen --%>
+<%-- Rückmeldungen in Form von Alerts bei Eingaben bzw. Ereignissen --%>
 <c:choose>
 	<%-- Erfolgsmeldung --%>
 	<c:when test="${ erfolg != null }">

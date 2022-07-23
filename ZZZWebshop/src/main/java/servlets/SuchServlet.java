@@ -37,7 +37,7 @@ public class SuchServlet extends HttpServlet {
 
 	/**
 	 * Wir bekommen einen String als Filter. Wir ueberpruefen alle Artikelnamen sowie deren Beschreibungen auf
-	 * uebereinstimmung mit der Eingabe, gro� und kleinschreibung wird dabei nicht beachtet. Wenn ein Artikel uebereinstimmt,
+	 * uebereinstimmung mit der Eingabe, gross und kleinschreibung wird dabei nicht beachtet. Wenn ein Artikel uebereinstimmt,
 	 * wird dieser in eine Liste aufgenommen, die die gefilterten Artikel enthaelt.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -55,7 +55,7 @@ public class SuchServlet extends HttpServlet {
 		ArrayList<Artikel> artikelListe = (ArrayList<Artikel>) session.getAttribute("artikelListe");
 		ArrayList<Artikel> gefiltereArtikelliste = new ArrayList<Artikel>();
 		
-		// Artikel werden anhand der Parameter gefiltert und per request-Parameter der Artikelübersicht zur verfügung gestellt
+		// Artikel werden anhand der Parameter gefiltert
 		if (suchkategorie.equals("all")) {
 			gefiltereArtikelliste = (ArrayList<Artikel>) artikelListe.stream()
 				.filter(artikel -> artikel.getBeschreibung().toLowerCase().contains(suchfilter.toLowerCase())
@@ -69,8 +69,8 @@ public class SuchServlet extends HttpServlet {
 					.collect(Collectors.toList());
 		}
 
+		// gefilterte Artikel werden dem Artikelübersicht-Servlet per request-Parameter zur verfügung gestellt
 		request.setAttribute("gefiltereArtikelliste", gefiltereArtikelliste);
-		
 		request.getRequestDispatcher("artikeluebersicht.jsp").forward(request, response);
 	}
 

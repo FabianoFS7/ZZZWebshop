@@ -16,22 +16,22 @@ import inputmanager.RegEx;
 
 /**
  * Diese Klasse ist fuer die Registrierung des Benutzers zustaendig.
- * @author Fabian Segieth.
- * Servlet implementation class RegistrieurngsServlet
+ * 
+ * @author Fabian Segieth. Servlet implementation class RegistrieurngsServlet
  */
 @WebServlet("/RegistrierungsServlet")
 public class RegistrierungsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * In dieser Methode bekommen wir alle Registrierungsdaten des Nutzers und ueberpruefen diese Daten,
-	 * ob diese den Vorgaben entsprechen und ob der Nutzer nicht schon registriert ist.
-	 * Nach erfolgreicher Registrierung wird der Benutzer in die Datenbank geschrieben und ein Benutzerobjekt
-	 * wird in der Session angelegt.
+	 * In dieser Methode bekommen wir alle Registrierungsdaten des Nutzers und
+	 * ueberpruefen diese Daten, ob diese den Vorgaben entsprechen und ob der Nutzer
+	 * nicht schon registriert ist. Nach erfolgreicher Registrierung wird der
+	 * Benutzer in die Datenbank geschrieben und ein Benutzerobjekt wird in der
+	 * Session angelegt.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		request.setCharacterEncoding("UTF-8");
 
 		String vorname = request.getParameter("vorname");
@@ -46,19 +46,22 @@ public class RegistrierungsServlet extends HttpServlet {
 		String fehler = "";
 		String weiterleitung = "registrierung.jsp";
 
+		// alle Benutzereingaben werden vor der Registrierung validiert
+		// Bei fehlerhaften Eingaben erh√§lt der Nutzer eine entsprechene Info-nachricht
 		if (!EingabeValidierung.istLeer(vorname) && !EingabeValidierung.istLeer(nachname)
 				&& !EingabeValidierung.istLeer(mail) && !EingabeValidierung.istLeer(passwort)
 				&& !EingabeValidierung.istLeer(passwortWDH) && !EingabeValidierung.istLeer(strasse)
 				&& !EingabeValidierung.istLeer(hausnummer) && !EingabeValidierung.istLeer(postleitzahl)
 				&& !EingabeValidierung.istLeer(ort)) {
-			if(RegEx.pruefeEmail(mail)) {
-				if(EingabeValidierung.wiederholePW(passwort, passwortWDH)) {
+			if (RegEx.pruefeEmail(mail)) {
+				if (EingabeValidierung.wiederholePW(passwort, passwortWDH)) {
 					if (RegEx.pruefePasswort(passwort)) {
-						if(RegEx.pruefeHausnummer(hausnummer)) {
-							if(RegEx.pruefePostleitzahl(postleitzahl)) {
+						if (RegEx.pruefeHausnummer(hausnummer)) {
+							if (RegEx.pruefePostleitzahl(postleitzahl)) {
 								HttpSession session = request.getSession();
-								Benutzer benutzer = new Benutzer(vorname, nachname, mail, passwort, strasse, hausnummer, Integer.parseInt(postleitzahl), ort, false);
-								
+								Benutzer benutzer = new Benutzer(vorname, nachname, mail, passwort, strasse, hausnummer,
+										Integer.parseInt(postleitzahl), ort, false);
+
 								try {
 									if (RegistriereBenutzer.registriereBenutzer(benutzer)) {
 										session.setAttribute("benutzer", benutzer);
@@ -68,9 +71,9 @@ public class RegistrierungsServlet extends HttpServlet {
 										fehler += "Benutzer existiert bereits! ";
 									}
 								} catch (NullPointerException npe) {
-									
+
 								} catch (Exception e) {
-									
+
 								}
 							} else {
 								fehler += "Postleitzahl entspricht nicht dem richtigen Format! (5 Zahlen)";
@@ -79,18 +82,18 @@ public class RegistrierungsServlet extends HttpServlet {
 							fehler += "Hausnummer entspricht nicht dem richtigen Format! (3 Zeichen)";
 						}
 					} else {
-						fehler += "Passw√∂rt entspricht nicht dem richtigen Format! (mind. 8 Zeichen inkl. Gro√übuchstabe, Kleinbuchstabe & Sonderzeichen)";
+						fehler += "Passwort entspricht nicht dem richtigen Format! (mind. 8 Zeichen inkl. Groﬂbuchstabe, Kleinbuchstabe & Sonderzeichen)";
 					}
-					
+
 				} else {
-					fehler += "Passw√∂rter stimmen nicht √ºberein! ";
+					fehler += "Passwˆrter stimmen nicht ‹berein! ";
 				}
 			} else {
 				fehler += "Die Email entspricht nicht der Vorgabe! ";
 			}
 
 		} else {
-			fehler += "Es wurden nicht alle Pflichtfelder ausgef√ºllt!";
+			fehler += "Es wurden nicht alle Pflichtfelder ausgef¸llt!";
 		}
 		request.setAttribute("fehler", fehler);
 		request.getRequestDispatcher(weiterleitung).forward(request, response);
